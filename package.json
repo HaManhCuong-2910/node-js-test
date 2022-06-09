@@ -1,0 +1,26 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": "16.14.1",
+    "npm": "8.5.0"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^4.3.4",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.6",
+    "msnodesqlv8": "^2.4.8",
+    "mssql": "^8.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

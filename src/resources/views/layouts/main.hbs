@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Example App</title>
+</head>
+<body>
+    {{#if showHeader}}
+        {{> header}}
+    {{/if}}
+
+    {{{body}}}
+
+    {{#if showFooter}}
+        {{> footer}}
+    {{/if}}
+</body>
+</html>
