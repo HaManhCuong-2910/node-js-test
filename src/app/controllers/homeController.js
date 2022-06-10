@@ -1,19 +1,24 @@
-const {con, sql} = require('../../model/connect');
-const sanphamModel = require('../../model/sanpham.model');
+const sql = require('mssql');
+const config = require('../../model/connect');
 
 class homeController{
   //get all data
-    index(req, res) {
-      sanphamModel.getSanPhamDanhMuc((err,danhmuc,sanpham)=>{
-        res.send({sanpham:sanpham,danhmuc: danhmuc });
-        // res.render('home', {
-        //   showFooter: true,
-        //   showHeader: false,
-        //   layout: 'layoutDefaut.hbs',
-        //   danhmuc: danhmuc,
-        //   sanpham: sanpham
-        // });
-      })
+    async index(req, res) {
+        try{
+          let pool = await sql.connect(config);
+          let sqlString  = " select top 1 * from DanhMuc";
+          let products = await (await pool.request().query(sqlString)).recordset;
+          res.send({result: products});
+          // res.render('home', {
+          //   showFooter: true,
+          //   showHeader: false,
+          //   layout: 'layoutDefaut.hbs',
+          //   sanpham: products
+          // }); 
+        }
+        catch(err){
+          console.log(err);
+        }
     }
 }
 module.exports = new homeController
