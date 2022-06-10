@@ -7,8 +7,10 @@ class homeController{
         try{
           let pool = await sql.connect(config);
           let sqlString  = " select top 1 * from DanhMuc";
+          let sqlDanhMucnhieu  = " select * from DanhMuc";
           let products = await (await pool.request().query(sqlString)).recordset;
-          res.send({result: products});
+          let DanhMucnhieu = await (await pool.request().query(sqlDanhMucnhieu)).recordset;
+          res.send({result: products,DanhMuc: DanhMucnhieu});
           // res.render('home', {
           //   showFooter: true,
           //   showHeader: false,
