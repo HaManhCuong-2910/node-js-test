@@ -1,15 +1,16 @@
+const sql = require('mssql');
 require('dotenv').config();
-const config = {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    server: process.env.DATABASE_URL,
-    database: process.env.DB_NAME,
-    dialect: 'postgres',
-    synchronize: true,
-    options: {
-        encrypt: false,
-        trustServerCertificate: true,
-    }
-};
 
-module.exports = config
+async function  connect() {
+    try {
+        // make sure that any items are correctly URL encoded in the connection string
+        await sql.connect(process.env.DATABASE_URL).then(pool =>{
+            return pool
+        })
+    } catch (err) {
+        // ... error checks
+        console.log("Connect error")
+    }
+}
+
+module.exports = {connect};
