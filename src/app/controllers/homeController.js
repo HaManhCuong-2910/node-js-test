@@ -1,20 +1,27 @@
-const sql = require('mssql');
+const con = require('../../model/connect')
 require('dotenv').config();
 
 class homeController{
   //get all data
     async index(req, res) {
         try{
-          let pool = await sql.connect(process.env.DATABASE_URL);
+          let pool = await con;
           let sqlString  = " select top 1 * from SanPham";
-          let products = await (await pool.request().query(sqlString)).recordset;
-          res.send({result: products});
-          // res.render('home', {
+          return await pool.request().query(sqlString,(err,data)=>{
+            if(err){
+              console.log(err);
+            }
+            else{
+              res.send({result: data.recordset});
+            }
+          })
+          
+          // res.render('admin/doashboard', {
           //   showFooter: true,
-          //   showHeader: false,
-          //   layout: 'layoutDefaut.hbs',
+          //   layout: 'admin/layoutAdmin.hbs',
           //   sanpham: products
-          // }); 
+          // });
+           
         }
         catch(err){
           console.log(err);
