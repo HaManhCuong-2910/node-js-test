@@ -12,7 +12,7 @@ class homeController{
               console.log(err);
             }
             else{
-              res.send({result: data.recordset});
+              res.send({result: data.recordset,update: 1});
             }
           })
           
