@@ -12,16 +12,14 @@ class homeController{
               console.log(err);
             }
             else{
-              res.send({result: data.recordset,update: 1});
+              // res.send({result: data.recordset,update: 1});
+              res.render('home', {
+                showFooter: true,
+                layout: 'layoutDefaut.hbs',
+                sanpham: data.recordset
+              });
             }
-          })
-          
-          // res.render('admin/doashboard', {
-          //   showFooter: true,
-          //   layout: 'admin/layoutAdmin.hbs',
-          //   sanpham: products
-          // });
-           
+          }) 
         }
         catch(err){
           console.log(err);
