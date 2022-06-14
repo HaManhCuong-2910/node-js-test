@@ -3,10 +3,15 @@ const path = require('path');
 const handlebars = require('express-handlebars');
 const routes = require('./routes/routes');
 const session = require('express-session')
+const bodyParser = require('body-parser')
 const app = express();
 const port = process.env.PORT || 3000;
 
+
 app.use(express.static(path.join(__dirname,'public')));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.engine('hbs', handlebars.engine({
   extname: '.hbs'
