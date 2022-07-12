@@ -1,4 +1,14 @@
-<form action="/testmail" method="post">
-    <input type="text" value="123" name="textTest">
-    <button type="submit">Send mail test</button>
+<form method="POST" action="/uploadimgs" enctype="multipart/form-data">
+    <input type="text" name="testText">
+    <div class="filesbds"></div>
+
+    <button type="submit">Submit and display data</button>
+
 </form>
+<script>
+    $(function () {
+        $('.filesbds').imageUploader({
+            imagesInputName: 'filesbds',
+        });
+    })
+</script>

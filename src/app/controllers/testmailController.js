@@ -2,7 +2,7 @@ const con = require('../../model/connect');
 const sendMail = require('../Email/sendMail');
 require('dotenv').config();
 
-class homeController{
+class testSendMailController{
     //sendTestMail
     async sendTestMail(req, res) {
       try{
@@ -13,4 +13,4 @@ class homeController{
       }
   }
 }
-module.exports = new homeController
+module.exports = new testSendMailController
