@@ -3,6 +3,19 @@ const sendMail = require('../Email/sendMail');
 require('dotenv').config();
 
 class testSendMailController{
+
+    async index(req, res) {
+      try{
+        res.render('admin/doashboard', {
+          showFooter: true,
+          layout: 'admin/layoutAdmin.hbs'
+        });
+      }
+      catch(error){
+        console.log(error);
+      }
+      
+  }
     //sendTestMail
     async sendTestMail(req, res) {
       try{

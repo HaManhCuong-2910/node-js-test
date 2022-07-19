@@ -6,11 +6,15 @@ class homeController{
   //get all data
     async index(req, res) {
         try{
-          await product.find({},(error, results)=>{
-            console.log("products: " + results);
-          })
+          await product.find({},((error,result)=>{
+            if (error) throw error;
+            console.log(result);
+          }));
+          req.session.user_id = "id1";
+          let msg = "Chào from controller";
+          _io.emit("send-chat-message", msg); 
           res.render('home', {
-            showFooter: false,
+            showFooter: true,
             layout: 'layoutDefaut.hbs'
           });
         }

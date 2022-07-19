@@ -5,6 +5,9 @@
     <button type="submit">Submit and display data</button>
 
 </form>
+{{#if showFooter}}
+    {{>admin/footer}}
+{{/if}}
 <script>
     $(function () {
         $('.filesbds').imageUploader({

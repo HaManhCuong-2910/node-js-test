@@ -3,6 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>Admin App</title>
+    <link rel="stylesheet" href="/css/common/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common/fontawesome.min.css">
+    <link rel="stylesheet" href="/css/images_uploader/image-uploader.min.css">
+    <script src="/js/common/jquery-3.6.0.min.js"></script>
+    <script src="/js/common/fontawesome.min.js"></script>   
 </head>
 <body>
     <h1>test Admin</h1>
@@ -12,5 +17,16 @@
     {{#if showFooter}}
         {{> admin/footer}}
     {{/if}}
+    <script src="/js/common/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        var message = "Hi mn!!";
+        //socket.emit('chat-message', message);
+        socket.on("send-chat-message",(message)=>{
+            console.log(message);
+        })
+    </script>    
+    <script src="/js/images_uploader/image-uploader.min.js"></script>
 </body>
 </html>

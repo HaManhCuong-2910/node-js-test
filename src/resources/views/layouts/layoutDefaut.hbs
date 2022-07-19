@@ -13,10 +13,16 @@
 
     {{{body}}}
 
-    {{#if showFooter}}
-        {{> footer}}
-    {{/if}}
     <script src="/js/common/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        var message = "Hi mn!!";
+        //socket.emit('chat-message', message);
+        socket.on("send-chat-message",(message)=>{
+            console.log(message);
+        })
+    </script>    
     <script src="/js/images_uploader/image-uploader.min.js"></script>
 </body>
 </html>
