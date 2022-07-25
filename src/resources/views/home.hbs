@@ -5,6 +5,11 @@
     <button type="submit">Submit and display data</button>
 
 </form>
+ {{#switch testSwtich}} 
+    {{#case 'a'}} A {{/case}} 
+    {{#case 'b'}} B {{/case}}
+{{/switch}}
+
 {{#if showFooter}}
     {{>admin/footer}}
 {{/if}}

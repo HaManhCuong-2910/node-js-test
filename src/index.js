@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const handlebars = require('express-handlebars');
+const hbsrgs = require('handlebars');
 const routes = require('./routes/routes');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -10,6 +11,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const port = process.env.PORT || 3000;
 const SocketServices = require('./services/socket.service');
+const handlebarsService = require('./services/handlebars.service');
 // const sendMail = require('./app/Email/sendMail');
 // const schedule = require('node-schedule');
 
@@ -29,6 +31,8 @@ app.engine('hbs', handlebars.engine({
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname,'resources/views'));
+
+handlebarsService.registers(hbsrgs);
 
 const sessionMiddleware = session({
   secret: "changeit",
