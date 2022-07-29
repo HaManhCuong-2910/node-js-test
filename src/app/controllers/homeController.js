@@ -18,8 +18,8 @@ class homeController{
             if (error) throw error;
             console.log(result);
           }));
-          let jsontesting = [{"id": 1, "name" : "Cường"},{"id": 2, "name": "Hưng"}];
-          req.session.jsontesting = jsontesting;
+          let userID = "cuonghm";
+          req.session.userID = userID;
           let msg = "Chào from controller";
           _io.emit("send-chat-message", msg); 
           res.render('home', {

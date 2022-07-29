@@ -31,5 +31,13 @@ class commonFunction{
         };
         return text;
     }
+    requiredAuth(req,res,next){
+        let userID = req.session.userID;
+        if(!userID){
+            res.redirect('/admin/login');
+            return;
+        }
+        next();
+    }
 }
 module.exports = new commonFunction;

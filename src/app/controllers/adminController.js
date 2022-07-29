@@ -17,5 +17,13 @@ class adminController{
             console.log(error);
         }
     }
+    async login(req, res) {
+        try{
+            res.render('admin/authencation/login',{layout: false});
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
 }
 module.exports = new adminController
