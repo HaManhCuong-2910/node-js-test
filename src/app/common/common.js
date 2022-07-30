@@ -34,8 +34,7 @@ class commonFunction{
     requiredAuth(req,res,next){
         let userID = req.session.userID;
         if(!userID){
-            res.redirect('/admin/login');
-            return;
+            return res.render('admin/authencation/login',{layout: false});
         }
         next();
     }
