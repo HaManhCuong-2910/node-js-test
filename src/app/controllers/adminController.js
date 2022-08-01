@@ -1,4 +1,5 @@
 const common = require('../common/common');
+const category = require('../../model/category');
 const md5 = require('md5');
 require('dotenv').config();
 
@@ -6,8 +7,10 @@ class adminController{
 
     async index(req, res) {
         try{
-            let navvigation = common.breadcrumbsPath(3);
-            console.log(navvigation);
+            let nav = await common.breadcrumbsPath(category,3).then(function(data){
+                return data;
+            });
+            console.log(nav);
             res.render('admin/doashboard', {
                 showFooter: true,
                 layout: 'admin/layoutAdmin.hbs'

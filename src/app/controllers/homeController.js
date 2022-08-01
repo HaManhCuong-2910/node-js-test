@@ -1,6 +1,7 @@
 const common = require('../common/common');
 const product = require('../../model/product');
 const md5 = require('md5');
+const account = require('../../model/account');
 require('dotenv').config();
 
 class homeController{
@@ -14,10 +15,28 @@ class homeController{
           //     console.log(data);
           //   })
           // });
-          await product.find({}, ((error, result) => {
-            if (error) throw error;
-            console.log(result);
-          }));
+
+          // product.find({}, ((error, result) => {
+          //   if (error) throw error;
+          //   console.log(result);
+          // }));
+
+
+          // let acc = new account(
+          //   {
+          //     Email: 'cuonghamanhcuong34@gmail.com',
+          //     Name: 'Cường kum',
+          //     Mobile: '0336272203',
+          //     Password: 'fd460dbc6f0f9df3b29c549d5a51f302',
+          //   }
+          // )
+
+          // await acc.save(function (err,result){
+          //   if (err) throw err;
+          //   console.log(result);        
+          // })
+          let strtestt = "Mua nhà ở quận Hà Đông, Hà nội";
+          console.log(common.stringToSlug(strtestt));
           let userID = "cuonghm";
           req.session.userID = userID;
           let msg = "Chào from controller";

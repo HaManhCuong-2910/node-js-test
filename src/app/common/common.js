@@ -11,23 +11,27 @@ class commonFunction{
         let productDone = await product.findOneAndUpdate({ _id: idProc }, { ProductID: 'VN' + idProc }, { new: true, upsert: true });
         return productDone
     }
-    breadcrumbsPath(pCat){
-        let listNode = [{"id": 1,"Name":"Trang chủ", "partent": 0},{"id": 2,"Name":"All collect", "partent": 1},{"id": 3,"Name":"Mua bán", "partent": 2}];
+    async breadcrumbsPath(category,pCat){
         let text = "";
         let i = 0;
         while(pCat != 0){ 
             i++;
-            listNode.findIndex((a)=>{
-                if(a.id == pCat){
-                    pCat = a.partent;
-                    if(i === 1){
-                        text =  a.Name;
-                    }
-                    else{
-                        text = a.Name + text;
-                    }
+            await category.findOne({_id: pCat},(err,result)=>{
+                if (err){
+                    console.log(err);
                 }
-            });
+                else{
+                    if(result.id == pCat){
+                        pCat = result.partent;
+                        if(i === 1){
+                            text =  result.Name;
+                        }
+                        else{
+                            text = result.Name + text;
+                        }
+                    }
+                }                
+            })
         };
         return text;
     }
@@ -38,5 +42,20 @@ class commonFunction{
         }
         next();
     }
+    stringToSlug(str) {
+        // remove accents
+        let from = "àáãảạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệđùúủũụưừứửữựòóỏõọôồốổỗộơờớởỡợìíỉĩịäëïîöüûñçýỳỹỵỷ",
+            to   = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeduuuuuuuuuuuoooooooooooooooooiiiiiaeiiouuncyyyyy";
+        for (let i=0, l=from.length ; i < l ; i++) {
+          str = str.replace(RegExp(from[i], "gi"), to[i]);
+        }
+      
+        str = str.toLowerCase()
+              .trim()
+              .replace(/[^a-z0-9\-]/g, '-')
+              .replace(/-+/g, '-');
+      
+        return str;
+      }
 }
 module.exports = new commonFunction;
