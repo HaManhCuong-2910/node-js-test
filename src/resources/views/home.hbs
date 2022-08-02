@@ -10,6 +10,17 @@
     {{#case 'b'}} B {{/case}}
 {{/switch}}
 
+{{#each products}}
+    <div class="mb-4">
+        {{this.ProductID}} <br>
+        {{this._id}} <br>
+        {{this.Title}} <br>
+        {{this.CreationDate}} <br>
+    </div>
+{{/each}}
+
+{{#timeSince "2022-07-27T03:07:32.461+00:00"}} {{/timeSince}}
+
 {{#if showFooter}}
     {{>admin/footer}}
 {{/if}}

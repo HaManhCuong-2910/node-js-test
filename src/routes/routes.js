@@ -6,5 +6,8 @@ function routes(app){
     app.use('/admin',fncCommon.requiredAuth,adminRouter);
     app.use('/testmail',testmailRouter);
     app.use('/',homeRouter);
+    app.get('*',function(req,res){
+        res.redirect('/');
+    })
 }
 module.exports = routes;

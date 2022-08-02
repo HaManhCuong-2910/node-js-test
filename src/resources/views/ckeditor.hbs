@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Uploading Dropped and Pasted Images</title>
+  <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
+</head>
+
+<body>
+  <textarea cols="10" id="editor2" name="editor2" rows="10">
+      <p><strong>dsadas<em> dsadsad dsadasbcjhxzczj</em>
+      
+        </strong></p>
+      <ol>
+        <li>dsadsad</li>
+      </ol>
+  </textarea>
+  <script>
+    CKEDITOR.replace('editor2', {
+      height: 300,
+      filebrowserUploadMethod: 'form',
+      filebrowserUploadUrl: '/testmail/upload'
+    });
+  </script>
+</body>
+
+</html>
