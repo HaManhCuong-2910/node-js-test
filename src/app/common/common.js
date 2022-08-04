@@ -45,6 +45,11 @@ class commonFunction {
         next();
     }
 
+    requireAuth_User(req,res,next){
+        console.log(req.session);
+        next();
+    }
+
     //chuyen doi url
     stringToSlug(str) {
         // remove accents

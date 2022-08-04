@@ -34,8 +34,6 @@ class homeController {
       //   if (err) throw err;
       //   console.log(result);        
       // })
-      let userID = "cuonghm";
-      req.session.userID = userID;
       let msg = "Chào from controller";
       _io.emit("send-chat-message", msg);
       res.render('home', {

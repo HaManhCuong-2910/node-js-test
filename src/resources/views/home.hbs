@@ -5,24 +5,27 @@
     <button type="submit">Submit and display data</button>
 
 </form>
- {{#switch testSwtich}} 
-    {{#case 'a'}} A {{/case}} 
-    {{#case 'b'}} B {{/case}}
+{{#switch testSwtich}}
+{{#case 'a'}} A {{/case}}
+{{#case 'b'}} B {{/case}}
 {{/switch}}
 
 {{#each products}}
-    <div class="mb-4">
-        {{this.ProductID}} <br>
-        {{this._id}} <br>
-        {{this.Title}} <br>
-        {{this.CreationDate}} <br>
-    </div>
+<div class="mb-4">
+    {{this.ProductID}} <br>
+    {{this._id}} <br>
+    {{this.Title}} <br>
+    {{this.CreationDate}} <br>
+</div>
 {{/each}}
+
+<button onclick="fbLogin()">Login</button>
+
 
 {{#timeSince "2022-07-27T03:07:32.461+00:00"}} {{/timeSince}}
 
 {{#if showFooter}}
-    {{>admin/footer}}
+{{>admin/footer}}
 {{/if}}
 <script>
     $(function () {
@@ -30,4 +33,51 @@
             imagesInputName: 'filesbds',
         });
     })
+</script>
+
+<!--Đăng nhập facebook js-->
+<script type="text/javascript">
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '3177422985915504',
+            cookie: true,
+            xfbml: true,
+            version: 'v12.0'
+        });
+
+        FB.AppEvents.logPageView();
+
+        FB.getLoginStatus(function (response) {
+            if (response.status === 'connected') {
+                let accessToken = response.authResponse.accessToken;
+                console.log(accessToken);
+                getFbUserData();
+            }
+        });
+    };
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function fbLogin() {
+        FB.login(function (response) {
+            if (response.authResponse) {
+                getFbUserData();
+            } else {
+                console.log('User cancelled');
+            }
+        }, { scope: 'email' });
+    }
+    function getFbUserData() {
+        FB.api('/me', { locale: 'en_US', fields: 'id,name,email' },
+            function (response) {
+                console.log(response);
+            }
+        )
+    }
 </script>

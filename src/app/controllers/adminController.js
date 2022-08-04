@@ -22,6 +22,8 @@ class adminController{
     }
     async login(req, res) {
         try{
+            let account = { id: '123', provider: 'local' };
+            req.session.account = account;
             res.render('admin/authencation/login',{layout: false});
         }
         catch(error){

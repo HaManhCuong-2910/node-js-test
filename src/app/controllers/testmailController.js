@@ -1,4 +1,3 @@
-const con = require('../../model/connect');
 const sendMail = require('../Email/sendMail');
 require('dotenv').config();
 

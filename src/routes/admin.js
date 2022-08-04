@@ -4,6 +4,6 @@ const adminController = require('../app/controllers/adminController');
 const fncCommon = require('../app/common/common');
 
 router.get('/login',adminController.login);
-router.get('/',adminController.index);
+router.get('/',fncCommon.requiredAuth,adminController.index);
 
 module.exports = router;

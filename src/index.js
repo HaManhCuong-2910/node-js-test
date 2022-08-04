@@ -18,7 +18,7 @@ const handlebarsService = require('./services/handlebars.service');
 //use io in controller
 global._io = io;
 
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -30,7 +30,8 @@ app.engine('hbs', handlebars.engine({
   extname: '.hbs'
 }));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname,'resources/views'));
+app.set('views', path.join(__dirname, 'resources/views'));
+
 
 handlebarsService.registers(hbsrgs);
 
@@ -41,6 +42,8 @@ const sessionMiddleware = session({
 });
 
 app.use(sessionMiddleware);
+
+
 // var i = 0;
 // schedule.scheduleJob('*/2 * * * * * ', ()=>{
 //   i += 1;
