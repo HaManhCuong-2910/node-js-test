@@ -5,10 +5,6 @@
     <button type="submit">Submit and display data</button>
 
 </form>
- {{#switch testSwtich}} 
-    {{#case 'a'}} A {{/case}} 
-    {{#case 'b'}} B {{/case}}
-{{/switch}}
 
 {{#each products}}
     <div class="mb-4">
@@ -21,9 +17,7 @@
 
 {{#timeSince "2022-07-27T03:07:32.461+00:00"}} {{/timeSince}}
 
-{{#if showFooter}}
-    {{>admin/footer}}
-{{/if}}
+
 <script>
     $(function () {
         $('.filesbds').imageUploader({
