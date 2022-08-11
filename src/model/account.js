@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
-const AutoIncrement = require('mongoose-sequence')(mongoose);
 const Schema = mongoose.Schema;
 
 const accountSchema = new Schema({
-  _id: Number,
   Email:{
     type: String,
     require: true
@@ -47,9 +45,8 @@ const accountSchema = new Schema({
     require: true,
     default: 1
   }
-}, { _id: false,versionKey: false });
+}, {versionKey: false });
 
-accountSchema.plugin(AutoIncrement, {id: 'account_seq',inc_field: '_id', reference_fields: ['accounts']});
 
 module.exports = mongoose.model('account', accountSchema);
 
