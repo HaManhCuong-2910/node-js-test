@@ -12,7 +12,7 @@ class adminController{
             });
             console.log(nav);
             res.render('admin/doashboard', {
-                showFooter: true,
+                isAdmin: true,
                 layout: 'admin/layoutAdmin.hbs'
             });
         }
@@ -22,8 +22,8 @@ class adminController{
     }
     async login(req, res) {
         try{
-            let account = { id: '123', provider: 'local' };
-            req.session.account = account;
+            let adminID = 'cuonghm';
+            req.session.adminID = adminID;
             res.render('admin/authencation/login',{layout: false});
         }
         catch(error){

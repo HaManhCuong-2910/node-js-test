@@ -1,45 +1,44 @@
 <!DOCTYPE html>
 <html lang="vi-vn">
+
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-P4L4WJ3QV1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-P4L4WJ3QV1');
+        gtag('config', 'G-P4L4WJ3QV1');
     </script>
     <title>Ứng dụng du lịch và Lữ Hành</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://gaapnow.com/" />
-    <meta name="description" content="Itravel - giải pháp du lịch và tiện ích sống từ đặt vé máy bay, khách sạn, vé vui chơi, giải trí Xperience, dịch vụ ăn uống, làm đẹp và nhiều trải nghiệm khác" />
-    <meta name="keywords" content="Du lịch, vé máy bay, khách sạn" />  
-    {{!-- <link href="" rel="icon" type="image/x-icon" />
-    <link href="" rel="shortcut icon" />  --}}
+    <meta name="description"
+        content="Itravel - giải pháp du lịch và tiện ích sống từ đặt vé máy bay, khách sạn, vé vui chơi, giải trí Xperience, dịch vụ ăn uống, làm đẹp và nhiều trải nghiệm khác" />
+    <meta name="keywords" content="Du lịch, vé máy bay, khách sạn" />
+    {{!--
+    <link href="" rel="icon" type="image/x-icon" />
+    <link href="" rel="shortcut icon" /> --}}
 
     <link rel="stylesheet" href="/css/common/bootstrap.min.css">
     <link rel="stylesheet" href="/css/common/fontawesome.min.css">
     <link rel="stylesheet" href="/css/images_uploader/image-uploader.min.css">
+    <link rel="stylesheet" href="/css/plugin/chatbox.css">
     <script src="/js/common/jquery-3.6.0.min.js"></script>
-    <script src="/js/common/fontawesome.min.js"></script>   
+    <script src="/js/common/fontawesome.min.js"></script>
+    <script src="/js/common/common.js"></script>
 </head>
+
 <body>
 
     {{{body}}}
 
+    {{>chatbox}}
     <script src="/js/common/bootstrap.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-        var message = "Hi mn!!";
-        //socket.emit('chat-message', message);
-        socket.on("send-chat-message",(message)=>{
-            console.log(message);
-        })
-    </script>    
     <script src="/js/images_uploader/image-uploader.min.js"></script>
 </body>
+
 </html>

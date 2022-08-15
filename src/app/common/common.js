@@ -37,9 +37,9 @@ class commonFunction {
     }
 
     //valid auth
-    requiredAuth(req, res, next) {
-        let userID = req.session.userID;
-        if (!userID) {
+    requiredAuth_Admin(req, res, next) {
+        let adminID = req.session.adminID;
+        if (!adminID) {
             return res.render('admin/authencation/login', { layout: false });
         }
         next();
