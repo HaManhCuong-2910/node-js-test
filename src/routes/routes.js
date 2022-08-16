@@ -8,5 +8,8 @@ function routes(app){
     app.use('/testmail',testmailRouter);
     app.use('/auth',authRouter);
     app.use('/',homeRouter);
+    app.get('*', function(req, res) {
+        res.redirect('/');
+    });
 }
 module.exports = routes;

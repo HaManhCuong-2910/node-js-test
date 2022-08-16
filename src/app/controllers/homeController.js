@@ -20,20 +20,7 @@ class homeController {
         if (error) throw error;
         return result;
       })).lean();
-
-      // let acc = new account(
-      //   {
-      //     Email: 'cuonghamanhcuong34@gmail.com',
-      //     Name: 'Cường kum',
-      //     Mobile: '0336272203',
-      //     Password: 'fd460dbc6f0f9df3b29c549d5a51f302',
-      //   }
-      // )
-
-      // await acc.save(function (err,result){
-      //   if (err) throw err;
-      //   console.log(result);        
-      // })
+      
       let msg = "Chào from controller";
       _io.emit("send-chat-message", msg);
       res.render('home', {

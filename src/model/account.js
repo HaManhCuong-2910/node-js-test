@@ -44,6 +44,11 @@ const accountSchema = new Schema({
     type: Number,
     require: true,
     default: 1
+  },
+  typeAcc:{
+    type: Number,
+    require: true,
+    default: 0
   }
 }, {versionKey: false });
 
