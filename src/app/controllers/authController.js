@@ -29,5 +29,16 @@ class adminController {
             console.log(err);
         }
     }
+    async setUserName(req,res){
+        try{
+            return res.json({
+                status: 1,
+                message: res.body.userID
+            })
+        }
+        catch (err){
+            console.log(err);
+        }
+    }
 }
 module.exports = new adminController

@@ -13,7 +13,17 @@ class adminController{
             });
             console.log(nav);
             res.render('admin/doashboard', {
-                isAdmin: true,
+                layout: 'admin/layoutAdmin.hbs'
+            });
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+    async adminHelper(req, res) {
+        try{
+            res.render('admin/helper/helperView', {
+                isMenu: 'adminHelper',
                 layout: 'admin/layoutAdmin.hbs'
             });
         }

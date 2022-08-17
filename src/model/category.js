@@ -24,5 +24,5 @@ const categorySchema = new Schema({
 
 categorySchema.plugin(AutoIncrement, {id: 'category_seq',inc_field: '_id'});
 
-module.exports = mongoose.model('category', categorySchema);
+module.exports = mongoose.model('categories', categorySchema);
 

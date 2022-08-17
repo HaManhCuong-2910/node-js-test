@@ -2,7 +2,6 @@ class SocketServices{
 
     //connection socket
     connection( socket ){
-        console.log(`User connect is ${socket.id}`);
         // console.log(socket.request.session);
         socket.on('disconnect', () => {
             console.log(`User disconnect id is ${socket.id}`);
@@ -10,11 +9,21 @@ class SocketServices{
 
         // event on here
 
-        socket.on('user-chat-message', (msg, name) => {
-             _io.emit('admin-receive-message', msg,name);
+        socket.on('user-chat-message', (msg,room) => {
+             if(!socket.rooms.has(room)){
+                socket.join(room);
+             }             
+             _io.to(room).emit('admin-receive-message', msg);
+             _io.emit('admin-notify-message', room);
         })
-        socket.on('admin-chat-message', (msg, name) => {
-            _io.emit('user-receive-message', msg,name);
+        socket.on('admin-chat-message', (msg,room) => {
+            console.log(room);
+            _io.to(room).emit('user-receive-message', msg);
+        })
+
+        socket.on('joinRoom', (RoomID) => {
+            socket.leaveAll();
+            socket.join(RoomID);
         })
 
     }

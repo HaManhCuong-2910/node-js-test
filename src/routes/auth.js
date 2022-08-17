@@ -3,6 +3,7 @@ const router = express.Router();
 const authController = require('../app/controllers/authController');
 const fncCommon = require('../app/common/common');
 
+router.post('/set-userName', authController.setUserName);
 router.get('/logout', authController.logout);
 router.get('/profile', authController.profile);
 router.get('/loginUser', authController.loginUser);
