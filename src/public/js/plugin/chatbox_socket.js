@@ -15,13 +15,63 @@ $('#fab_send').click(() => {
     }
     
 })
-socket.on("user-receive-message", (message) => {
-    let htmlSendChat = '<div class="d-flex flex-column align-items-start">' +
-        '<span class="chat_msg_item chat_msg_item_admin">' + message + '</span>' +
-        '<span class="status2">' + formatDate(new Date()) + '</span>';
-    '</div>';
+$('#attachmentfiles').change(()=>{
+    let formData = new FormData();
+    formData.append('type', 'user');
+    if (localStorage.getItem('it.room-id') != undefined) {
+        formData.append('roomid', localStorage.getItem('it.room-id'));
+    }
+    let listFiles = $('#attachmentfiles').prop('files');
+
+    for(let i=0; i<listFiles.length; i++){
+        formData.append('attachFile[]', listFiles[i]);
+    }
+
+    $.ajax({
+        url: '/chatbox/send-files',
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function (obj) {
+            let status = obj.status;
+            let message = obj.mess;
+            if(status == 1){
+                sendChat(message,'',obj.roomID,false);
+            }
+            else if(status == 2){
+                localStorage.setItem('it.room-id',obj.roomID);
+                sendChat(message,'',obj.roomID,false);
+            }
+            else{
+                console.log("no send...");
+            }
+        },
+        error: function (obj) {
+            console.log(obj);
+        }
+    })
+
+    
+})
+socket.on("user-receive-message", (message,isMess) => {
+    let htmlSendChat = '';
+    if(isMess){
+        htmlSendChat = '<div class="d-flex flex-column align-items-start">' +
+            '<span class="chat_msg_item chat_msg_item_admin">' + message + '</span>' +
+            '<span class="status2">' + formatDate(new Date()) + '</span>';
+        '</div>';
+    }
+    else{
+        for(let i=0; i< message.length; i++){
+            htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
+                '<img class="files-chatbox" src="' + message[i] + '">' +
+                '<span class="status2">' + formatDate(new Date()) + '</span>' +
+            '</div>';
+        }  
+    }     
     $('#chat_converse').append(htmlSendChat);
-    // console.log(message);
 })
 
 function addChatBox(message,type) {
@@ -35,10 +85,10 @@ function addChatBox(message,type) {
             let RoomID = obj.mess;
             if(status == 1){
                 localStorage.setItem('it.room-id',RoomID);
-                sendChat(message,'',RoomID);
+                sendChat(message,'',RoomID,true);
             }
             else{
-                sendChat(message,RoomID,0)
+                sendChat(message,RoomID,0,true)
             }
             // console.log(obj);
         },
@@ -57,7 +107,7 @@ function updateChatBox(RoomID,type,message){
             let status = obj.status;
             let RoomID = obj.mess;
             if(status == 1){
-                sendChat(message,'',RoomID);
+                sendChat(message,'',RoomID,true);
             }
             else{
                 localStorage.removeItem('it.room-id');
@@ -78,36 +128,72 @@ function loadChatBox(RoomID){
         success: function (obj) {
             let list = obj.list;
             socket.emit('joinRoom', RoomID);
-            list.forEach((val)=>{
-                if(val.user){
-                    let htmlSendChat = '<div class="d-flex flex-column align-items-end">' +
-                        '<span class="chat_msg_item chat_msg_item_user">' + val.user + '</span>' +
-                        '<span class="status">' + formatDate(new Date(val.date)) + '</span>' +
-                        '</div>';
-                    $('#chat_converse').append(htmlSendChat);
-                }
-                else{
-                    let htmlSendChat = '<div class="d-flex flex-column align-items-start">' +
-                        '<span class="chat_msg_item chat_msg_item_admin">' + val.admin + '</span>' +
-                        '<span class="status2">' + formatDate(new Date(val.date)) + '</span>';
-                    '</div>';
-                    $('#chat_converse').append(htmlSendChat);
-                } 
-            });
+            let result_list = appendChatFile_Mess(list); 
+            $('#chat_converse').append(result_list);
         },
         error: function (obj) {
             console.log(obj);
         }
     })
 }
-function sendChat(message,err,room){
-    let htmlSendChat = '<div class="d-flex flex-column align-items-end">' +
-        '<span class="chat_msg_item chat_msg_item_user">' + message + '</span>' +
-        '<span class="status">' + formatDate(new Date()) + '</span>' +
+function sendChat(message,err,room,isMess){
+    let htmlSendChat = '';
+    if(isMess){
+        htmlSendChat = '<div class="d-flex flex-column align-items-end">' +
+            '<span class="chat_msg_item chat_msg_item_user">' + message + '</span>' +
+            '<span class="status">' + formatDate(new Date()) + '</span>' +
         '</div>';
+    }
+    else{
+        for(let i=0; i< message.length; i++){
+            htmlSendChat += '<div class="d-flex flex-column align-items-end">' +
+                '<img class="files-chatbox" src="' + message[i] + '">' +
+                '<span class="status">' + formatDate(new Date()) + '</span>' +
+            '</div>';
+        }        
+    }
+    
     $('#chatSend').val('');
     $('#chat_converse').append(htmlSendChat);
     if(room != 0){
-        socket.emit('user-chat-message', message, room);
+        socket.emit('user-chat-message', message, room,isMess);
     }    
+}
+function appendChatFile_Mess(list) {
+    let htmlSendChat = '';
+    list.forEach((val)=>{
+        if (val.files) {
+            if (val.user) {
+                for (let i = 0; i < val.user.length; i++) {
+                    htmlSendChat += '<div class="d-flex flex-column align-items-end">' +
+                        '<img class="files-chatbox" src="' + val.user[i] + '">' +
+                        '<span class="status">' + formatDate(new Date(val.date)) + '</span>' +
+                        '</div>';
+                }
+            }
+            else {
+                for (let i = 0; i < val.admin.length; i++) {
+                    htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
+                        '<img class="files-chatbox" src="' + val.admin[i] + '">' +
+                        '<span class="status2">' + formatDate(new Date(val.date)) + '</span>';
+                    '</div>';
+                }
+            }
+        }
+        else {
+            if (val.user) {
+                htmlSendChat += '<div class="d-flex flex-column align-items-end">' +
+                    '<span class="chat_msg_item chat_msg_item_user">' + val.user + '</span>' +
+                    '<span class="status">' + formatDate(new Date(val.date)) + '</span>' +
+                    '</div>';
+            }
+            else {
+                htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
+                    '<span class="chat_msg_item chat_msg_item_admin">' + val.admin + '</span>' +
+                    '<span class="status2">' + formatDate(new Date(val.date)) + '</span>';
+                '</div>';
+            }
+        }
+    });
+    return htmlSendChat;
 }

@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const chatboxController = require('../app/controllers/chatboxController');
+const upload = require('../app/common/configUpload_chatBox');
 
 
+router.post('/send-files',upload.any(),chatboxController.sendFiles);
 
 router.post('/add-chatbox',chatboxController.addChatBox);
 router.post('/update-chatbox',chatboxController.updateChatBox);

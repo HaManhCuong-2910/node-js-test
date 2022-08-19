@@ -43,10 +43,7 @@ class chatboxController {
       let obj = {};
       obj[key] = message;
       obj["date"] = new Date();
-      let room =  await chatbox.findOne({_id: RoomID},function(err,room){
-          if (err) throw err;
-          return room;
-      }) 
+      let room =  await chatbox.findOne({_id: RoomID}); 
       if(room){
         room.listMess.push(obj);
 
@@ -81,10 +78,7 @@ class chatboxController {
   async loadChatBox(req,res){
     try{
       let RoomID = req.query.RoomID;
-      let room = await chatbox.findOne({ _id: RoomID }, function (err, room) {
-        if (err) throw err;
-        return room;
-      }) 
+      let room = await chatbox.findOne({ _id: RoomID }); 
       let listMess;
       if(room){
         listMess = room.listMess
@@ -100,6 +94,7 @@ class chatboxController {
       console.log(error);
     }
   }
+  //loadListChat
   async loadListChat(req,res){
     try{
       let rooms = await chatbox.find({}, function (err, rooms) {
@@ -113,6 +108,65 @@ class chatboxController {
     catch (error) {
       console.log(error);
     }
+  }
+  async sendFiles(req,res){
+    let arrayFiles = [];
+    let roomID = req.body.roomid || false;
+    let room_test = false;
+    if(roomID){
+      room_test =  await chatbox.findOne({_id: roomID});
+    }
+    
+    let key = req.body.type;
+    for(let i=0; i<req.files.length;i++){
+      if(req.files[i].fieldname = 'attachFile[]'){
+        arrayFiles.push('/imgs/chatbox_imgs/'+req.files[i].filename);
+      }
+    }
+    let obj = {};
+    obj[key] = arrayFiles;
+    obj["files"] = req.files.length;
+    obj["date"] = new Date();
+    //insert db
+    if(room_test){
+      
+      room_test.listMess.push(obj); 
+      await chatbox.updateOne({ _id: req.body.roomid }, {listMess: room_test.listMess }, function (err, result) {
+        if (err) {
+          return res.json({
+            status: 0,
+            mess: "Không thể gửi tin nhắn"
+          })
+        }
+        else {
+          return res.json({
+            status: 1,
+            mess: obj[key],
+            roomID: req.body.roomid
+          })
+        }
+      });
+      
+    }
+    else{
+      let chatb = new chatbox({ listMess: [obj] });
+      await chatb.save(function(error,result){
+        if (error) {
+          return res.json({
+            status: 0,
+            mess:"Không thể gửi tin nhắn"
+          }) 
+        }
+        else{
+          return res.json({
+            status: 2,
+            mess: obj[key],
+            roomID: result._id
+          })
+        }          
+      });
+    }
+    
   }
 }
 module.exports = new chatboxController

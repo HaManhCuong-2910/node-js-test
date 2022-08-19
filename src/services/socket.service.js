@@ -9,16 +9,15 @@ class SocketServices{
 
         // event on here
 
-        socket.on('user-chat-message', (msg,room) => {
+        socket.on('user-chat-message', (msg,room,isMess) => {
              if(!socket.rooms.has(room)){
                 socket.join(room);
              }             
-             _io.to(room).emit('admin-receive-message', msg);
+             _io.to(room).emit('admin-receive-message', msg,isMess);
              _io.emit('admin-notify-message', room);
         })
-        socket.on('admin-chat-message', (msg,room) => {
-            console.log(room);
-            _io.to(room).emit('user-receive-message', msg);
+        socket.on('admin-chat-message', (msg,room,isMess) => {
+            _io.to(room).emit('user-receive-message', msg,isMess);
         })
 
         socket.on('joinRoom', (RoomID) => {

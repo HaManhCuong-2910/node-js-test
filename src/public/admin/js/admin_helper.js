@@ -6,11 +6,22 @@ $('#frm_sendChat').submit(function (event){
     $('input[name="message"]',this).val('');
     updateChatBox(RoomID,'admin',message)
 })
-socket.on("admin-receive-message", (message) => {
-    let htmlSendChat = '<li class="sender">' +
-        '<p> '+ message +' </p>' +
-        '<span class="time">'+ formatDate(new Date()) +'</span>';
-    '</div>';
+socket.on("admin-receive-message", (message,isMess) => {
+    let htmlSendChat = '';
+    if(isMess){
+        htmlSendChat = '<li class="sender">' +
+            '<p> '+ message +' </p>' +
+            '<span class="time">'+ formatDate(new Date()) +'</span>';
+        '</div>';
+    }   
+    else{
+        for (let i = 0; i < message.length; i++) {
+            htmlSendChat += '<li class="sender">' +
+                '<img class="files-chatbox" src="' + message[i] + '">' +
+                '<span class="time">' + formatDate(new Date()) + '</span>' +
+            '</li>';
+        }
+    } 
     $('.msg-body ul').append(htmlSendChat);
 })
 socket.on("admin-notify-message",(room)=>{
@@ -26,7 +37,43 @@ jQuery(document).ready(function () {
     $(".chat-icon").click(function () {
         $(".chatbox").removeClass('showbox');
     });
+
+    $('#attachmentfiles').change(()=>{
+        let formData = new FormData();
+        formData.append('type', 'admin');
+        formData.append('roomid', $('#roomIDAdmin').val());
+        let listFiles = $('#attachmentfiles').prop('files');
+    
+        for(let i=0; i<listFiles.length; i++){
+            formData.append('attachFile[]', listFiles[i]);
+        }
+        $.ajax({
+            url: '/chatbox/send-files',
+            data: formData,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (obj) {
+                let status = obj.status;
+                let message = obj.mess;
+                if(status == 1 || status == 2){
+                    sendChat_admin(message,'',$('#roomIDAdmin').val(),false);
+                }
+                else{
+                    console.log("no send...");
+                }
+            },
+            error: function (obj) {
+                console.log(obj);
+            }
+        })
+    
+        
+    })
+
 });
+
 
 function loadListUser_Chat(){
     $.ajax({
@@ -69,22 +116,8 @@ function loadChatBox_admin(RoomID){
         type: 'GET',
         success: function (obj) {
             let list = obj.list;
-            let htmlSendChat = '';
-            list.forEach((val)=>{
-                if(val.user){
-                    htmlSendChat += '<li class="sender">' +
-                        '<p> '+ val.user +' </p>' +
-                        '<span class="time">'+ formatDate(new Date(val.date)) +'</span>';
-                    '</div>';
-                }
-                else{
-                    htmlSendChat += '<li class="repaly">' +
-                        '<p> '+ val.admin +' </p>' +
-                        '<span class="time">'+ formatDate(new Date(val.date)) +'</span>';
-                    '</div>';
-                } 
-                $('.msg-body').html('<ul>'+htmlSendChat+'</ul>');
-            });
+            let result_list = appendChatFile_Mess(list); 
+            $('.msg-body').html('<ul>'+result_list+'</ul>');
         },
         error: function (obj) {
             console.log(obj);
@@ -102,10 +135,10 @@ function updateChatBox(RoomID,type,message){
             let status = obj.status;
             let RoomID = obj.mess;
             if(status == 1){
-                sendChat_admin(message,'',RoomID);
+                sendChat_admin(message,'',RoomID,true);
             }
             else{
-                sendChat_admin(message,RoomID,0)
+                sendChat_admin(message,RoomID,0,true)
             }
         },
         error: function (obj) {
@@ -113,13 +146,62 @@ function updateChatBox(RoomID,type,message){
         }
     })
 }
-function sendChat_admin(message,err,room){
-    let htmlSendChat = '<li class="repaly">' +
-        '<p> '+ message +' </p>' +
-        '<span class="time">'+ formatDate(new Date()) +'</span>';
-    '</div>';
+function sendChat_admin(message,err,room,isMess){
+    let htmlSendChat = '';
+    if(isMess){
+        htmlSendChat += '<li class="repaly">' +
+            '<p> '+ message +' </p>' +
+            '<span class="time">'+ formatDate(new Date()) +'</span>';
+        '</li>';
+    }
+    else{
+        for (let i = 0; i < message.length; i++) {
+            htmlSendChat += '<li class="repaly">' +
+                '<img class="files-chatbox" src="' + message[i] + '">' +
+                '<span class="time">' + formatDate(new Date()) + '</span>';
+            '</li>';
+        }
+    }
     $('.msg-body ul').append(htmlSendChat);
     if(room != 0){
-        socket.emit('admin-chat-message', message,room);
+        socket.emit('admin-chat-message', message,room,isMess);
     }    
+}
+function appendChatFile_Mess(list) {
+    let htmlSendChat = '';
+    list.forEach((val)=>{
+        if (val.files) {
+            if (val.user) {
+                for (let i = 0; i < val.user.length; i++) {
+                    htmlSendChat += '<li class="sender">' +
+                        '<img class="files-chatbox" src="' + val.user[i] + '">' +
+                        '<span class="time">' + formatDate(new Date(val.date)) + '</span>' +
+                    '</li>';
+                }
+            }
+            else {
+                for (let i = 0; i < val.admin.length; i++) {
+                    htmlSendChat += '<li class="repaly">' +
+                        '<img class="files-chatbox" src="' + val.admin[i] + '">' +
+                        '<span class="time">' + formatDate(new Date(val.date)) + '</span>';
+                    '</li>';
+                }
+            }
+        }
+        else {
+            if(val.user){
+                htmlSendChat += '<li class="sender">' +
+                    '<p> '+ val.user +' </p>' +
+                    '<span class="time">'+ formatDate(new Date(val.date)) +'</span>';
+                '</li>';
+            }
+            else{
+                htmlSendChat += '<li class="repaly">' +
+                    '<p> '+ val.admin +' </p>' +
+                    '<span class="time">'+ formatDate(new Date(val.date)) +'</span>';
+                '</li>';
+            } 
+        }
+    });
+    return htmlSendChat;
 }

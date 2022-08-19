@@ -12,7 +12,10 @@
     overflow: hidden;
     min-height: calc(100% - 1rem);
 }
-
+.files-chatbox{
+    max-width: 250px;
+    max-height: 300px;
+}
 .chatlist {
     outline: 0;
     height: 100%;
