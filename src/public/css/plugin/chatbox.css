@@ -117,11 +117,6 @@ ul li {
     bottom: 0px;
     top: 0px;
 }
-.files-chatbox{
-    max-width: 180px;
-    max-height: 200px;
-    margin-right: 20px;
-}
 
 .chat_header {
     font-size: 13px;
@@ -356,7 +351,16 @@ ul li {
     background: rgba(0, 0, 0, 0.03);
     color: #666;
 }
-
+.files-user.files-chatbox{
+    max-width: 180px;
+    max-height: 200px;
+    margin-right: 20px;
+}
+.files-admin.files-chatbox{
+    max-width: 180px;
+    max-height: 200px;
+    margin-left: 20px;
+}
 .chat .chat_converse .chat_msg_item.chat_msg_item_user {
     margin-right: 20px;
     float: right;

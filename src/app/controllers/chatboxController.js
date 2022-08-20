@@ -13,6 +13,7 @@ class chatboxController {
       let arrlist_mess = [];
       obj[key] = message;
       obj["date"] = new Date();
+      obj["isRead"] = 0;
       arrlist_mess.push(obj);
       let chatb = new chatbox({ listMess: arrlist_mess });
       await chatb.save(function(error,result){
@@ -43,6 +44,7 @@ class chatboxController {
       let obj = {};
       obj[key] = message;
       obj["date"] = new Date();
+      obj["isRead"] = 0;
       let room =  await chatbox.findOne({_id: RoomID}); 
       if(room){
         room.listMess.push(obj);
@@ -79,15 +81,18 @@ class chatboxController {
     try{
       let RoomID = req.query.RoomID;
       let room = await chatbox.findOne({ _id: RoomID }); 
-      let listMess;
+      let listMess,createDate;
       if(room){
-        listMess = room.listMess
+        listMess = room.listMess;
+        createDate = room.CreationDate
       }
       else{
         listMess = [];
+        createDate = '';
       }
       return res.json({
-        list: listMess
+        list: listMess,
+        createDate: createDate
       });
     }
     catch (error) {
@@ -109,6 +114,39 @@ class chatboxController {
       console.log(error);
     }
   }
+  //updateReadChat
+  async updateReadChat(req,res){
+    try{
+      let roomID = req.body.roomID;
+      let key    = req.body.type;
+      let room =  await chatbox.findOne({_id: roomID});
+      let listMessNew = room.listMess;
+
+      for(let i=0;i<listMessNew.length;i++){
+        if(listMessNew[i][key]){
+            if(listMessNew[i]['isRead'] == 0){
+              listMessNew[i]['isRead'] = 1;
+            }
+        }
+      }
+      await chatbox.updateOne({ _id: roomID }, { listMess: listMessNew }, function (err, result) {
+        if (err) {
+          return res.json({
+            status: 0
+          })
+        }
+        else {
+          return res.json({
+            status: 1
+          })
+        }
+      });
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+  //sendFiles
   async sendFiles(req,res){
     let arrayFiles = [];
     let roomID = req.body.roomid || false;
@@ -127,6 +165,7 @@ class chatboxController {
     obj[key] = arrayFiles;
     obj["files"] = req.files.length;
     obj["date"] = new Date();
+    obj["isRead"] = 0;
     //insert db
     if(room_test){
       

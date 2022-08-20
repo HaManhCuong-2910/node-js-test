@@ -2,9 +2,11 @@ var socket = io();
 $('#frm_sendChat').submit(function (event){
     event.preventDefault();
     let message = $('input[name="message"]',this).val();
-    let RoomID = $('input[name="roomIDAdmin"]',this).val();
-    $('input[name="message"]',this).val('');
-    updateChatBox(RoomID,'admin',message)
+    if(message != ''){
+        let RoomID = $('input[name="roomIDAdmin"]',this).val();
+        $('input[name="message"]',this).val('');
+        updateChatBox(RoomID,'admin',message);
+    }
 })
 socket.on("admin-receive-message", (message,isMess) => {
     let htmlSendChat = '';
@@ -82,27 +84,53 @@ function loadListUser_Chat(){
         dataType: 'json',
         type: 'GET',
         success: function (obj) {
-            let htmlListUser = ''
+            let htmlListUser = '';
             obj.rooms.forEach(val => {
-                htmlListUser += '<a href="#" onclick="showbox('+"'" + val._id +"'"+')" class="d-flex chat-items align-items-center">'+
+                let checkNoRead = isNoReadChat(val.listMess,true);
+                if(checkNoRead){
+                    classNoRead = 'class="font-weight-bold"';
+                }
+                else{
+                    classNoRead = ""
+                }
+                htmlListUser += '<a href="#" onclick="showbox('+"'" + val._id +"'"+','+checkNoRead+',this)" class="d-flex chat-items align-items-center">'+
                 '<div class="flex-shrink-0">' +
                     '<img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">' +
                     '<span class="active"></span>' +
                 '</div>' +
                 '<div class="flex-grow-1 ms-3">' +
-                    '<h3>'+ 'KH ' + val._id.slice(0,6) +'</h3>' +
-                    '<p>'+ formatDate(new Date(val.CreationDate)) +'</p>' +
-                '</div>';                                   
+                    '<h3 ' + classNoRead + '>'+ 'KH ' + val._id.slice(0,6) +'</h3>' +
+                    '<p ' + classNoRead + ' > '+ formatDate(new Date(val.CreationDate)) +'</p>' +
+                '</div>';                                  
             }); 
             $('#chat-list').html(htmlListUser);
-            console.log(obj);
         },
         error: function (obj) {
             console.log(obj);
         }
     })
 }
-function showbox(RoomID){
+function isNoReadChat(listMess,isAdmin){
+    if(isAdmin){
+        key = 'user';
+    }
+    else{
+        key = 'admin';
+    }
+    for(let i=0;i<listMess.length;i++){
+        if(listMess[i][key]){
+            if(listMess[i]['isRead'] == 0){
+                return true
+            }
+        }
+    }
+    return false;
+}
+function showbox(RoomID,checkNoRead,element){
+    if(checkNoRead){
+        updateReadChat(RoomID,'user',element);
+    }
+    $('.chatbox').css('display','block');
     socket.emit('joinRoom', RoomID);
     loadChatBox_admin(RoomID);
     $('#roomIDAdmin').val(RoomID);
@@ -117,6 +145,8 @@ function loadChatBox_admin(RoomID){
         success: function (obj) {
             let list = obj.list;
             let result_list = appendChatFile_Mess(list); 
+            $('#nameUser').text('KH ' + RoomID.slice(0,6));
+            $('#createDate').text(formatDate(new Date(obj.createDate)));
             $('.msg-body').html('<ul>'+result_list+'</ul>');
         },
         error: function (obj) {
@@ -204,4 +234,28 @@ function appendChatFile_Mess(list) {
         }
     });
     return htmlSendChat;
+}
+
+function updateReadChat(roomID,type,element){
+    $.ajax({
+        url: '/chatbox/update-readchat',
+        data: {type: type,roomID: roomID},
+        dataType: 'json',
+        type: 'POST',
+        success: function (obj) {
+            let status = obj.status;
+            if(status == 1){
+                setReaded(element);
+            }
+        },
+        error: function (obj) {
+            console.log(obj);
+        }
+    })
+}
+function setReaded(element){
+    let fontBolds = element.querySelectorAll('.font-weight-bold');
+    fontBolds.forEach(bold => {
+        bold.classList.remove('font-weight-bold');
+    });
 }

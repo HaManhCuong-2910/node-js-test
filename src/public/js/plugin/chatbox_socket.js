@@ -5,15 +5,16 @@ if (localStorage.getItem('it.room-id') != undefined) {
 
 $('#fab_send').click(() => {
     let message = $('#chatSend').val();
-    let RoomID = localStorage.getItem('it.room-id');
-    if (RoomID != undefined) {
-        updateChatBox(RoomID,'user',message);
+    if(message != ''){
+        let RoomID = localStorage.getItem('it.room-id');
+        if (RoomID != undefined) {
+            updateChatBox(RoomID,'user',message);
+        }
+        else {
+            $('#chat_converse').html('');
+            addChatBox(message,'user');
+        }
     }
-    else {
-        $('#chat_converse').html('');
-        addChatBox(message,'user');
-    }
-    
 })
 $('#attachmentfiles').change(()=>{
     let formData = new FormData();
@@ -21,6 +22,13 @@ $('#attachmentfiles').change(()=>{
     if (localStorage.getItem('it.room-id') != undefined) {
         formData.append('roomid', localStorage.getItem('it.room-id'));
     }
+    let loading = '<div id="loading-files-chatbox" class="d-flex flex-column align-items-end">'+
+        '<img class="files-user files-chatbox" style="width: 120px;" src="/imgs/main_imgs/eb707ae7096cc8df384f1bf87dab547a.gif">'+
+    '</div>';
+    $('#chat_converse').append(loading);
+    
+                
+            
     let listFiles = $('#attachmentfiles').prop('files');
 
     for(let i=0; i<listFiles.length; i++){
@@ -39,10 +47,12 @@ $('#attachmentfiles').change(()=>{
             let message = obj.mess;
             if(status == 1){
                 sendChat(message,'',obj.roomID,false);
+                $('#loading-files-chatbox').remove();
             }
             else if(status == 2){
                 localStorage.setItem('it.room-id',obj.roomID);
                 sendChat(message,'',obj.roomID,false);
+                $('#loading-files-chatbox').remove();
             }
             else{
                 console.log("no send...");
@@ -66,7 +76,7 @@ socket.on("user-receive-message", (message,isMess) => {
     else{
         for(let i=0; i< message.length; i++){
             htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
-                '<img class="files-chatbox" src="' + message[i] + '">' +
+                '<img class="files-admin files-chatbox" src="' + message[i] + '">' +
                 '<span class="status2">' + formatDate(new Date()) + '</span>' +
             '</div>';
         }  
@@ -147,7 +157,7 @@ function sendChat(message,err,room,isMess){
     else{
         for(let i=0; i< message.length; i++){
             htmlSendChat += '<div class="d-flex flex-column align-items-end">' +
-                '<img class="files-chatbox" src="' + message[i] + '">' +
+                '<img class="files-user files-chatbox" src="' + message[i] + '">' +
                 '<span class="status">' + formatDate(new Date()) + '</span>' +
             '</div>';
         }        
@@ -166,16 +176,16 @@ function appendChatFile_Mess(list) {
             if (val.user) {
                 for (let i = 0; i < val.user.length; i++) {
                     htmlSendChat += '<div class="d-flex flex-column align-items-end">' +
-                        '<img class="files-chatbox" src="' + val.user[i] + '">' +
-                        '<span class="status">' + formatDate(new Date(val.date)) + '</span>' +
+                            '<img class="files-user files-chatbox" src="' + val.user[i] + '">' +
+                            '<span class="status">' + formatDate(new Date(val.date)) + '</span>' +
                         '</div>';
                 }
             }
             else {
                 for (let i = 0; i < val.admin.length; i++) {
                     htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
-                        '<img class="files-chatbox" src="' + val.admin[i] + '">' +
-                        '<span class="status2">' + formatDate(new Date(val.date)) + '</span>';
+                        '<img class="files-admin files-chatbox" src="' + val.admin[i] + '">' +
+                        '<span class="status2">' + formatDate(new Date(val.date)) + '</span>'+
                     '</div>';
                 }
             }
@@ -190,7 +200,7 @@ function appendChatFile_Mess(list) {
             else {
                 htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
                     '<span class="chat_msg_item chat_msg_item_admin">' + val.admin + '</span>' +
-                    '<span class="status2">' + formatDate(new Date(val.date)) + '</span>';
+                    '<span class="status2">' + formatDate(new Date(val.date)) + '</span>'+
                 '</div>';
             }
         }
