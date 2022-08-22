@@ -1,3 +1,18 @@
+<div id='dtc-search'></div>
+<script type='text/javascript'>
+    var dtc_search = { 
+        path: ('https:' == document.location.protocol ? 'https://' : 'http://') + 'plugin.datacom.vn', 
+        productKey: 'qmcr58mnuqsflzl', 
+        languageCode: 'vi' 
+    }; 
+        (function () { 
+            var t = document.getElementsByTagName('head')[0], n = document.createElement('script'); 
+            n.async = !0; 
+            n.src = dtc_search.path.concat('/Resources/Static/Js/plugin.js?v=' + (new Date().getTime())); 
+            n.charset = 'UTF-8'; t.appendChild(n) 
+            })();
+</script>
+
 <form method="POST" action="/uploadimgs" enctype="multipart/form-data">
     <input type="text" name="testText">
     <div class="filesbds"></div>

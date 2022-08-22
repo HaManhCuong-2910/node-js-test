@@ -26,6 +26,11 @@ class homeController {
   async detail(req,res){
     res.send(req.params.id);
   }
+  async flightSearch(req,res){
+    return res.render('flightsearch',{
+      layout: 'layoutDefaut.hbs'
+    })
+  }
   //upload imgs
   async upload(req, res) {
     try {
