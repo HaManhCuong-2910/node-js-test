@@ -1,8 +1,7 @@
 const express = require('express');
 const path = require('path');
 const handlebars = require('express-handlebars');
-const promisedHandlebars = require('promised-handlebars');
-const hbsrgs = promisedHandlebars(require('handlebars'), { Promise: require('q').Promise });
+const hbsrgs = require('handlebars');
 const routes = require('./routes/routes');
 const session = require('express-session');
 const bodyParser = require('body-parser');
