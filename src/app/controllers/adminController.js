@@ -8,10 +8,6 @@ class adminController{
 
     async index(req, res) {
         try{
-            let nav = await common.breadcrumbsPath(category,3).then(function(data){
-                return data;
-            });
-            console.log(nav);
             res.render('admin/doashboard', {
                 layout: 'admin/layoutAdmin.hbs'
             });

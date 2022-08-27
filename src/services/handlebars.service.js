@@ -48,10 +48,6 @@ class handlebarsService {
             }
             return Math.floor(seconds) + " giây";
         });
-        hbsrgs.registerHelper('inforAdmin',async function(adminID,options){
-            let findAdmin = await account.find({$and: [{_id : adminID}, {typeAcc: 1}]});
-            return findAdmin
-        })
     }
 }
 
