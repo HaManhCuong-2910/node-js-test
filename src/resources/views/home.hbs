@@ -14,21 +14,11 @@
 </script>
 
 <form method="POST" action="/uploadimgs" enctype="multipart/form-data">
-    <input type="text" name="testText">
     <div class="filesbds"></div>
 
     <button type="submit">Submit and display data</button>
 
 </form>
-
-{{#each products}}
-    <div class="mb-4">
-        {{this.ProductID}} <br>
-        {{this._id}} <br>
-        {{this.Title}} <br>
-        {{this.CreationDate}} <br>
-    </div>
-{{/each}}
 
 
 <script>

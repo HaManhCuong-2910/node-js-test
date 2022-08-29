@@ -36,7 +36,7 @@ app.set('views', path.join(__dirname, 'resources/views'));
 handlebarsService.registers(hbsrgs);
 
 const sessionMiddleware = session({
-  secret: "changeit",
+  secret: "itravel key",
   resave: false,
   saveUninitialized: false
 });
