@@ -282,6 +282,9 @@ a.add img {
     -ms-transform: rotate(37deg);
     transform: rotate(37deg);
 }
+.files-li::before{
+    display: none !important;
+}
 
 .msg-body ul li.repaly p {
     color: #fff;

@@ -38,6 +38,6 @@ function formatDate(dateVal){
     if (dd < 10) dd = '0' + dd;
     if (mm < 10) mm = '0' + mm;
 
-    let formatteddateVal = dd + '/' + mm + '/' + yyyy + ' ' + + hours + ':' + minutes;
+    let formatteddateVal = dd + '/' + mm + '/' + yyyy + ' ' + hours + ':' + minutes;
     return formatteddateVal;
 }

@@ -18,7 +18,7 @@ socket.on("admin-receive-message", (message,isMess) => {
     }   
     else{
         for (let i = 0; i < message.length; i++) {
-            htmlSendChat += '<li class="sender">' +
+            htmlSendChat += '<li class="sender files-li">' +
                 '<img class="files-chatbox" src="' + message[i] + '">' +
                 '<span class="time">' + formatDate(new Date()) + '</span>' +
             '</li>';
@@ -186,7 +186,7 @@ function sendChat_admin(message,err,room,isMess){
     }
     else{
         for (let i = 0; i < message.length; i++) {
-            htmlSendChat += '<li class="repaly">' +
+            htmlSendChat += '<li class="repaly files-li">' +
                 '<img class="files-chatbox" src="' + message[i] + '">' +
                 '<span class="time">' + formatDate(new Date()) + '</span>';
             '</li>';
@@ -203,7 +203,7 @@ function appendChatFile_Mess(list) {
         if (val.files) {
             if (val.user) {
                 for (let i = 0; i < val.user.length; i++) {
-                    htmlSendChat += '<li class="sender">' +
+                    htmlSendChat += '<li class="sender files-li">' +
                         '<img class="files-chatbox" src="' + val.user[i] + '">' +
                         '<span class="time">' + formatDate(new Date(val.date)) + '</span>' +
                     '</li>';
@@ -211,7 +211,7 @@ function appendChatFile_Mess(list) {
             }
             else {
                 for (let i = 0; i < val.admin.length; i++) {
-                    htmlSendChat += '<li class="repaly">' +
+                    htmlSendChat += '<li class="repaly files-li">' +
                         '<img class="files-chatbox" src="' + val.admin[i] + '">' +
                         '<span class="time">' + formatDate(new Date(val.date)) + '</span>';
                     '</li>';
