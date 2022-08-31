@@ -1,21 +1,16 @@
-<div class="IBESearchForm" style="margin-left: 0px; width: 480px !important;">
-<script type="text/javascript">        
-    var IBEBasePath = ("https:" == document.location.protocol ? "https://" : "http://") + "ibev3.webvemaybay.com";
-    var IBEConfigs = {
-        languageCode: 'vi-VN',
-        colorScheme: 'default',
-        productKey: 'zlvd4ni7yk1cnjp',
-        searchForm: {
-            showHeader: true
-        }
-    };
-    (function () {
-        var ibe = document.createElement("script");
-        ibe.type = "text/javascript"; ibe.async = true;
-        ibe.src = IBEBasePath + "/embed.js";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(ibe, s);
-    })();
+<div id='dtc-search'></div>
+<script type='text/javascript'>
+    var dtc_search = { 
+        path: ('https:' == document.location.protocol ? 'https://' : 'http://') + 'plugin.datacom.vn', 
+        productKey: 'qmcr58mnuqsflzl', 
+        languageCode: 'vi' 
+    }; 
+        (function () { 
+            var t = document.getElementsByTagName('head')[0], n = document.createElement('script'); 
+            n.async = !0; 
+            n.src = dtc_search.path.concat('/Resources/Static/Js/plugin.js?v=' + (new Date().getTime())); 
+            n.charset = 'UTF-8'; t.appendChild(n) 
+            })();
 </script>
 
 <form method="POST" action="/uploadimgs" enctype="multipart/form-data">
