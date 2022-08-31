@@ -7,7 +7,7 @@ class testSendMailController {
 
   async index(req, res) {
     try {
-      res.render('ckeditor', {
+      res.render('client/ckeditor', {
         layout: false
       });
     }

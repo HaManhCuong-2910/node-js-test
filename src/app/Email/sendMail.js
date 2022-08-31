@@ -6,7 +6,7 @@ function sendMail(toEmail,sbj,ctn){
         secure: true,
         auth: {
             user: 'cuonghamanhcuong12@gmail.com', //Tài khoản gmail vừa tạo
-            pass: 'dadfcpbmyqwinpvn' //Mật khẩu tài khoản gmail vừa tạo
+            pass: 'lanattrbzhwuznwq' //Mật khẩu tài khoản gmail vừa tạo
         },
         tls: {
             // do not fail on invalid certs

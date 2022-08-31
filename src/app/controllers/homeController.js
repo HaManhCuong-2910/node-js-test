@@ -12,7 +12,7 @@ class homeController {
         return result;
       })).lean();
       
-      res.render('home', {
+      res.render('client/home', {
         showFooter: true,
         layout: 'layoutDefaut.hbs',
         products: procs
@@ -27,7 +27,7 @@ class homeController {
     res.send(req.params.id);
   }
   async flightSearch(req,res){
-    return res.render('flightsearch',{
+    return res.render('client/flightsearch',{
       layout: 'layoutDefaut.hbs'
     })
   }
@@ -36,7 +36,7 @@ class homeController {
     try {
       console.log(req.files);
       console.log(req.body);
-      res.render('home', {
+      res.render('client/home', {
         showFooter: false,
         layout: 'layoutDefaut.hbs'
       });
