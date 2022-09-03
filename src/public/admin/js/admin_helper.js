@@ -34,7 +34,7 @@ socket.on("admin-notify-message", (room) => {
 
 
 jQuery(document).ready(function () {
-    loadListUser_Chat();
+    // loadListUser_Chat();
 
 
     $(".chat-icon").click(function () {
