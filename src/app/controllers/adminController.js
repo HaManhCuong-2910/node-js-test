@@ -1,76 +1,88 @@
 const common = require('../common/common');
 const category = require('../../model/category');
 const account = require('../../model/account');
+const catUtil = require('../../until/cat_Until');
 const md5 = require('md5');
 require('dotenv').config();
 
-class adminController{
+class adminController {
 
     async index(req, res) {
-        try{
+        try {
+            let menuCat = await category.find({ type: "admin" }).sort({ _id: 1 }).lean();
+            let bounus = {
+                menuCat: menuCat
+            }
             res.render('admin/doashboard', {
+                bounus: bounus,
                 layout: 'admin/layoutAdmin.hbs'
             });
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }
-    async adminHelper(req, res) {
-        try{
-            res.render('admin/helper/helperView', {
-                isMenu: 'adminHelper',
-                layout: 'admin/layoutAdmin.hbs'
-            });
+    async detailCat(req, res) {
+        let catslug = req.params.catslug;
+        let menuCat = await category.find({ type: "admin" }).sort({ _id: 1 }).lean();
+        let bounus = {
+            menuCat: menuCat,
+            slug: catslug
         }
-        catch(error){
-            console.log(error);
+        switch (catslug) {
+            case 'cham-soc-khach-hang':
+                await catUtil.adminHelper(req, res, bounus);
+                break;
+            case 'quan-ly-danh-muc':
+                await catUtil.manageCart(req, res, bounus);
+                break;
         }
     }
+
     async login(req, res) {
-        try{
+        try {
             let adminID = req.session.adminID;
             if (adminID) {
                 return res.redirect('/admin');
             }
-            
-            return res.render('admin/authencation/login',{layout: false});
+
+            return res.render('admin/authencation/login', { layout: false });
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }
-    async handLogin(req,res){
-        try{
+    async handLogin(req, res) {
+        try {
             let mobile = req.body.mobile;
             let password = req.body.password;
-            let findAcc = await account.find({$and: [{"Mobile" : mobile}, {typeAcc: 1}]} ,(err,result)=>{
+            let findAcc = await account.find({ $and: [{ "Mobile": mobile }, { typeAcc: 1 }] }, (err, result) => {
                 if (err) throw err;
                 return result;
             })
-            if(findAcc.length > 0){
-                if(md5(password) === findAcc[0].Password){
+            if (findAcc.length > 0) {
+                if (md5(password) === findAcc[0].Password) {
                     req.session.adminID = findAcc[0]._id;
                     return res.json({
                         status: 1,
                         message: "Đăng nhập thành công"
                     });
                 }
-                else{
+                else {
                     return res.json({
                         status: 0,
                         message: "Mật khẩu không chính xác"
                     });
                 }
             }
-            else{
+            else {
                 return res.json({
                     status: 0,
                     message: "Tài khoản không tồn tại"
                 });
             }
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }

@@ -1,0 +1,24 @@
+<!-- Sidebar Menu -->
+{{#with bounus as | bounus |}}
+{{#with bounus.menuCat as | menuCat |}}
+
+{{#each menuCat}}
+<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+            <a href="/admin/{{this.slug}}" class="nav-link {{#ifEquals bounus.slug this.slug}} active {{/ifEquals}}">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    {{this.Name}}
+                </p>
+            </a>
+        </li>
+    </ul>
+</nav>
+{{/each}}
+
+
+{{/with}}
+{{/with}}
+
+<!-- /.sidebar-menu -->

@@ -4,21 +4,25 @@ const account = require('../../../model/account');
 const md5 = require('md5');
 require('dotenv').config();
 
-class adminSupportController{
+class adminSupportController {
 
-    async getInfor(req,res){
+    async getInfor(req, res) {
         let type = req.params.type;
         let resultInfor;
-        if(type == 'admin'){
-            resultInfor = await account.findOne({$and: [{_id : req.session.adminID}, {typeAcc: 1}]}).lean();
+        switch (type) {
+            case 'admin':
+                resultInfor = await account.findOne({ $and: [{ _id: req.session.adminID }, { typeAcc: 1 }] }).lean();
+                break;
+            default:
+                resultInfor = ''
         }
-        
+
         return res.json({
             Infor: resultInfor
         })
     }
-    async getNav(req,res){
-        var nav = await common.breadcrumbsPath(category,3).then(function(data){
+    async getNav(req, res) {
+        var nav = await common.breadcrumbsPath(category, 3).then(function (data) {
             return data;
         });
         return res.json({

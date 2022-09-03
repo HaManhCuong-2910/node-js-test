@@ -15,6 +15,14 @@ class handlebarsService {
             }
         });
 
+        hbsrgs.registerHelper('ifEquals', function (arg1, arg2, options) {
+            if (arg1 == arg2) {
+                return options.fn(this)
+            } else {
+                return options.inverse(this);
+            }
+        });
+
         hbsrgs.registerHelper('default', function (value, options) {
             if (this.switch_break == false) {
                 return value;

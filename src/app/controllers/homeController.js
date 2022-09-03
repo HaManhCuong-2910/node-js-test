@@ -11,7 +11,7 @@ class homeController {
         if (error) throw error;
         return result;
       })).lean();
-      
+
       res.render('client/home', {
         showFooter: true,
         layout: 'layoutDefaut.hbs',
@@ -23,11 +23,11 @@ class homeController {
     }
 
   }
-  async detail(req,res){
+  async detail(req, res) {
     res.send(req.params.id);
   }
-  async flightSearch(req,res){
-    return res.render('client/flightsearch',{
+  async flightSearch(req, res) {
+    return res.render('client/flightsearch', {
       layout: 'layoutDefaut.hbs'
     })
   }
