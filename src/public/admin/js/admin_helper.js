@@ -96,7 +96,7 @@ function loadListUser_Chat() {
                 }
                 htmlListUser += '<a href="#" onclick="showbox(' + "'" + val._id + "'" + ',' + checkNoRead + ',this)" class="d-flex chat-items align-items-center">' +
                     '<div class="flex-shrink-0">' +
-                    '<img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">' +
+                    '<img class="img-fluid" src="" alt="user img">' +
                     '<span class="active"></span>' +
                     '</div>' +
                     '<div class="flex-grow-1 ms-3">' +
