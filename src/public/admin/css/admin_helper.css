@@ -12,10 +12,12 @@
     overflow: hidden;
     min-height: calc(100% - 1rem);
 }
-.files-chatbox{
+
+.files-chatbox {
     max-width: 250px;
     max-height: 300px;
 }
+
 .chatlist {
     outline: 0;
     height: 100%;
@@ -149,7 +151,7 @@ a.add img {
     clear: both;
     position: absolute;
     bottom: 3px;
-    left: 34px;
+    left: 48px;
     height: 12px;
     width: 12px;
     background: #00db75;
@@ -282,8 +284,16 @@ a.add img {
     -ms-transform: rotate(37deg);
     transform: rotate(37deg);
 }
-.files-li::before{
+
+.files-li::before {
     display: none !important;
+}
+
+.img-fluid {
+    width: 60px;
+    display: block;
+    height: 60px;
+    border-radius: 50%;
 }
 
 .msg-body ul li.repaly p {
@@ -514,6 +524,12 @@ button:focus {
         margin-right: 5px;
     }
 
+    .chat-icon img {
+        width: 20px;
+        height: 20px;
+        margin: 0px 6px;
+    }
+
     .chatlist {
         width: 100%;
     }
@@ -539,10 +555,6 @@ button:focus {
 
     .msg-head p {
         font-size: 12px;
-    }
-
-    .msg-head .flex-shrink-0 img {
-        height: 30px;
     }
 
     .send-box button {

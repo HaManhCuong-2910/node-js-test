@@ -2,7 +2,7 @@
 <section class="message-area">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 p-0">
                 <div class="chat-area">
                     <!-- chatlist -->
                     <div class="chatlist">
@@ -46,14 +46,15 @@
                                     <div class="row">
                                         <div class="col-8">
                                             <div class="d-flex align-items-center">
-                                                <span class="chat-icon"><img class="img-fluid" src=""
+                                                <span class="chat-icon"><img src="/imgs/icons/back_arrow.png"
                                                         alt="image title"></span>
                                                 <div class="flex-shrink-0">
-                                                    <img class="img-fluid" src="" alt="user img">
+                                                    <img class="img-fluid" src="/imgs/icons/user_default.png"
+                                                        alt="user img">
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
-                                                    <h3 id="nameUser">Mehedi Hasan</h3>
-                                                    <p id="createDate">front end developer</p>
+                                                    <h3 id="nameUser"></h3>
+                                                    <p id="createDate"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,8 +82,9 @@
                                     <div class="send-btns">
                                         <div class="attach">
                                             <div class="button-wrapper">
-                                                <label for="attachmentfiles" class="label">
-                                                    <img class="img-fluid" src="" alt="image title"> attached file
+                                                <label for="attachmentfiles" class="label chat-icon">
+                                                    <img src="/imgs/icons/attachment.png" alt="image title"> attached
+                                                    file
                                                 </label><input type="file" name="upload" id="attachmentfiles" multiple
                                                     hidden class="upload-box" placeholder="Upload File"
                                                     aria-label="Upload File">

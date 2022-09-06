@@ -96,10 +96,10 @@ function loadListUser_Chat() {
                 }
                 htmlListUser += '<a href="#" onclick="showbox(' + "'" + val._id + "'" + ',' + checkNoRead + ',this)" class="d-flex chat-items align-items-center">' +
                     '<div class="flex-shrink-0">' +
-                    '<img class="img-fluid" src="" alt="user img">' +
+                    '<img class="img-fluid" src="/imgs/icons/user_default.png" alt="user img">' +
                     '<span class="active"></span>' +
                     '</div>' +
-                    '<div class="flex-grow-1 ms-3">' +
+                    '<div class="flex-grow-1 ms-3 ml-2">' +
                     '<h3 ' + classNoRead + '>' + 'KH ' + val._id.slice(0, 6) + '</h3>' +
                     '<p ' + classNoRead + ' > ' + formatDate(new Date(val.CreationDate)) + '</p>' +
                     '</div>';
