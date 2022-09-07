@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-async function connect(){
-  try{
-    await mongoose.connect('mongodb+srv://cuonghm:vanha110100@cluster0.e74cvwr.mongodb.net/perfumeDB?retryWrites=true&w=majority', {
+require('dotenv').config();
+async function connect() {
+  try {
+    await mongoose.connect(process.env.DATABASE_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
@@ -9,9 +10,9 @@ async function connect(){
     });
     console.log("connection successfully!!!");
   }
-  catch(error){
+  catch (error) {
     console.log("connection fail!!!");
   }
 }
 
-module.exports = {connect}
+module.exports = { connect }
