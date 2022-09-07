@@ -10,6 +10,7 @@ $('#frm_sendChat').submit(function (event) {
 })
 socket.on("admin-receive-message", (message, isMess) => {
     let htmlSendChat = '';
+    let audio = new Audio('/audio/messenger_audio.mp3');
     if (isMess) {
         htmlSendChat = '<li class="sender">' +
             '<p> ' + message + ' </p>' +
@@ -27,6 +28,7 @@ socket.on("admin-receive-message", (message, isMess) => {
         }
     }
     $('.msg-body ul').append(htmlSendChat);
+    audio.play();
     $('#chatbox-body').scrollTop($('#chatbox-body')[0].scrollHeight);
 })
 socket.on("admin-notify-message", (room) => {

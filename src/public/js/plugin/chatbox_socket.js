@@ -68,6 +68,7 @@ $('#attachmentfiles').change(() => {
 })
 socket.on("user-receive-message", (message, isMess) => {
     let htmlSendChat = '';
+    let audio = new Audio('/audio/messenger_audio.mp3');
     if (isMess) {
         htmlSendChat = '<div class="d-flex flex-column align-items-start">' +
             '<span class="chat_msg_item chat_msg_item_admin">' + message + '</span>' +
@@ -85,6 +86,7 @@ socket.on("user-receive-message", (message, isMess) => {
         }
     }
     $('#chat_converse').append(htmlSendChat);
+    audio.play();
     $('#chat_converse').scrollTop($('#chat_converse')[0].scrollHeight);
 })
 
