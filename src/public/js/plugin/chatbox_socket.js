@@ -5,33 +5,33 @@ if (localStorage.getItem('it.room-id') != undefined) {
 
 $('#fab_send').click(() => {
     let message = $('#chatSend').val();
-    if(message != ''){
+    if (message != '') {
         let RoomID = localStorage.getItem('it.room-id');
         if (RoomID != undefined) {
-            updateChatBox(RoomID,'user',message);
+            updateChatBox(RoomID, 'user', message);
         }
         else {
             $('#chat_converse').html('');
-            addChatBox(message,'user');
+            addChatBox(message, 'user');
         }
     }
 })
-$('#attachmentfiles').change(()=>{
+$('#attachmentfiles').change(() => {
     let formData = new FormData();
     formData.append('type', 'user');
     if (localStorage.getItem('it.room-id') != undefined) {
         formData.append('roomid', localStorage.getItem('it.room-id'));
     }
-    let loading = '<div id="loading-files-chatbox" class="d-flex flex-column align-items-end">'+
-        '<img class="files-user files-chatbox" style="width: 120px;" src="/imgs/main_imgs/eb707ae7096cc8df384f1bf87dab547a.gif">'+
-    '</div>';
+    let loading = '<div id="loading-files-chatbox" class="d-flex flex-column align-items-end">' +
+        '<img class="files-user files-chatbox" style="width: 120px;" src="/imgs/main_imgs/eb707ae7096cc8df384f1bf87dab547a.gif">' +
+        '</div>';
     $('#chat_converse').append(loading);
-    
-                
-            
+
+
+
     let listFiles = $('#attachmentfiles').prop('files');
 
-    for(let i=0; i<listFiles.length; i++){
+    for (let i = 0; i < listFiles.length; i++) {
         formData.append('attachFile[]', listFiles[i]);
     }
 
@@ -45,16 +45,16 @@ $('#attachmentfiles').change(()=>{
         success: function (obj) {
             let status = obj.status;
             let message = obj.mess;
-            if(status == 1){
-                sendChat(message,'',obj.roomID,false);
+            if (status == 1) {
+                sendChat(message, '', obj.roomID, false);
                 $('#loading-files-chatbox').remove();
             }
-            else if(status == 2){
-                localStorage.setItem('it.room-id',obj.roomID);
-                sendChat(message,'',obj.roomID,false);
+            else if (status == 2) {
+                localStorage.setItem('it.room-id', obj.roomID);
+                sendChat(message, '', obj.roomID, false);
                 $('#loading-files-chatbox').remove();
             }
-            else{
+            else {
                 console.log("no send...");
             }
         },
@@ -63,42 +63,43 @@ $('#attachmentfiles').change(()=>{
         }
     })
 
-    
+
 })
-socket.on("user-receive-message", (message,isMess) => {
+socket.on("user-receive-message", (message, isMess) => {
     let htmlSendChat = '';
-    if(isMess){
+    if (isMess) {
         htmlSendChat = '<div class="d-flex flex-column align-items-start">' +
             '<span class="chat_msg_item chat_msg_item_admin">' + message + '</span>' +
             '<span class="status2">' + formatDate(new Date()) + '</span>';
         '</div>';
     }
-    else{
-        for(let i=0; i< message.length; i++){
+    else {
+        for (let i = 0; i < message.length; i++) {
             htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
                 '<img class="files-admin files-chatbox" src="' + message[i] + '">' +
                 '<span class="status2">' + formatDate(new Date()) + '</span>' +
-            '</div>';
-        }  
-    }     
+                '</div>';
+        }
+    }
     $('#chat_converse').append(htmlSendChat);
+    $('#chat_converse').scrollTop($('#chat_converse')[0].scrollHeight);
 })
 
-function addChatBox(message,type) {
+function addChatBox(message, type) {
     $.ajax({
         url: '/chatbox/add-chatbox',
-        data: {message: message,type: type},
+        data: { message: message, type: type },
         dataType: 'json',
         type: 'POST',
         success: function (obj) {
             let status = obj.status;
             let RoomID = obj.mess;
-            if(status == 1){
-                localStorage.setItem('it.room-id',RoomID);
-                sendChat(message,'',RoomID,true);
+            if (status == 1) {
+                localStorage.setItem('it.room-id', RoomID);
+                sendChat(message, '', RoomID, true);
             }
-            else{
-                sendChat(message,RoomID,0,true)
+            else {
+                sendChat(message, RoomID, 0, true)
             }
             // console.log(obj);
         },
@@ -106,22 +107,22 @@ function addChatBox(message,type) {
             console.log(obj);
         }
     })
-} 
-function updateChatBox(RoomID,type,message){
+}
+function updateChatBox(RoomID, type, message) {
     $.ajax({
         url: '/chatbox/update-chatbox',
-        data: {message: message,type: type,RoomID: RoomID},
+        data: { message: message, type: type, RoomID: RoomID },
         dataType: 'json',
         type: 'POST',
         success: function (obj) {
             let status = obj.status;
             let RoomID = obj.mess;
-            if(status == 1){
-                sendChat(message,'',RoomID,true);
+            if (status == 1) {
+                sendChat(message, '', RoomID, true);
             }
-            else{
+            else {
                 localStorage.removeItem('it.room-id');
-                addChatBox(message,'user');
+                addChatBox(message, 'user');
             }
         },
         error: function (obj) {
@@ -129,55 +130,87 @@ function updateChatBox(RoomID,type,message){
         }
     })
 }
-function loadChatBox(RoomID){
+function loadChatBox(RoomID) {
     $.ajax({
         url: '/chatbox/load-chatbox',
-        data: {RoomID: RoomID},
+        data: { RoomID: RoomID },
         dataType: 'json',
         type: 'GET',
         success: function (obj) {
             let list = obj.list;
+            let page = obj.page;
+            let countPage = obj.countPage;
             socket.emit('joinRoom', RoomID);
-            let result_list = appendChatFile_Mess(list); 
-            $('#chat_converse').append(result_list);
+            let result_list = appendChatFile_Mess(list);
+            $('#chat_converse').html(result_list);
+
+            $('#chat_converse').scroll(function (event) {
+                var scroll = $(this).scrollTop();
+                let scroll_Prosition = Math.round(scroll);
+                if (scroll_Prosition == 0 && page < countPage) {
+                    page += 1;
+                    setTimeout(() => {
+                        pagingChatBox(page, RoomID);
+                    }, 200);
+
+                }
+            });
         },
         error: function (obj) {
             console.log(obj);
         }
     })
 }
-function sendChat(message,err,room,isMess){
+function pagingChatBox(page, RoomID) {
+    $.ajax({
+        url: '/chatbox/load-chatbox',
+        data: { page: page, RoomID: RoomID },
+        dataType: 'json',
+        type: 'GET',
+        success: function (obj) {
+            let list = obj.list;
+            let result_list = appendChatFile_Mess(list);
+            $('#chat_converse').prepend(result_list);
+            $('#chat_converse').scrollTop($('#chat_converse')[0].scrollHeight * 0.08);
+        },
+        error: function (obj) {
+            console.log(obj);
+        }
+    })
+}
+function sendChat(message, err, room, isMess) {
     let htmlSendChat = '';
-    if(isMess){
+    if (isMess) {
         htmlSendChat = '<div class="d-flex flex-column align-items-end">' +
             '<span class="chat_msg_item chat_msg_item_user">' + message + '</span>' +
             '<span class="status">' + formatDate(new Date()) + '</span>' +
-        '</div>';
+            '</div>';
     }
-    else{
-        for(let i=0; i< message.length; i++){
+    else {
+        for (let i = 0; i < message.length; i++) {
             htmlSendChat += '<div class="d-flex flex-column align-items-end">' +
                 '<img class="files-user files-chatbox" src="' + message[i] + '">' +
                 '<span class="status">' + formatDate(new Date()) + '</span>' +
-            '</div>';
-        }        
+                '</div>';
+        }
     }
-    
+
     $('#chatSend').val('');
     $('#chat_converse').append(htmlSendChat);
-    if(room != 0){
-        socket.emit('user-chat-message', message, room,isMess);
-    }    
+    $('#chat_converse').scrollTop($('#chat_converse')[0].scrollHeight);
+    if (room != 0) {
+        socket.emit('user-chat-message', message, room, isMess);
+    }
 }
 function appendChatFile_Mess(list) {
     let htmlSendChat = '';
-    list.forEach((val)=>{
+    list.forEach((val) => {
         if (val.files) {
             if (val.user) {
                 for (let i = 0; i < val.user.length; i++) {
                     htmlSendChat += '<div class="d-flex flex-column align-items-end">' +
-                            '<img class="files-user files-chatbox" src="' + val.user[i] + '">' +
-                            '<span class="status">' + formatDate(new Date(val.date)) + '</span>' +
+                        '<img class="files-user files-chatbox" src="' + val.user[i] + '">' +
+                        '<span class="status">' + formatDate(new Date(val.date)) + '</span>' +
                         '</div>';
                 }
             }
@@ -185,8 +218,8 @@ function appendChatFile_Mess(list) {
                 for (let i = 0; i < val.admin.length; i++) {
                     htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
                         '<img class="files-admin files-chatbox" src="' + val.admin[i] + '">' +
-                        '<span class="status2">' + formatDate(new Date(val.date)) + '</span>'+
-                    '</div>';
+                        '<span class="status2">' + formatDate(new Date(val.date)) + '</span>' +
+                        '</div>';
                 }
             }
         }
@@ -200,8 +233,8 @@ function appendChatFile_Mess(list) {
             else {
                 htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
                     '<span class="chat_msg_item chat_msg_item_admin">' + val.admin + '</span>' +
-                    '<span class="status2">' + formatDate(new Date(val.date)) + '</span>'+
-                '</div>';
+                    '<span class="status2">' + formatDate(new Date(val.date)) + '</span>' +
+                    '</div>';
             }
         }
     });

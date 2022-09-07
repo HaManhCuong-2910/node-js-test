@@ -25,6 +25,7 @@ socket.on("admin-receive-message", (message, isMess) => {
         }
     }
     $('.msg-body ul').append(htmlSendChat);
+    $('#chatbox-body').scrollTop($('#chatbox-body')[0].scrollHeight);
 })
 socket.on("admin-notify-message", (room) => {
     loadListUser_Chat();
@@ -147,10 +148,44 @@ function loadChatBox_admin(RoomID) {
         type: 'GET',
         success: function (obj) {
             let list = obj.list;
+            let page = obj.page;
+            let countPage = obj.countPage;
             let result_list = appendChatFile_Mess(list);
             $('#nameUser').text('KH ' + RoomID.slice(0, 6));
             $('#createDate').text(formatDate(new Date(obj.createDate)));
             $('.msg-body').html('<ul>' + result_list + '</ul>');
+
+            $('#chatbox-body').scrollTop($('#chatbox-body')[0].scrollHeight);
+
+            $('#chatbox-body').scroll(function (event) {
+                var scroll = $(this).scrollTop();
+                let scroll_Prosition = Math.round(scroll);
+                if (scroll_Prosition == 0 && page < countPage) {
+                    page += 1;
+                    setTimeout(() => {
+                        pagingChatBox(page, RoomID);
+                    }, 200);
+
+                }
+            });
+        },
+        error: function (obj) {
+            console.log(obj);
+        }
+    })
+}
+
+function pagingChatBox(page, RoomID) {
+    $.ajax({
+        url: '/chatbox/load-chatbox',
+        data: { page: page, RoomID: RoomID },
+        dataType: 'json',
+        type: 'GET',
+        success: function (obj) {
+            let list = obj.list;
+            let result_list = appendChatFile_Mess(list);
+            $('.msg-body ul').prepend(result_list);
+            $('#chatbox-body').scrollTop($('#chatbox-body')[0].scrollHeight * 0.08);
         },
         error: function (obj) {
             console.log(obj);
@@ -196,6 +231,7 @@ function sendChat_admin(message, err, room, isMess) {
         }
     }
     $('.msg-body ul').append(htmlSendChat);
+    $('#chatbox-body').scrollTop($('#chatbox-body')[0].scrollHeight);
     if (room != 0) {
         socket.emit('admin-chat-message', message, room, isMess);
     }

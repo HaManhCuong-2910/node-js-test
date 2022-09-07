@@ -518,16 +518,16 @@ button:focus {
     display: none;
 }
 
+.chat-icon img {
+    width: 20px;
+    height: 20px;
+    margin: 0px 6px;
+}
+
 @media (max-width: 767px) {
     .chat-icon {
         display: block;
         margin-right: 5px;
-    }
-
-    .chat-icon img {
-        width: 20px;
-        height: 20px;
-        margin: 0px 6px;
     }
 
     .chatlist {

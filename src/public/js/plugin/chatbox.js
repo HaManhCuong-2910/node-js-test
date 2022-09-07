@@ -12,5 +12,5 @@ function toggleFab() {
     $('#prime').toggleClass('is-float');
     $('.chat').toggleClass('is-visible');
     $('.fab').toggleClass('is-visible');
-
+    $('#chat_converse').scrollTop($('#chat_converse')[0].scrollHeight);
 }
