@@ -258,7 +258,8 @@ ul li {
     background: rgba(0, 0, 0, 0);
 }
 
-#fab_send,#fab_name {
+#fab_send,
+#fab_name {
     float: right;
     background: rgba(0, 0, 0, 0);
 }
@@ -274,6 +275,33 @@ ul li {
     font-size: 1.6em;
     line-height: 35px;
     color: #bbb;
+}
+
+.loading-message::after {
+    position: absolute;
+    content: "";
+    display: block;
+    top: 0px;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border: solid 4px transparent;
+    border-top-color: #00C8B1 !important;
+    border-left-color: #00C8B1 !important;
+    border-radius: 50%;
+    animation: loading 400ms linear infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 .fab_field .fab>i:hover {
@@ -353,16 +381,19 @@ ul li {
     background: rgba(0, 0, 0, 0.03);
     color: #666;
 }
-.files-user.files-chatbox{
+
+.files-user.files-chatbox {
     max-width: 180px;
     max-height: 200px;
     margin-right: 20px;
 }
-.files-admin.files-chatbox{
+
+.files-admin.files-chatbox {
     max-width: 180px;
     max-height: 200px;
     margin-left: 20px;
 }
+
 .chat .chat_converse .chat_msg_item.chat_msg_item_user {
     margin-right: 20px;
     float: right;
