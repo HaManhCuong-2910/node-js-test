@@ -3,7 +3,8 @@ if (localStorage.getItem('it.room-id') != undefined) {
     loadChatBox(localStorage.getItem('it.room-id'));
 }
 
-$('#fab_send').click(() => {
+$('#frm_chatuser').submit(function (event) {
+    event.preventDefault();
     let message = $('#chatSend').val();
     if (message != '') {
         let RoomID = localStorage.getItem('it.room-id');
@@ -76,7 +77,9 @@ socket.on("user-receive-message", (message, isMess) => {
     else {
         for (let i = 0; i < message.length; i++) {
             htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
+                '<a href="' + message[i] + '" data-fancybox="group">' +
                 '<img class="files-admin files-chatbox" src="' + message[i] + '">' +
+                '</a>' +
                 '<span class="status2">' + formatDate(new Date()) + '</span>' +
                 '</div>';
         }
@@ -191,7 +194,9 @@ function sendChat(message, err, room, isMess) {
     else {
         for (let i = 0; i < message.length; i++) {
             htmlSendChat += '<div class="d-flex flex-column align-items-end">' +
+                '<a href="' + message[i] + '" data-fancybox="group">' +
                 '<img class="files-user files-chatbox" src="' + message[i] + '">' +
+                '</a>' +
                 '<span class="status">' + formatDate(new Date()) + '</span>' +
                 '</div>';
         }
@@ -211,7 +216,9 @@ function appendChatFile_Mess(list) {
             if (val.user) {
                 for (let i = 0; i < val.user.length; i++) {
                     htmlSendChat += '<div class="d-flex flex-column align-items-end">' +
+                        '<a href="' + val.user[i] + '" data-fancybox="group">' +
                         '<img class="files-user files-chatbox" src="' + val.user[i] + '">' +
+                        '</a>' +
                         '<span class="status">' + formatDate(new Date(val.date)) + '</span>' +
                         '</div>';
                 }
@@ -219,7 +226,9 @@ function appendChatFile_Mess(list) {
             else {
                 for (let i = 0; i < val.admin.length; i++) {
                     htmlSendChat += '<div class="d-flex flex-column align-items-start">' +
+                        '<a href="' + val.admin[i] + '" data-fancybox="group">' +
                         '<img class="files-admin files-chatbox" src="' + val.admin[i] + '">' +
+                        '</a>' +
                         '<span class="status2">' + formatDate(new Date(val.date)) + '</span>' +
                         '</div>';
                 }

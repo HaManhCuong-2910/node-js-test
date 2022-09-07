@@ -19,7 +19,9 @@ socket.on("admin-receive-message", (message, isMess) => {
     else {
         for (let i = 0; i < message.length; i++) {
             htmlSendChat += '<li class="sender files-li">' +
+                '<a href="' + message[i] + '" data-fancybox="group">' +
                 '<img class="files-chatbox" src="' + message[i] + '">' +
+                '</a>' +
                 '<span class="time">' + formatDate(new Date()) + '</span>' +
                 '</li>';
         }
@@ -75,7 +77,7 @@ jQuery(document).ready(function () {
 
 
     })
-
+    $('[data-fancybox]').fancybox();
 });
 
 
@@ -227,7 +229,9 @@ function sendChat_admin(message, err, room, isMess) {
     else {
         for (let i = 0; i < message.length; i++) {
             htmlSendChat += '<li class="repaly files-li">' +
+                '<a href="' + message[i] + '" data-fancybox="group">' +
                 '<img class="files-chatbox" src="' + message[i] + '">' +
+                '</a>' +
                 '<span class="time">' + formatDate(new Date()) + '</span>';
             '</li>';
         }
@@ -245,7 +249,9 @@ function appendChatFile_Mess(list) {
             if (val.user) {
                 for (let i = 0; i < val.user.length; i++) {
                     htmlSendChat += '<li class="sender files-li">' +
+                        '<a href="' + val.user[i] + '" data-fancybox="group">' +
                         '<img class="files-chatbox" src="' + val.user[i] + '">' +
+                        '</a>' +
                         '<span class="time">' + formatDate(new Date(val.date)) + '</span>' +
                         '</li>';
                 }
@@ -253,7 +259,9 @@ function appendChatFile_Mess(list) {
             else {
                 for (let i = 0; i < val.admin.length; i++) {
                     htmlSendChat += '<li class="repaly files-li">' +
+                        '<a href="' + val.admin[i] + '" data-fancybox="group">' +
                         '<img class="files-chatbox" src="' + val.admin[i] + '">' +
+                        '</a>' +
                         '<span class="time">' + formatDate(new Date(val.date)) + '</span>';
                     '</li>';
                 }

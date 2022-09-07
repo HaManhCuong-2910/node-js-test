@@ -14,3 +14,4 @@ function toggleFab() {
     $('.fab').toggleClass('is-visible');
     $('#chat_converse').scrollTop($('#chat_converse')[0].scrollHeight);
 }
+$('[data-fancybox]').fancybox();

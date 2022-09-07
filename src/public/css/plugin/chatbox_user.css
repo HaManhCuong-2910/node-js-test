@@ -12,6 +12,10 @@ ul li {
     z-index: 998;
 }
 
+button:focus {
+    outline: none !important;
+}
+
 .fab {
     display: block;
     width: 56px;
@@ -83,12 +87,6 @@ ul li {
 .fab:not(:last-child):nth-last-child(5) {
     -webkit-transition-delay: 80ms;
     transition-delay: 80ms;
-}
-
-.fab:last-child:active,
-.fab:last-child:focus,
-.fab:last-child:hover {
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
 }
 
 /*Chatbox*/

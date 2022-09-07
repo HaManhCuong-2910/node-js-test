@@ -7,11 +7,7 @@ class homeController {
   //get all data
   async index(req, res) {
     try {
-      let procs = await product.find({ $and: [{ "_id": { $lt: 3 } }, { "_id": { $gt: 1 } }] }, ((error, result) => {
-        if (error) throw error;
-        return result;
-      })).lean();
-
+      let procs = await product.find({}).lean();
       res.render('client/home', {
         showFooter: true,
         layout: 'layoutDefaut.hbs',

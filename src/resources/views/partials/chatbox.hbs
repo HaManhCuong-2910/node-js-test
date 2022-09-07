@@ -2,7 +2,7 @@
     <div class="chat">
         <div class="chat_header">
             <div class="chat_option">
-                <span id="chat_head">Chăm sóc khách hàng</span> <br> 
+                <span id="chat_head">Chăm sóc khách hàng</span> <br>
                 <span class="online">(Online)</span>
                 <span id="chat_fullscreen_loader" class="chat_fullscreen_loader"><i
                         class="fullscreen zmdi zmdi-window-maximize"></i></span>
@@ -11,17 +11,19 @@
 
         </div>
         <div id="chat_converse" class="chat_conversion chat_converse">
-            
+
         </div>
         <div id="userchat-area">
-            <div class="fab_field">
-                <input type="file" id="attachmentfiles" accept=".png,.jpg,.jpeg,.doc,.docx,.pdf,.xls,.xlsx,.ppt,.pptx,.mp4,.mkv,.zip" multiple style="display: none;">
+            <form id="frm_chatuser" class="fab_field">
+                <input type="file" id="attachmentfiles" accept="image/*" multiple style="display: none;">
                 <label for="attachmentfiles" id="fab_camera" class="fab"><i class="zmdi zmdi-camera"></i></label>
-                <textarea id="chatSend" name="chat_message" placeholder="Aa"
-                    class="chat_field chat_message p-2"></textarea>
-                <a id="fab_send" class="fab"><i class="zmdi zmdi-mail-send"></i></a>
-            </div>
-        </div>        
+                <input type="text" id="chatSend" name="chat_message" placeholder="Aa"
+                    class="chat_field chat_message p-2">
+                {{!-- <textarea id="chatSend" name="chat_message" placeholder="Aa"
+                    class="chat_field chat_message p-2"></textarea> --}}
+                <button type="submit" id="fab_send" class="fab border-0"><i class="zmdi zmdi-mail-send"></i></button>
+            </form>
+        </div>
     </div>
     <a id="prime" class="fab"><i class="prime zmdi zmdi-comment-outline"></i></a>
 </div>
