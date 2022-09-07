@@ -161,6 +161,7 @@ function loadChatBox_admin(RoomID) {
                 var scroll = $(this).scrollTop();
                 let scroll_Prosition = Math.round(scroll);
                 if (scroll_Prosition == 0 && page < countPage) {
+                    $('#chatbox-body').addClass("loading-message");
                     page += 1;
                     setTimeout(() => {
                         pagingChatBox(page, RoomID);
@@ -184,6 +185,7 @@ function pagingChatBox(page, RoomID) {
         success: function (obj) {
             let list = obj.list;
             let result_list = appendChatFile_Mess(list);
+            $('#chatbox-body').removeClass("loading-message");
             $('.msg-body ul').prepend(result_list);
             $('#chatbox-body').scrollTop($('#chatbox-body')[0].scrollHeight * 0.08);
         },
