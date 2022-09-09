@@ -5,7 +5,7 @@ const fncCommon = require('../app/common/common');
 
 router.post('/login', adminController.handLogin);
 router.get('/login', adminController.login);
-router.get('/:catslug', fncCommon.requiredAuth_Admin, adminController.detailCat);
+router.get('/:catslug', fncCommon.requiredAuth_Admin, adminController.index);
 router.get('/', fncCommon.requiredAuth_Admin, adminController.index);
 
 module.exports = router;

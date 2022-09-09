@@ -8,37 +8,20 @@ require('dotenv').config();
 class adminController {
 
     async index(req, res) {
-        try {
-            let menuCat = await category.find({ type: "admin" }).sort({ _id: 1 }).lean();
-            let bounus = {
-                menuCat: menuCat
-            }
-            res.render('admin/doashboard', {
-                bounus: bounus,
-                layout: 'admin/layoutAdmin.hbs'
-            });
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
-    async detailCat(req, res) {
-        let catslug = req.params.catslug;
-        let menuCat = await category.find({ type: "admin" }).sort({ _id: 1 }).lean();
-        let bounus = {
-            menuCat: menuCat,
-            slug: catslug
-        }
+        let catslug = req.params.catslug || '';
         switch (catslug) {
             case 'cham-soc-khach-hang':
-                await catUtil.adminHelper(req, res, bounus);
+                await catUtil.adminHelper(req, res, catslug);
                 break;
             case 'quan-ly-danh-muc':
-                await catUtil.manageCart(req, res, bounus);
+                await catUtil.manageCart(req, res, catslug);
                 break;
+            default:
+                res.render('admin/doashboard', {
+                    layout: 'admin/layoutAdmin.hbs'
+                });
         }
     }
-
     async login(req, res) {
         try {
             let adminID = req.session.adminID;

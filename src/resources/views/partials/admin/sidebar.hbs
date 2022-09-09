@@ -1,24 +1,20 @@
-<!-- Sidebar Menu -->
-{{#with bounus as | bounus |}}
-{{#with bounus.menuCat as | menuCat |}}
-
-{{#each menuCat}}
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-            <a href="/admin/{{this.slug}}" class="nav-link {{#ifEquals bounus.slug this.slug}} active {{/ifEquals}}">
+            <a href="/admin/cham-soc-khach-hang" class="nav-link {{#ifEquals catslug 'cham-soc-khach-hang'}} active {{/ifEquals}}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                    {{this.Name}}
+                    Chăm sóc khách hàng
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/admin/quan-ly-danh-muc" class="nav-link {{#ifEquals catslug 'quan-ly-danh-muc'}} active {{/ifEquals}}">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    Quản lý danh mục
                 </p>
             </a>
         </li>
     </ul>
 </nav>
-{{/each}}
-
-
-{{/with}}
-{{/with}}
-
-<!-- /.sidebar-menu -->

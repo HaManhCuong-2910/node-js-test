@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 
 const categorySchema = new Schema({
   _id: Number,
-  Name:{
+  Name: {
     type: String,
     require: true
   },
-  partent:{
+  partent: {
     type: Number,
     require: true
   },
@@ -20,9 +20,9 @@ const categorySchema = new Schema({
     type: Date,
     default: Date.now
   }
-}, { _id: false,versionKey: false });
+}, { _id: false, versionKey: false });
 
-categorySchema.plugin(AutoIncrement, {id: 'category_seq',inc_field: '_id'});
+categorySchema.plugin(AutoIncrement, { id: 'category_seq', inc_field: '_id' });
 
 module.exports = mongoose.model('categories', categorySchema);
 
