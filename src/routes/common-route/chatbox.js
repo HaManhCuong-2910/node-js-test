@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const chatboxController = require('../app/controllers/chatboxController');
-const upload = require('../app/common/configUpload_chatBox');
+const chatboxController = require('../../app/controllers/common/chatboxController');
+const upload = require('../../app/common/configUpload_chatBox');
 
 
 router.post('/send-files',upload.any(),chatboxController.sendFiles);

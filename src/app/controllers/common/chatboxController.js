@@ -1,6 +1,6 @@
-const common = require('../common/common');
-const chatbox = require('../../model/chatbox');
-const accounts = require('../../model/account');
+const common = require('../../common/common');
+const chatbox = require('../../../model/chatbox');
+const accounts = require('../../../model/account');
 const ObjectId = require('mongoose').Types.ObjectId;
 require('dotenv').config();
 

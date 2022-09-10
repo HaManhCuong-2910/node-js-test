@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const homeController = require('../app/controllers/homeController');
-const upload = require('../app/common/configUpload');
+const homeController = require('../../app/controllers/user/homeController');
+const upload = require('../../app/common/configUpload');
 
 
 router.post('/uploadimgs',upload.any(),homeController.upload);

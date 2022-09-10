@@ -9,6 +9,38 @@ class handlebarsService {
             return options.fn(this);
         });
 
+        hbsrgs.registerHelper("math", function(lvalue, operator, rvalue, options) {
+            lvalue = parseFloat(lvalue);
+            rvalue = parseFloat(rvalue);
+                
+            return {
+                "+": lvalue + rvalue,
+                "-": lvalue - rvalue,
+                "*": lvalue * rvalue,
+                "/": lvalue / rvalue,
+                "%": lvalue % rvalue
+            }[operator];
+        });
+        hbsrgs.registerHelper("indexPage", function(index, page, pageSize, options) {
+            let numericalOrder = ((page * pageSize) - pageSize) + index + 1;                
+            return numericalOrder
+        });
+
+        hbsrgs.registerHelper("formatDate", function(Date) {
+            let yyyy = Date.getFullYear();
+            let mm = Date.getMonth() + 1; // Months start at 0!
+            let dd = Date.getDate();
+
+            let hours = Date.getHours();
+            let minutes = Date.getMinutes();
+
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+
+            let formatteddateVal = dd + '/' + mm + '/' + yyyy + ' ' + hours + ':' + minutes;
+            return formatteddateVal;
+        });
+
         hbsrgs.registerHelper('case', function (value, options) {
             if (value == this.switch_value) {
                 return options.fn(this);

@@ -1,4 +1,4 @@
-const common = require('../common/common');
+const common = require('../../common/common');
 const md5 = require('md5');
 require('dotenv').config();
 

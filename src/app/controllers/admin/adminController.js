@@ -1,26 +1,14 @@
-const common = require('../common/common');
-const category = require('../../model/category');
-const account = require('../../model/account');
-const catUtil = require('../../until/cat_Until');
+const common = require('../../common/common');
+const account = require('../../../model/account');
 const md5 = require('md5');
 require('dotenv').config();
 
 class adminController {
 
-    async index(req, res) {
-        let catslug = req.params.catslug || '';
-        switch (catslug) {
-            case 'cham-soc-khach-hang':
-                await catUtil.adminHelper(req, res, catslug);
-                break;
-            case 'quan-ly-danh-muc':
-                await catUtil.manageCart(req, res, catslug);
-                break;
-            default:
-                res.render('admin/doashboard', {
-                    layout: 'admin/layoutAdmin.hbs'
-                });
-        }
+    index(req, res) {
+        res.render('admin/doashboard', {
+            layout: 'admin/layoutAdmin.hbs'
+        });
     }
     async login(req, res) {
         try {

@@ -1,4 +1,4 @@
-const sendMail = require('../Email/sendMail');
+const sendMail = require('../../Email/sendMail');
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config();

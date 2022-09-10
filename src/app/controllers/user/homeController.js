@@ -1,5 +1,5 @@
-const common = require('../common/common');
-const product = require('../../model/product');
+const common = require('../../common/common');
+const product = require('../../../model/product');
 const md5 = require('md5');
 require('dotenv').config();
 

@@ -1,9 +1,9 @@
-const homeRouter = require('./home');
-const testmailRouter = require('./testmail');
-const authRouter = require('./auth');
-const adminRouter = require('./admin');
-const chatboxRouter = require('./chatbox');
-const inforRouter = require('./infor-route/infor');
+const homeRouter = require('./user-route/home');
+const testmailRouter = require('./common-route/testmail');
+const authRouter = require('./user-route/auth');
+const adminRouter = require('./admin-route/admin');
+const chatboxRouter = require('./common-route/chatbox');
+const inforRouter = require('./common-route/infor');
 function routes(app){
     app.use('/admin',adminRouter);
     app.use('/testmail',testmailRouter);
