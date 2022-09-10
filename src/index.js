@@ -14,7 +14,7 @@ const SocketServices = require('./services/socket.service');
 const handlebarsService = require('./services/handlebars.service');
 const Redis = require('ioredis');
 const RedisStore = require('connect-redis')(session);
-const clientRedis = new Redis();
+const clientRedis = new Redis(process.env.REDIS_URL);
 // const sendMail = require('./app/Email/sendMail');
 // const schedule = require('node-schedule');
 
