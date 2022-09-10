@@ -12,6 +12,9 @@ const io = require('socket.io')(server);
 const port = process.env.PORT || 3001;
 const SocketServices = require('./services/socket.service');
 const handlebarsService = require('./services/handlebars.service');
+const Redis = require('ioredis');
+const RedisStore = require('connect-redis')(session);
+const clientRedis = new Redis();
 // const sendMail = require('./app/Email/sendMail');
 // const schedule = require('node-schedule');
 
@@ -37,6 +40,7 @@ handlebarsService.registers(hbsrgs);
 
 const sessionMiddleware = session({
   secret: "itravel key",
+  store: new RedisStore({client: clientRedis}),
   resave: false,
   saveUninitialized: false
 });

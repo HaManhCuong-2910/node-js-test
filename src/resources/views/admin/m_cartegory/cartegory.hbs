@@ -1,7 +1,10 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Quản lý danh mục</h3>
+            <div class="d-flex justify-content-between align-items-center container">
+                <h3 class="card-title">Quản lý danh mục</h3>
+                <button type="button" class="btn btn-success">Thêm mới</button>
+            </div>            
         </div>
         <div class="card-body">
             <table class="table table-bordered table-hover dataTable dtr-inline">
@@ -11,15 +14,24 @@
                         <th scope="col">Tên DM</th>
                         <th scope="col">Ngày tạo</th>
                         <th scope="col">Phụ thuộc</th>
+                        <th scope="col">Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
                     {{#each categories}}
                         <tr>
-                            <th scope="row">{{indexPage @index 2 10}}</th>
+                            <th scope="row">{{indexPage @index 1 10}}</th>
                             <td>{{this.Name}}</td>
                             <td>{{formatDate this.CreationDate}}</td>
-                            <td>{{this.partent}}</td>
+                            <td>
+                                <select name="partents" class="form-control">
+                                    {{partentsCat this._id this.partent ../this.categories}}
+                                </select>                                
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary">Cập nhật</button>
+                                <button type="button" class="btn btn-danger">Xóa</button>
+                            </td>
                         </tr>
                     {{/each}}                    
                 </tbody>
