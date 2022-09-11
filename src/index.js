@@ -19,6 +19,7 @@ const clientRedis = new Redis(process.env.REDISTOGO_URL,{
       rejectUnauthorized: false
   }
 });
+console.log(process.env.REDISTOGO_URL);
 // const sendMail = require('./app/Email/sendMail');
 // const schedule = require('node-schedule');
 
