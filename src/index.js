@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const url = require('url');
 const handlebars = require('express-handlebars');
 const hbsrgs = require('handlebars');
 const routes = require('./routes/routes');
@@ -12,9 +13,13 @@ const io = require('socket.io')(server);
 const port = process.env.PORT || 3001;
 const SocketServices = require('./services/socket.service');
 const handlebarsService = require('./services/handlebars.service');
+let redisURL;
+if(process.env.REDISCLOUD_URL){
+  redisURL = url.parse(process.env.REDISCLOUD_URL);
+}
 const Redis = require('ioredis');
 const RedisStore = require('connect-redis')(session);
-const clientRedis = new Redis(process.env.REDISCLOUD_URL,{
+const clientRedis = new Redis(redisURL,{
   tls: {
       rejectUnauthorized: false
   }
