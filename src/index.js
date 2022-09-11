@@ -19,11 +19,7 @@ if(process.env.REDISCLOUD_URL){
 }
 const Redis = require('ioredis');
 const RedisStore = require('connect-redis')(session);
-const clientRedis = new Redis(redisURL,{
-  tls: {
-      rejectUnauthorized: false
-  }
-});
+const clientRedis = new Redis(redisURL);
 console.log(process.env.REDISCLOUD_URL);
 // const sendMail = require('./app/Email/sendMail');
 // const schedule = require('node-schedule');
