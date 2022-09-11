@@ -14,7 +14,7 @@ const SocketServices = require('./services/socket.service');
 const handlebarsService = require('./services/handlebars.service');
 const Redis = require('ioredis');
 const RedisStore = require('connect-redis')(session);
-const clientRedis = new Redis(process.env.REDIS_URL,{
+const clientRedis = new Redis(process.env.REDISTOGO_URL,{
   tls: {
       rejectUnauthorized: false
   }
