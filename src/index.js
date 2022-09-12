@@ -14,7 +14,7 @@ const port = process.env.PORT || 3001;
 const SocketServices = require('./services/socket.service');
 const handlebarsService = require('./services/handlebars.service');
 let redisURL;
-if(process.env.REDISCLOUD_URL){
+if(process.env.REDISCLOUD_URL != ''){
   redisURL = url.parse(process.env.REDISCLOUD_URL);
 }
 const Redis = require('ioredis');
