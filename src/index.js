@@ -14,13 +14,13 @@ const port = process.env.PORT || 3001;
 const SocketServices = require('./services/socket.service');
 const handlebarsService = require('./services/handlebars.service');
 let redisURL;
-if(process.env.REDISCLOUD_URL != ''){
-  redisURL = url.parse(process.env.REDISCLOUD_URL);
+if(process.env.REDIS_URL != ''){
+  redisURL = url.parse(process.env.REDIS_URL);
 }
 const Redis = require('ioredis');
 const RedisStore = require('connect-redis')(session);
 const clientRedis = new Redis(redisURL);
-console.log(process.env.REDISCLOUD_URL);
+console.log(process.env.REDIS_URL);
 // const sendMail = require('./app/Email/sendMail');
 // const schedule = require('node-schedule');
 
