@@ -73,6 +73,9 @@ io.use(wrap(sessionMiddleware));
 
 global._io.on('connection', SocketServices.connection);
 
-server.listen(port, () => {
+server.listen(port, (err) => {
+  if(err){
+    console.log(err);
+  }
   console.log(`App listening at http://localhost:${port}`)
 })
