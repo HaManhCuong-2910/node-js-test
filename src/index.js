@@ -13,10 +13,13 @@ const io = require('socket.io')(server);
 const port = process.env.PORT || 3001;
 const SocketServices = require('./services/socket.service');
 const handlebarsService = require('./services/handlebars.service');
-let redisURL;
 const Redis = require('ioredis');
 const RedisStore = require('connect-redis')(session);
-const clientRedis = new Redis(process.env.REDIS_URL);
+const clientRedis = Redis.createClient({
+  host: 'redis-18429.c100.us-east-1-4.ec2.cloud.redislabs.com',
+  port: 18429,
+  password: 'IhkMNe67ReLdPv5lWI7fMxzA8dIzvSxF'
+});
 // const sendMail = require('./app/Email/sendMail');
 // const schedule = require('node-schedule');
 
