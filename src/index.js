@@ -16,9 +16,9 @@ const handlebarsService = require('./services/handlebars.service');
 const Redis = require('ioredis');
 const RedisStore = require('connect-redis')(session);
 const clientRedis = Redis.createClient({
-  host: 'redis-18429.c100.us-east-1-4.ec2.cloud.redislabs.com',
-  port: 18429,
-  password: 'IhkMNe67ReLdPv5lWI7fMxzA8dIzvSxF'
+  host: process.env.REDIS_HOST,
+  port: process.env.REDIS_PORT,
+  password: process.env.REDIS_PASSWORD
 });
 // const sendMail = require('./app/Email/sendMail');
 // const schedule = require('node-schedule');
