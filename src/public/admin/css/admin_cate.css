@@ -1,0 +1,24 @@
+.open-form-cateAdd{
+    display: flex !important;
+    align-items: center;
+    height: 80px;
+    animation: openHeight 0.3s linear;
+}
+.form-cateAdd{
+    display: none;
+}
+.items-cateAdd{
+    width: 30%;
+}
+@keyframes openHeight{
+    from{
+        display: none !important;
+        height: 0px;
+        opacity: 0;
+    }
+    to{
+        display: flex;
+        opacity: 1;
+        height: 80px;
+    }
+}

@@ -1,5 +1,7 @@
 $( "#frm_Login" ).submit(function( event ) {
     event.preventDefault();
+    $('#btn-login').addClass('btn-login-active');
+    $('#btn-login').attr('type','button');
     $.ajax({
         url: '/admin/login',
         data: $(this).serialize(),
@@ -12,7 +14,13 @@ $( "#frm_Login" ).submit(function( event ) {
                 location.reload();
             }
             else{
-                console.log(message);
+                $('#btn-login').removeClass('btn-login-active');
+                $('#btn-login').attr('type','submit');
+                swal({
+                    title: "Thông báo!",
+                    text: message,
+                    icon: "error"
+                });
             }
         },
         error: function (obj) {

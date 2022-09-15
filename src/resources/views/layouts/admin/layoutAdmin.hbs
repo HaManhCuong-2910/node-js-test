@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="/admin/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="/css/common/loading.css">
     {{>admin/cssMenuAdmin}}
     <!-- jQuery -->
     <script src="/admin/plugins/jquery/jquery.min.js"></script>
@@ -204,6 +205,7 @@
             {{{body}}}
         </div>
     </div>
+    {{>common/loading}}
     <!-- ./wrapper -->
     <script src="/js/common/common.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -216,6 +218,10 @@
     <script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- ChartJS -->
     <script src="/admin/plugins/chart.js/Chart.min.js"></script>
+    {{!-- sweetalert --}}
+    <script src="/js/common/sweetalert.min.js"></script>
+    {{!-- validate --}}
+    <script src="/js/common/validate.min.js"></script>
     <!-- Sparkline -->
     <script src="/admin/plugins/sparklines/sparkline.js"></script>
     <!-- jQuery Knob Chart -->

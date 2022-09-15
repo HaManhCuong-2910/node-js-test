@@ -3,11 +3,27 @@
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center container">
                 <h3 class="card-title">Quản lý danh mục</h3>
-                <button type="button" class="btn btn-success">Thêm mới</button>
+                <button type="button" id="btn-open-frmAdd" class="btn btn-success">Thêm mới</button>
             </div>            
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-hover dataTable dtr-inline">
+            <form id="frmCateAdd" class="form-cateAdd">
+                    <div class="d-flex align-items-center mx-3 items-cateAdd">
+                        <label for="nameCate" style="flex: 1;margin:0px;">Tên Danh Mục:</label>
+                        <input type="text" class="form-control" style="flex: 1.6;" name="nameCate" id="nameCate" placeholder="Danh mục 1...">
+                    </div>
+                    <div class="d-flex align-items-center mx-3 items-cateAdd">
+                        <label for="slcPartent" style="flex: 1;margin:0px;">Phụ thuộc:</label>
+                        <select name="slcPartent" style="flex: 1.6;" class="form-control" id="slcPartent">
+                            <option value="0">Không phụ thuộc</option>
+                            {{#each categories}}
+                            <option value="{{this._id}}">{{this.Name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                     <button type="submit" class="btn btn-success mx-3">Thêm</button>
+            </form>
+            <table class="table table-bordered table-hover dataTable dtr-inline text-center">
                 <thead class="table-info">
                     <tr>
                         <th scope="col">STT</th>
@@ -29,8 +45,8 @@
                                 </select>                                
                             </td>
                             <td>
-                                <button type="button" class="btn btn-primary">Cập nhật</button>
-                                <button type="button" class="btn btn-danger">Xóa</button>
+                                <button type="button" onclick="updateCat(this,{{this._id}})" class="btn btn-primary">Cập nhật</button>
+                                <button type="button" data-toggle="modal" data-target="#DelCate" data-id="{{this._id}}" class="btn btn-danger open-mdDelCate">Xóa</button>
                             </td>
                         </tr>
                     {{/each}}                    
@@ -38,4 +54,25 @@
             </table>
         </div>
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="DelCate" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa danh mục</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" hidden name="cateIDdel">
+        <span>Bạn chắc chắn muốn xóa?</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="button" id="btn-DelCate" class="btn btn-primary">Xóa</button>
+      </div>
+    </div>
+  </div>
 </div>
