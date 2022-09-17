@@ -68,7 +68,7 @@ class handlebarsService {
                 }
                 for(; i <= (Number(current) + 2) && i <= pages; i++) {
                     if(i == current) {
-                        html += '<a href="'+url+'?page='+i+'" class="page active">' + i + '</a>';
+                        html += '<a href="'+url+'?page='+i+'" class="page page-active">' + i + '</a>';
                     }
                     else{
                         html += '<a href="'+url+'?page='+i+'" class="page">' + i + '</a>'; 
