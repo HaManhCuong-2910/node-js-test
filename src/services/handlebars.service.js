@@ -52,6 +52,40 @@ class handlebarsService {
                 return value;
             }
         });
+
+        hbsrgs.registerHelper('pagination', function (pages,current,url) {
+            let html = '';
+            let i = Number(current) > 3 ? Number(current) - 2 : 1;
+            if(pages > 0) {
+                html += '<div class="pagination">';
+                if(current > 1) {
+                    html += `<a href="`+url+`?page=`+(Number(current) - 1)+`" class="btn-page">
+                                <i class="fa fa-arrow-left btn-page--icon"></i>
+                            </a>`;
+                }
+                if(i !== 1){
+                    html += '<a class="page">...</a>';
+                }
+                for(; i <= (Number(current) + 2) && i <= pages; i++) {
+                    if(i == current) {
+                        html += '<a href="'+url+'?page='+i+'" class="page active">' + i + '</a>';
+                    }
+                    else{
+                        html += '<a href="'+url+'?page='+i+'" class="page">' + i + '</a>'; 
+                    }
+                    if (i == Number(current) + 2 && i < pages) {
+                        html += '<a class="page">...</a>';
+                    }
+                }
+                if(current < pages) {
+                    html += `<a href="`+url+`?page=`+(Number(current) + 1)+`" class="btn-page">
+                                <i class="fa fa-arrow-right btn-page--icon"></i>
+                            </a>`;
+                }
+                html += '</div>';
+            }
+            return new hbsrgs.SafeString(html);
+        });
     }
 }
 

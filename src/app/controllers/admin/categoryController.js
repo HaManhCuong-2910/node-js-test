@@ -6,23 +6,22 @@ require('dotenv').config();
 class categoryController {
 
     async index(req, res) {
-        let categories = await category.find({}).lean();
+        let perPage = 1; // số lượng sản phẩm xuất hiện trên 1 page
+        let page = req.query.page || 1; 
+
+        let categories = await category.find({})
+        .skip((perPage * page) - perPage)
+        .limit(perPage)
+        .lean();
+        let countPage = await category.countDocuments();
+        let pages = Math.ceil(Number(countPage)/perPage);
         res.render('admin/m_cartegory/cartegory', {
-            isMenu: 'adminCat',
-            catslug: 'm_cat',
             categories: categories,
-            layout: 'admin/layoutAdmin.hbs'
-        });
-    }
-    detailCat(req, res) {
-        let id = req.params.id;
-        let result = {
-            resId: id
-        }
-        res.render('admin/m_cartegory/detail_cat', {
+            pages: pages,
+            current: page,
+            perPage: perPage,
             isMenu: 'adminCat',
             catslug: 'm_cat',
-            result: result,
             layout: 'admin/layoutAdmin.hbs'
         });
     }

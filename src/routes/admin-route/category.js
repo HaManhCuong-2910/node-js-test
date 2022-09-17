@@ -7,7 +7,6 @@ router.post('/update', fncCommon.requiredAuth_Admin, categoryController.handUpda
 router.post('/add', fncCommon.requiredAuth_Admin, categoryController.handAddCate);
 router.post('/delete', fncCommon.requiredAuth_Admin, categoryController.handDeleteCate);
 
-router.get('/:id', fncCommon.requiredAuth_Admin, categoryController.detailCat);
 router.get('/', fncCommon.requiredAuth_Admin, categoryController.index);
 
 module.exports = router;

@@ -36,7 +36,7 @@
                 <tbody>
                     {{#each categories}}
                         <tr>
-                            <th scope="row">{{indexPage @index 1 10}}</th>
+                            <th scope="row">{{indexPage @index ../current ../perPage}}</th>
                             <td>{{this.Name}}</td>
                             <td>{{formatDate this.CreationDate}}</td>
                             <td>
@@ -54,6 +54,8 @@
             </table>
         </div>
     </div>
+
+    {{pagination pages current '/admin/quan-ly-danh-muc'}}
 </div>
 <!-- Modal -->
 <div class="modal fade" id="DelCate" tabindex="-1" role="dialog" aria-hidden="true">
