@@ -12,7 +12,7 @@ function routes(app){
     app.use('/infor',inforRouter);
     app.use('/',homeRouter);
     app.get('*', function(req, res) {
-        res.redirect('/');
+        res.send('404 URL NOT FOUND');
     });
 }
 module.exports = routes;

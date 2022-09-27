@@ -13,13 +13,16 @@ class categoryController {
         .skip((perPage * page) - perPage)
         .limit(perPage)
         .lean();
-        let countPage = await category.countDocuments();
+        let allCate = await category.find({},'Name partent');
+        let countPage = allCate.length;
         let pages = Math.ceil(Number(countPage)/perPage);
         res.render('admin/m_cartegory/cartegory', {
-            categories: categories,
-            pages: pages,
+            categories,
+            allCate,
+            countPage,
+            pages,
+            perPage,
             current: page,
-            perPage: perPage,
             isMenu: 'adminCat',
             catslug: 'm_cat',
             layout: 'admin/layoutAdmin.hbs'
