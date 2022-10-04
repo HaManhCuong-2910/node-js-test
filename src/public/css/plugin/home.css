@@ -87,16 +87,19 @@
 .attention{
     color: #21BA9D;
 }
+.home-more-contents{
+    padding-left: 94px;
+}
 .home-more-contents h3{
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 41px;
     font-weight: 600;
 }
 .home-more-contents h4{
     margin-top: 26px;
     font-weight: 400;
-    font-size: 1.3rem;
-    line-height: 38px;
+    font-size: 1.1rem;
+    line-height: 34px;
     color: rgba(255, 255, 255, 0.67);
 }
 .home-more-contents button{
@@ -108,7 +111,7 @@
 }
 .home-more_slide{
     height: 60%;
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 .itravel-sildeHome-button-next,.itravel-sildeHome-button-prev{
@@ -118,7 +121,7 @@
     top: 50%;
     transform: translateY(-50%);
     color: #000;
-    z-index: 1;   
+    z-index: 2;   
     background-color: #21BA9D; 
     justify-content: center;
     align-items: center;
@@ -134,8 +137,48 @@
     display: none;
 }
 .itravel-sildeHome-button-next{
-    right: -5%;
+    right: -3%;
 }
 .itravel-sildeHome-button-prev{
-    left: -5%;    
+    left: -3%;    
+}
+.home-news{
+    padding-top: 150px;
+}
+.home-news-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.home-news-title h3{
+    font-weight: 520;
+    font-size: 3rem;
+    line-height: 68px;
+    color: #002930;
+    margin: 0px;
+}
+.home-news-title a{
+    color: #21BA9D;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+.home-news_list{
+    margin-top: 40px;
+}
+.home-news_list h5{
+    font-size: 1.1rem;
+    color: #6D6D6D;
+}
+.home-news_list a{
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: #004C3F;
+}
+.home-news_list img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.home-news_list .card-img-top{
+    height: 350px;
 }
