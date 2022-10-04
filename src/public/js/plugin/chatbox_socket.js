@@ -1,4 +1,4 @@
-var socket = io();
+var socket = io('http://localhost:3001');
 if (localStorage.getItem('it.room-id') != undefined) {
     loadChatBox(localStorage.getItem('it.room-id'));
 }

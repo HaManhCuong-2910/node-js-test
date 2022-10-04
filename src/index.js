@@ -70,6 +70,15 @@ const wrap = middleware => (socket, next) => middleware(socket.request, {}, next
 
 io.use(wrap(sessionMiddleware));
 
+// io.use(async function(socket, next) {
+//   if(socket.handshake.query.token == 'cuongkum'){
+//     return next();
+//   }
+//   else{
+//     return next(new Error('Authentication error'));
+//   }  
+// });
+
 global._io.on('connection', SocketServices.connection);
 
 server.listen(port, (err) => {

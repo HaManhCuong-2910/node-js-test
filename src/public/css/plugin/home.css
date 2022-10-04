@@ -1,0 +1,24 @@
+.main-home{
+    height: 1024px;
+    display: flex;
+    align-items: end;
+}
+.main-home-contents{
+    width: 100%;
+    padding-bottom: 16%;
+}
+.main-home-contents_title{
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    color: #6D6D6D;
+}
+.main-home-contents_text{
+    font-size: 1.6rem;
+    line-height: 41px;
+    color: #00ABA5;
+}
+.main-home-contents_img img{
+    max-width: 70%;
+    border-radius: 18px;
+}

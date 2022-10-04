@@ -19,26 +19,28 @@
     <meta name="description"
         content="Itravel - giải pháp du lịch và tiện ích sống từ đặt vé máy bay, khách sạn, vé vui chơi, giải trí Xperience, dịch vụ ăn uống, làm đẹp và nhiều trải nghiệm khác" />
     <meta name="keywords" content="Du lịch, vé máy bay, khách sạn" />
-    {{!--
-    <link href="" rel="icon" type="image/x-icon" />
-    <link href="" rel="shortcut icon" /> --}}
-
+    
+    <link href="/imgs/main_imgs/Logo.png" rel="icon" type="image/x-icon" />
+    <link href="/imgs/main_imgs/Logo.png" rel="shortcut icon" />
+    <link href="http://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     <link rel="stylesheet" href="/css/common/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/common/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/common/main.css">
     <link rel="stylesheet" href="/css/images_uploader/image-uploader.min.css">
     <link rel="stylesheet" href="/css/plugin/chatbox_user.css">
     <script src="/js/common/jquery-3.6.0.min.js"></script>
-    <script src="/js/common/fontawesome.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="/js/common/common.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 </head>
 
 <body>
-
+    {{>header}}
     {{{body}}}
 
     {{>chatbox}}
+    {{>footer}}
     <script src="/js/common/bootstrap.min.js"></script>
     <script src="/js/images_uploader/image-uploader.min.js"></script>
 </body>
