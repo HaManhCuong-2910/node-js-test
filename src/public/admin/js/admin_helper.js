@@ -1,4 +1,4 @@
-var socket = io('http://localhost:3001');
+var socket = io();
 $('#frm_sendChat').submit(function (event) {
     event.preventDefault();
     let message = $('input[name="message"]', this).val();
