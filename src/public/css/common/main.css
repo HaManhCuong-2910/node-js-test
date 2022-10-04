@@ -16,10 +16,6 @@ body{
 .nav-item-itravel{
     padding: 0px 10px;
 }
-.nav-item-itravel:hover{
-    background-color: #21BA9D;
-    border-radius: 8px;    
-}
 .nav-item-itravel:hover a{
     color: #fff !important;
 }
@@ -27,49 +23,6 @@ body{
     background-color: #21BA9D;
     border-radius: 8px;
 }
-.banner{
-    height: 400px;
-}
-.intro-title{
-    font-size: 48px;
-    width: 40%;
-    padding-top: 140px;
-}
-.banner{
-    position: relative;
-}
-.form-search-itravel{
-    position: absolute;
-    bottom: -35%;
-    left: 50%;
-    width: 1084px;
-    transform: translateX(-50%);
-    box-shadow: 6px 4px 39px rgba(0, 0, 0, 40%);
-    border-radius: 20px 20px 0px 0px;
-    overflow: hidden;
-}
-.form-search-itravel__option{
-    background: linear-gradient(90.19deg, #002930 -6.2%, #21BA9D 109.98%);
-    padding-left: 10px;
-}
-.form-search-itravel__option span{
-    display: inline-block;
-    cursor: pointer;
-    font-size: 20px;
-}
-.form-search-itravel__option span i{
-    font-size: 1rem;
-    margin-left: 4px;
-}
-.form-search-itravel__content h4{
-    font-size: 16px;
-    color: var(--text-color);
-}
-.form-search-itravel__content{
-    background-color: #fff;
-}
-.form-search-itravel__content input{
-    border: 1px solid #D9D9D9;
-    border-radius: 6px;
-    padding: 5px 0px 5px 10px;
+.intro-home{
+    background-color: #002930;
 }

@@ -1,3 +1,4 @@
+const i18n = require("i18n");
 const common = require('../app/common/common');
 const adminRegister = require('./adminService/admin.handlebarsService');
 class handlebarsService {
@@ -10,6 +11,14 @@ class handlebarsService {
         hbsrgs.registerHelper('switch', function (value, options) {
             this.switch_value = value;
             return options.fn(this);
+        });
+        
+        hbsrgs.registerHelper('i18n', function () {
+            return i18n.__.apply(this,arguments);
+        });
+
+        hbsrgs.registerHelper('__n', function () {
+            return i18n.__n.apply(this, arguments);
         });
 
         

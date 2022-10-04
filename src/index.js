@@ -6,6 +6,7 @@ const hbsrgs = require('handlebars');
 const routes = require('./routes/routes');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 const db = require('./model/connect');
 const app = express();
 const server = require('http').createServer(app);
@@ -20,6 +21,7 @@ const clientRedis = Redis.createClient({
   port: process.env.REDIS_PORT,
   password: process.env.REDIS_PASSWORD
 });
+const localesService = require('./services/locales.service');
 // const sendMail = require('./app/Email/sendMail');
 // const schedule = require('node-schedule');
 
@@ -27,6 +29,7 @@ const clientRedis = Redis.createClient({
 global._io = io;
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -37,10 +40,11 @@ db.connect();
 app.engine('hbs', handlebars.engine({
   extname: '.hbs'
 }));
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
 
-
+localesService.configure(app);
 handlebarsService.registers(hbsrgs);
 
 const sessionMiddleware = session({
@@ -55,7 +59,6 @@ app.use(function (req, res, next) {
   res.locals.session = req.session;
   next();
 });
-
 
 // var i = 0;
 // schedule.scheduleJob('*/2 * * * * * ', ()=>{
