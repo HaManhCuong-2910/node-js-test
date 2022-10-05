@@ -1,5 +1,5 @@
 const common = require('../../common/common');
-const product = require('../../../model/product');
+const category = require('../../../model/category');
 const md5 = require('md5');
 require('dotenv').config();
 
@@ -7,11 +7,25 @@ class homeController {
   //get all data
   async index(req, res) {
     try {
-      let procs = await product.find({}).lean();
+      let lang = req.cookies.lang || 'vi';
+      let cates = await category.aggregate(
+        [
+           { 
+              "$project": {
+                "slug": 1,
+                "NameCate": lang == 'vi'?"$Name" :"$English",
+                "partent": 1,
+                "CreationDate": 1,
+                "LastEditDate": 1
+            }
+          }
+        ]
+      );
+
       res.render('client/home', {
+        cates,
         showFooter: true,
-        layout: 'layoutDefaut.hbs',
-        products: procs
+        layout: 'layoutDefaut.hbs'
       });
     }
     catch (error) {

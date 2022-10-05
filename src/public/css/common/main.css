@@ -26,3 +26,6 @@ body{
 .intro-home{
     background-color: #002930;
 }
+.dropdown-item{
+    cursor: pointer;
+}

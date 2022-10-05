@@ -12,6 +12,17 @@ class handlebarsService {
             this.switch_value = value;
             return options.fn(this);
         });
+
+        hbsrgs.registerHelper('activeClass', function (type,options) {
+            let slug = this.slug;
+            if(slug == type){
+                return 'active';
+            }
+            else if(!type && slug == 'booking'){
+                return 'active';
+            }
+            return '';
+        });
         
         hbsrgs.registerHelper('i18n', function () {
             return i18n.__.apply(this,arguments);

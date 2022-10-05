@@ -57,6 +57,7 @@ const sessionMiddleware = session({
 app.use(sessionMiddleware);
 app.use(function (req, res, next) {
   res.locals.session = req.session;
+  res.locals.cookies = req.cookies;
   next();
 });
 

@@ -8,9 +8,19 @@ const categorySchema = new Schema({
     type: String,
     require: true
   },
+  English: {
+    type: String,
+    require: true,
+    default: ""
+  },
   partent: {
     type: Number,
     require: true
+  },
+  slug: {
+    type: String,
+    require: true,
+    default: ""
   },
   CreationDate: {
     type: Date,

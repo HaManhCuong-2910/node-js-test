@@ -8,11 +8,15 @@
         </div>
         <div class="card-body">
             <form id="frmCateAdd" class="form-cateAdd">
-                    <div class="d-flex align-items-center mx-3 items-cateAdd">
+                    <div class="d-flex align-items-center mx-2 items-cateAdd">
                         <label for="nameCate" style="flex: 1;margin:0px;">Tên Danh Mục:</label>
                         <input type="text" class="form-control" style="flex: 1.6;" name="nameCate" id="nameCate" placeholder="Danh mục 1...">
                     </div>
-                    <div class="d-flex align-items-center mx-3 items-cateAdd">
+                    <div class="d-flex align-items-center mx-2 items-cateAdd">
+                        <label for="engCate" style="flex: 1;margin:0px;">English:</label>
+                        <input type="text" class="form-control" style="flex: 2;" name="engCate" id="engCate" placeholder="Category 1...">
+                    </div>
+                    <div class="d-flex align-items-center mx-2 items-cateAdd">
                         <label for="slcPartent" style="flex: 1;margin:0px;">Phụ thuộc:</label>
                         <select name="slcPartent" style="flex: 1.6;" class="form-control" id="slcPartent">
                             <option value="0">Không phụ thuộc</option>
@@ -28,6 +32,7 @@
                     <tr>
                         <th scope="col">STT</th>
                         <th scope="col">Tên DM</th>
+                        <th scope="col">English</th>
                         <th scope="col">Ngày tạo</th>
                         <th scope="col">Phụ thuộc</th>
                         <th scope="col">Chức năng</th>
@@ -38,6 +43,7 @@
                         <tr>
                             <th scope="row">{{indexPage @index ../current ../perPage}}</th>
                             <td>{{this.Name}}</td>
+                            <td>{{this.English}}</td>
                             <td>{{formatDate this.CreationDate}}</td>
                             <td>
                                 <select name="partents" class="form-control">

@@ -19,11 +19,13 @@ function updateCat(element,catID){
 };
 $('#btn-open-frmAdd').click(function(){
     $('#frmCateAdd').toggleClass('open-form-cateAdd');
+    
 });
 $('#frmCateAdd').submit(function(event){
     event.preventDefault();
     let validMessages = {
-        nameCate: 'Chưa nhập tên danh mục'
+        nameCate: 'Chưa nhập tên danh mục',
+        engCate: 'Chưa nhập tên tiếng anh'
     }
     let keysValid = Object.keys(validMessages);
     for(let i=0;i<keysValid.length; i++){
@@ -91,4 +93,22 @@ function returnNotify(obj){
             }
         });
     }
+}
+
+$('input[name="nameCate"]').on('input',debounce(sendTrans, 500));
+function sendTrans(){
+    let value = $('input[name="nameCate"]').val();
+    $.ajax({
+        url: '/translate',
+        data: {value},
+        dataType: 'json',
+        type: 'POST',
+        success: function (obj) {
+            $('input[name="engCate"]').val(obj.result);          
+        },
+        error: function (obj) {
+            console.log(obj);
+        }
+    })
+    
 }

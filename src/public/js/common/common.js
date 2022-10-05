@@ -41,3 +41,38 @@ function formatDate(dateVal){
     let formatteddateVal = dd + '/' + mm + '/' + yyyy + ' ' + hours + ':' + minutes;
     return formatteddateVal;
 }
+const debounce = (fn, delay)=>{
+    delay = delay || 0;
+    let timer;
+    return ()=>{
+        if(timer){
+            clearTimeout(timer);
+            timer = null;
+        }
+        timer = setTimeout(()=>{
+            fn();
+        },delay);
+    }
+}
+$(function() {
+
+    $('.lang-items').click(function (){
+        let lang = $(this).attr('data-val');
+        $.ajax({
+            url: '/translate/change',
+            data: { lang },
+            dataType: 'json',
+            type: 'GET',
+            success: function (obj) {
+                let {status} = obj;
+                if(status == 1){
+                    location.reload(1);
+                }
+            },
+            error: function (obj) {
+                console.log(obj);
+            }
+        })
+    })
+
+});

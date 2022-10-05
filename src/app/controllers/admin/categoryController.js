@@ -6,7 +6,7 @@ require('dotenv').config();
 class categoryController {
 
     async index(req, res) {
-        let perPage = 1; // số lượng sản phẩm xuất hiện trên 1 page
+        let perPage = 20; // số lượng sản phẩm xuất hiện trên 1 page
         let page = req.query.page || 1; 
 
         let categories = await category.find({})
@@ -39,12 +39,13 @@ class categoryController {
         })
     }
     async handAddCate(req,res){
-        let nameCate = req.body.nameCate;
-        let slugName = common.stringToSlug(nameCate);
-        let slcPartent = req.body.slcPartent;
+        let nameCate    = req.body.nameCate;
+        let engCate     = req.body.engCate;
+        let slcPartent  = req.body.slcPartent;
+        let slug        = common.stringToSlug(nameCate);
         let status = 1,message = 'Thêm thành công';
 
-        await category.create({Name: nameCate,partent: slcPartent,slug: slugName},function(error){
+        await category.create({Name: nameCate,partent: slcPartent,English:engCate,slug},function(error){
             if(error){
                 status = 0;
                 message = 'Thêm thất bại';
