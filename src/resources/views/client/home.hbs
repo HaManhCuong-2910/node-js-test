@@ -1,10 +1,46 @@
 <link rel="stylesheet" href="/css/plugin/home.css">
-<div class="banner bg-i-primary">
-    <div class="container-fluid">
-        <h2 class="intro-title px-md-5 mx-md-5 text-light mb-0">
-            Đồng hành cùng bạn trên mọi nẻo đường
-        </h2>
+<div class="banner">
+    <div class="swiper h-100 w-100 swiperBanner" style="cursor: pointer;z-index: 0;">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide bg-i-primary w-100 h-100 text-light">Slide 1</div>
+            <div class="swiper-slide bg-i-primary w-100 h-100 text-light">Slide 2</div>
+            <div class="swiper-slide bg-i-primary w-100 h-100 text-light">Slide 3</div>
+            <div class="swiper-slide bg-i-primary w-100 h-100 text-light">Slide 4</div>
+            <div class="swiper-slide bg-i-primary w-100 h-100 text-light">Slide 5</div>
+            <div class="swiper-slide bg-i-primary w-100 h-100 text-light">Slide 6</div>
+            <div class="swiper-slide bg-i-primary w-100 h-100 text-light">Slide 7</div>
+            <div class="swiper-slide bg-i-primary w-100 h-100 text-light">Slide 8</div>
+            <div class="swiper-slide bg-i-primary w-100 h-100 text-light">Slide 9</div>
+        </div>
     </div>
+    <div class="banner-pagination swiper-pagination"></div>
+    
+    <nav class="navbar navbar-expand-lg navbar-light nav-in-hanner pt-4">
+        <div class="container-fluid">
+            <div class="px-md-5 mx-md-5 w-100 d-flex justify-content-between">
+                <a class="navbar-brand" href="/">
+                    <img class="img-fluid" src="/imgs/main_imgs/Logo_Home.png" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        {{#each cates}}
+                        <li class="nav-item mx-3 nav-item-itravel {{activeClass ../this.type}}">
+                            <a class="nav-link" href="/navigation/{{this.slug}}">{{this.NameCate}}</a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>        
+        </div>
+    </nav>
+    <h2 class="intro-title">
+        Đồng hành cùng bạn trên mọi nẻo đường
+    </h2>
     <div class="form-search-itravel">
         <div class="form-search-itravel__option">
             <span class="nav-link text-light" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -17,7 +53,7 @@
                 <span class="dropdown-item">Khứ hồi</span>
             </div>
         </div>
-        <div class="form-search-itravel__content p-4">
+        <div class="form-search-itravel__content px-5 py-4">
             <div class="form-group d-flex">
                 <div class="d-flex w-50 align-items-center mx-3">
                     <h4 style="flex: 1;" class="mb-0 mr-2">Điểm đi</h4>
@@ -100,7 +136,7 @@
         </div>
     </div>
 </div>
-<div class="home-more">
+<div class="home-more" id="home-more">
     <div class="h-100" style="padding: 0px 170px;">
         <div class="row h-100">
             <div class="col-md-7 text-light d-flex align-items-center">
@@ -136,7 +172,7 @@
                         Đà Lạt cao hơn 1500 mét so với mặt biển, điều này làm cho thời tiết ở đây quanh năm mát mẻ. Ở Đà Lạt, nhiều loại đồi,
                         suối, thác nước kết hợp hài hòa tạo thành khung cảnh thiên nhiên hữu tình.
                     </h4>
-                    <button class="btn text-light">
+                    <button class="btn">
                         KHÁM PHÁ THÊM
                     </button>
                 </div>
@@ -144,10 +180,14 @@
         </div>
     </div>
     <div class="home-more_vector">
-        <img src="/imgs/home/Vector_home_1.png" alt="vector_home" >
+       <svg viewBox="0 0 1000 640" fill="none">
+        <path xmlns="http://www.w3.org/2000/svg" d="M578.535 -63.0416C500.496 -9.66888 372.637 -104.134 313.127 -32.5834C280.029 7.21478 292.102 61.3526 349.869 117.261C440.619 205.081 491.867 313.842 400.102 376.595C292.173 450.411 146.441 272.449 -85.4935 506.756" pathLength="1" style="--color: #FFC60B"/>
+      </svg>
     </div>
     <div class="home-more_vector">
-        <img src="/imgs/home/Vector_home_2.png" alt="vector_home" >
+        <svg viewBox="0 0 1000 640" fill="none">
+            <path xmlns="http://www.w3.org/2000/svg" d="M -94.726 1184.58 C -94.726 1184.58 -103.5234 1040.79 22.417 891.733 C 142.987 749.09 263.029 696.371 447.779 680.885 C 601.816 667.931 731.761 643.802 835.449 521.095 C 1027.64 293.671 891.367 -4.4493 775.675 5.2707 C 719.141 10.0296 705.369 70.3654 742.375 101.621 C 820.337 167.439 906.84 96.1566 1048.51 88.3128 C 1190.19 80.4689 1247.4 131.758 1247.4 131.758" pathLength="1" style="--color: #004C3F"/>
+        </svg>
     </div>
 </div>
 <div class="home-news">
@@ -203,6 +243,7 @@
         </div>
     </div>    
 </div>
+<hr class="hr-home">
 <div class="home-partners">
     <div class="container-fluid">
         <div class="home-news_contain home-partners_contain">
@@ -219,22 +260,22 @@
                 <div class="col-md-8">
                     <div class="row home-news_contain_title_list__imgs">
                         <div class="col-md-4">
-                            <img src="/imgs/home/partents/BIDV.png" alt="bidv partent">
+                            <img src="/imgs/home/partents/BIDV.png" data-src="BIDV.png" alt="bidv partent">
                         </div>
                         <div class="col-md-4">
-                            <img src="/imgs/home/partents/traveloka.png" alt="traveloka partent">
+                            <img src="/imgs/home/partents/traveloka.png" data-src="traveloka.png" alt="traveloka partent">
                         </div>
                         <div class="col-md-4">
-                            <img src="/imgs/home/partents/Tripadvisor.png" alt="Tripadvisor partent">
+                            <img src="/imgs/home/partents/Tripadvisor.png" data-src="Tripadvisor.png" alt="Tripadvisor partent">
                         </div>
                         <div class="col-md-4">
-                            <img src="/imgs/home/partents/Baoviet.png" alt="Baoviet partent">
+                            <img src="/imgs/home/partents/Baoviet.png" data-src="Baoviet.png" alt="Baoviet partent">
                         </div>
                         <div class="col-md-4">
-                            <img src="/imgs/home/partents/canifa.png" alt="canifa partent">
+                            <img src="/imgs/home/partents/canifa.png" data-src="canifa.png" alt="canifa partent">
                         </div>
                         <div class="col-md-4">
-                            <img src="/imgs/home/partents/vinpearl.png" alt="vinpearl partent">
+                            <img src="/imgs/home/partents/vinpearl.png" data-src="vinpearl.png" alt="vinpearl partent">
                         </div>
                     </div>
                 </div>

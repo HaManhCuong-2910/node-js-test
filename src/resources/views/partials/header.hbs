@@ -1,12 +1,12 @@
 <div class="intro-home w-100">
-    <div class="container-fluid py-2">
-        <div class="px-md-5 mx-md-5">        
-            <div class="contact-intro d-flex justify-content-between">
+    <div class="container-fluid h-100">
+        <div class="px-md-5 mx-md-5 h-100">        
+            <div class="contact-intro d-flex justify-content-between align-items-center h-100">
                 <div class="d-flex align-items-center">
                     <div class="phone-icon">
                         <img src="/imgs/icons/phone-icon.png" alt="phone icon">
                     </div>
-                    <span class="ml-3  text-light">
+                    <span class="ml-3 phone-txt">
                         {{!-- {{i18n 'Home'}} --}}
                         098 358 0811
                     </span>
@@ -30,24 +30,3 @@
         </div>        
     </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-light bg-i-primary">
-    <div class="container-fluid px-md-5 mx-md-5">
-        <a class="navbar-brand" href="/">
-            <img class="img-fluid" src="/imgs/main_imgs/Logo_Home.png" alt="logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                {{#each cates}}
-                    <li class="nav-item mx-2 nav-item-itravel {{activeClass ../this.type}}">
-                        <a class="nav-link text-light" href="/navigation/{{this.slug}}">{{this.NameCate}}</a>
-                    </li>
-                {{/each}} 
-            </ul>
-        </div>
-    </div>  
-</nav>
