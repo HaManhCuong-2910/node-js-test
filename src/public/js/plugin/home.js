@@ -28,14 +28,9 @@ $( ".home-news_contain_title_list__imgs div img" ).hover(
     if(!newSrc.includes('_primary')){
       newSrc = newSrc.replace(nameSrc,nameSrc + '_primary')
     }    
-
-    $(this).fadeOut(50,function(){
-      $(this).attr('src',newSrc);
-    }).fadeIn(50) 
+    $(this).attr('src',newSrc);
   }, function() {
-    $(this).fadeOut(50,function(){
-      $(this).attr('src', $(this).attr('src').replace('_primary','') );
-    }).fadeIn(50);
+    $(this).attr('src', $(this).attr('src').replace('_primary','') );
   }
 );
 let homeMore = document.querySelector('#home-more');
