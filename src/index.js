@@ -1,6 +1,6 @@
 const express = require('express');
+const compression = require('compression')
 const path = require('path');
-const url = require('url');
 const handlebars = require('express-handlebars');
 const hbsrgs = require('handlebars');
 const routes = require('./routes/routes');
@@ -28,6 +28,10 @@ const localesService = require('./services/locales.service');
 //use io in controller
 global._io = io;
 
+app.use(compression({
+  level: 6,
+  threshold: 10 * 1000
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
