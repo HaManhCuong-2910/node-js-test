@@ -414,9 +414,6 @@ path {
     left: 54px;
     z-index: -1;
 }
-.feedback_vector.active{
-    display: block;
-}
 .intro-bonus-home{
     margin-top: 130px;
 }
@@ -483,6 +480,7 @@ path {
 }
 .bonus-effect_vector{
     position: absolute;
+    display: none;
     top: 0;
     left: 0px;
     width: 100%;
