@@ -170,6 +170,7 @@
 .home-more_slide{
     height: 60%;
     width: 100%;
+    max-width: 816px;
     margin: auto;
 }
 .itravel-sildeHome-button-next,.itravel-sildeHome-button-prev{
@@ -266,13 +267,11 @@
     margin-top: 150px;
 }
 .home-news_list img{
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    width: 400px;
+    height: 280px;
     object-fit: cover;
     border-radius: 14px;
-}
-.home-news_list .card-img-top{
-    height: 300px;
 }
 .banner-pagination{
     position: absolute;
@@ -355,6 +354,7 @@ path {
     border-radius: 14px;
     overflow: hidden;
     height: 100%;
+    max-width: 1600px;
 }
 .bg-i-feedback{
     background-color: #00635B;
@@ -404,7 +404,8 @@ path {
     position: absolute;
     bottom: 0px;
     width: 95%;
-    object-fit: scale-down;
+    height: 100%;
+    object-fit: cover;
 }
 .feedback_vector{
     position: absolute;
