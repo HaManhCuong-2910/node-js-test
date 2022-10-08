@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="form-search-itravel__content px-5 py-4">
-            <div class="form-group d-flex">
+            <div class="form-group d-flex form-search-itravel__content_togo">
                 <div class="d-flex w-50 align-items-center mx-3">
                     <h4 style="flex: 1;" class="mb-0 mr-2">Điểm đi</h4>
                     <input style="flex: 4;" type="text" placeholder="Gõ tên thành phố/ mã sân bay Nội địa hoặc Quốc tế">
@@ -61,15 +61,15 @@
             <div class="form-group mt-5 d-flex align-items-end">
                 <div class="mx-3">
                     <h4>Khởi hành</h4>
-                    <input type="text" class="form-control">
+                    <input type="text">
                 </div>
                 <div class="mx-3">
                     <h4>Quay về</h4>
-                    <input type="text" class="form-control">
+                    <input type="text">
                 </div>
                 <div class="mx-3">
                     <h4>Người lớn</h4>
-                    <select class="form-control">
+                    <select>
                         <option value="1">01 người</option>
                         <option value="2">02 người</option>
                         <option value="3">03 người</option>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="mx-3">
                     <h4>Trẻ em <span class="attention">(2-11 tuổi)</span></h4>
-                    <select class="form-control">
+                    <select>
                         <option value="0">0 người</option>
                         <option value="1">01 người</option>
                         <option value="2">02 người</option>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="mx-3">
                     <h4>Em bé <span class="attention">(<2 tuổi)</span></h4>
-                    <select class="form-control">
+                    <select>
                         <option value="0">0 người</option>
                         <option value="1">01 người</option>
                         <option value="2">02 người</option>
@@ -111,7 +111,7 @@
 </div>
 <div class="main-home">
     <div class="main-home-contents">
-        <div class="container">
+        <div style="width: 1187px;margin: auto;">
             <div class="row">
                 <div class="col-md-12 pt-md-5">
                    <h3 class="main-home-contents_title mt-md-5">Quá trình hình thành và phát triển</h3>
@@ -284,7 +284,7 @@
         <div class="bonus-effect_vector">
             <svg viewBox="0 0 1920 733" fill="none">
                 <path xmlns="http://www.w3.org/2000/svg"
-                    d="M2041.97 2.91221C2041.97 2.91221 1956.58 166.044 1720.29 245.9C1494.11 322.288 1327.94 300.642 1115.57 195.498C938.484 107.88 780.367 48.4091 585.837 114.142C225.28 235.961 177.369 652.181 310.368 717.998C375.367 750.15 430.305 693.238 410.472 634.588C368.668 511.059 226.923 531.885 66.7367 446.847C-93.4494 361.808 -122.152 267.887 -122.152 267.887"
+                    d="M-122.152,267.887C-122.152,267.887 -93.4494,361.808 66.7367,446.847C226.923,531.885 368.668,511.059 410.472,634.588C430.305,693.238 375.367,750.15 310.368,717.998C177.369,652.181 225.28,235.961 585.837,114.142C780.367,48.4091 938.484,107.88 1115.57,195.498C1327.94,300.642 1494.11,322.288 1720.29,245.9C1956.58,166.044 2041.97,2.91221 2041.97,2.91221"
                     pathLength="1" style="--color: #FFC60B" />
             </svg>
         </div>
@@ -300,46 +300,8 @@
                 <div class="swiper h-100 w-100 swiperFeedback" style="cursor: pointer;z-index: 0;">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide home-feedback_slide bg-i-feedback w-100 h-100 text-light">
-                                <div class="row h-100">
-                                    <div class="col-md-7">
-                                        <div class="home-feedback_slide_contain">
-                                            <div class="feedback-detail">
-                                                <h4>
-                                                    Feedback từ khách hàng
-                                                </h4>
-                                                <h6>
-                                                    Tôi tìm đến Itravel để đặt lịch và nhận lời tư vấn cho chuyến du lịch với trường vừa qua, tôi thấy đội ngũ
-                                                    của
-                                                    họ có
-                                                    nghiệp vụ tốt và hướng dẫn chúng tôi rất tận tình trong suốt chuyến hành trình.
-                                                </h6>
-                                            </div>
-                                            <hr style="background: rgba(0, 171, 165, 0.3);margin: 30px 0px;">
-                                            <div class="feedback-infor">
-                                                <span>
-                                                    Bạn Nguyễn Hoài An
-                                                </span>
-                                                <span>
-                                                    Sinh viên trường Đại học Ngoại Thương
-                                                </span>
-                                            </div>
-                                        </div>                                        
-                                    </div>
-                                    <div class="col-md-5 h-100" style="position: relative;">
-                                        <img class="imgs-feedback-user" src="/imgs/home/feedback/user1.png" alt="user feedback">
-                                        <div class="feedback_vector">
-                                            <svg viewBox="0 0 1200 640" fill="none">
-                                                <path xmlns="http://www.w3.org/2000/svg"
-                                                    d="M728.141 1287.34C728.141 1287.34 611.549 1258.36 524.417 1120.92C441.044 989.365 429.08 880.726 462.898 729.953C491.059 604.235 504.314 494.875 432.586 381.727C299.65 172.008 28.4441 205.765 7.28578 300.186C-3.04641 346.328 41.5156 372.375 75.6228 350.772C147.454 305.252 112.347 218.636 141.486 104.026C170.625 -10.5833 225.717 -43.2404 225.717 -43.2404"
-                                                    pathLength="1" style="--color: #21BA9D" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="swiper-slide home-feedback_slide bg-i-feedback w-100 h-100 text-light">
                             <div class="row h-100">
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <div class="home-feedback_slide_contain">
                                         <div class="feedback-detail">
                                             <h4>
@@ -364,14 +326,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5 h-100" style="position: relative;">
-                                    <img class="imgs-feedback-user" src="/imgs/chatbox_imgs/1664965613143-match_bvb.png" alt="user feedback">
+                                <div class="col-md-6 h-100" style="position: relative;">
+                                    <img class="imgs-feedback-user" src="/imgs/home/feedback/user1.png" alt="user feedback">
+                                    <div class="feedback_vector">
+                                        <svg viewBox="0 0 1200 640" fill="none">
+                                            <path xmlns="http://www.w3.org/2000/svg"
+                                                d="M225.717,-43.2404C225.717,-43.2404 170.625,-10.5833 141.486,104.026C112.347,218.636 147.454,305.252 75.6228,350.772C41.5156,372.375 -3.04641,346.328 7.28578,300.186C28.4441,205.765 299.65,172.008 432.586,381.727C504.314,494.875 491.059,604.235 462.898,729.953C429.08,880.726 441.044,989.365 524.417,1120.92C611.549,1258.36 728.141,1287.34 728.141,1287.34"
+                                                pathLength="1" style="--color: #21BA9D" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide home-feedback_slide bg-i-feedback w-100 h-100 text-light">
                             <div class="row h-100">
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <div class="home-feedback_slide_contain">
                                         <div class="feedback-detail">
                                             <h4>
@@ -396,11 +365,52 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5 h-100" style="position: relative;">
+                                <div class="col-md-6 h-100" style="position: relative;">
                                     <img class="imgs-feedback-user" src="/imgs/home/feedback/user1.png" alt="user feedback">
                                     <div class="feedback_vector">
                                         <svg viewBox="0 0 1200 640" fill="none">
-                                            <path xmlns="http://www.w3.org/2000/svg" d="M728.141 1287.34C728.141 1287.34 611.549 1258.36 524.417 1120.92C441.044 989.365 429.08 880.726 462.898 729.953C491.059 604.235 504.314 494.875 432.586 381.727C299.65 172.008 28.4441 205.765 7.28578 300.186C-3.04641 346.328 41.5156 372.375 75.6228 350.772C147.454 305.252 112.347 218.636 141.486 104.026C170.625 -10.5833 225.717 -43.2404 225.717 -43.2404" pathLength="1" style="--color: #21BA9D"/>
+                                            <path xmlns="http://www.w3.org/2000/svg"
+                                                d="M225.717,-43.2404C225.717,-43.2404 170.625,-10.5833 141.486,104.026C112.347,218.636 147.454,305.252 75.6228,350.772C41.5156,372.375 -3.04641,346.328 7.28578,300.186C28.4441,205.765 299.65,172.008 432.586,381.727C504.314,494.875 491.059,604.235 462.898,729.953C429.08,880.726 441.044,989.365 524.417,1120.92C611.549,1258.36 728.141,1287.34 728.141,1287.34"
+                                                pathLength="1" style="--color: #21BA9D" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide home-feedback_slide bg-i-feedback w-100 h-100 text-light">
+                            <div class="row h-100">
+                                <div class="col-md-6">
+                                    <div class="home-feedback_slide_contain">
+                                        <div class="feedback-detail">
+                                            <h4>
+                                                Feedback từ khách hàng
+                                            </h4>
+                                            <h6>
+                                                Tôi tìm đến Itravel để đặt lịch và nhận lời tư vấn cho chuyến du lịch với trường vừa qua, tôi
+                                                thấy đội ngũ
+                                                của
+                                                họ có
+                                                nghiệp vụ tốt và hướng dẫn chúng tôi rất tận tình trong suốt chuyến hành trình.
+                                            </h6>
+                                        </div>
+                                        <hr style="background: rgba(0, 171, 165, 0.3);margin: 30px 0px;">
+                                        <div class="feedback-infor">
+                                            <span>
+                                                Bạn Nguyễn Hoài An
+                                            </span>
+                                            <span>
+                                                Sinh viên trường Đại học Ngoại Thương
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 h-100" style="position: relative;">
+                                    <img class="imgs-feedback-user" src="/imgs/home/feedback/user1.png" alt="user feedback">
+                                    <div class="feedback_vector">
+                                        <svg viewBox="0 0 1200 640" fill="none">
+                                            <path xmlns="http://www.w3.org/2000/svg"
+                                                d="M225.717,-43.2404C225.717,-43.2404 170.625,-10.5833 141.486,104.026C112.347,218.636 147.454,305.252 75.6228,350.772C41.5156,372.375 -3.04641,346.328 7.28578,300.186C28.4441,205.765 299.65,172.008 432.586,381.727C504.314,494.875 491.059,604.235 462.898,729.953C429.08,880.726 441.044,989.365 524.417,1120.92C611.549,1258.36 728.141,1287.34 728.141,1287.34"
+                                                pathLength="1" style="--color: #21BA9D" />
                                         </svg>
                                     </div>
                                 </div>
