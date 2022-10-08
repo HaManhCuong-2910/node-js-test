@@ -52,7 +52,7 @@ let objLoad = [
   },
   {
     key: '#home_effect',
-    value: '.bonus-effect_vector'
+    value: ['.bonus-effect_vector','.home-bonus_effect_slide']
   },
   {
     key: '#home-feedback',
@@ -63,7 +63,15 @@ window.addEventListener('scroll',(event)=>{
   objLoad.forEach((elLoad)=>{
       let offsetTop = Number($(elLoad.key).offset().top);
       if(offsetTop - window.scrollY < window.innerHeight + 100 ){
-        $(elLoad.value).css('display','block');
+        if(Array.isArray(elLoad.value)){
+          elLoad.value.map((val)=>{
+            $(val).css('display','block');
+          })
+        }
+        else{
+          $(elLoad.value).css('display','block');
+        }
+        
       }
   });
 })
