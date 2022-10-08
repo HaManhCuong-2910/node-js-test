@@ -48,21 +48,24 @@ function reset_animation(el) {
 let objLoad = [
   {
     key: '#home-more',
+    delay: 100,
     value: '.home-more_vector'
   },
   {
     key: '#home_effect',
-    value: ['.bonus-effect_vector','.home-bonus_effect_slide']
+    delay: 100,
+    value: ['.bonus-effect_vector','.home-bonus_effect_child']
   },
   {
     key: '#home-feedback',
+    delay: 100,
     value: '.feedback_vector'
   }
 ]
 window.addEventListener('scroll',(event)=>{
   objLoad.forEach((elLoad)=>{
       let offsetTop = Number($(elLoad.key).offset().top);
-      if(offsetTop - window.scrollY < window.innerHeight + 100 ){
+      if(offsetTop - window.scrollY < window.innerHeight + elLoad.delay){
         if(Array.isArray(elLoad.value)){
           elLoad.value.map((val)=>{
             $(val).css('display','block');
