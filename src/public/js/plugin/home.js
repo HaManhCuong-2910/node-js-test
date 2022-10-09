@@ -79,7 +79,14 @@ window.addEventListener('scroll',(event)=>{
         else{
           $(elLoad.value).css('display','block');
         }
-        
       }
   });
+  $('.main-home-contents_items').each(function(index,element){
+    let scrolled = $(window).scrollTop() - $(this).offset().top + window.innerHeight * 0.5 - $(this).height() * 0.5;
+    let point = $(this).height()<200? -0.16: -0.3;
+    let rate = scrolled * point;
+    $('span',this).css({
+      transform: "translate3d(0," + rate + "px, 0)"
+    });
+  })  
 })
