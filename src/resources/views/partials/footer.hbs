@@ -1,5 +1,54 @@
-<div class="container-fluid">
-    <div class="container-fluid px-5">
-
-    </div>    
+<div class="footer-itravel">
+    <div class="home-news_contain footer-itravel-contain">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="footer-logo">
+                        <img class="img-fluid" src="/imgs/main_imgs/logo-footer.svg" alt="logo">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <ul class="footer-nav-list">
+                        {{#each cates}}
+                            <li class="footer-nav-list_items {{activeClass ../this.type}}">
+                                <a href="/navigation/{{this.slug}}">{{this.NameCate}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="footer-infor-list">
+                        <li class="footer-infor-list_items">
+                            <span class="footer-infor-list_items_title">Address</span>
+                            <span class="footer-infor-list_items_text">21 Nguyen Cong Hoan Str, Ngoc Khanh Ward
+                                Ba Dinh District, Ha Noi City</span>
+                        </li>
+                        <li class="footer-infor-list_items">
+                            <span class="footer-infor-list_items_title">Hotline</span>
+                            <span class="footer-infor-list_items_text">(+84) 983 580 811</span>
+                        </li>
+                        <li class="footer-infor-list_items">
+                            <span class="footer-infor-list_items_title">Email</span>
+                            <span class="footer-infor-list_items_text">infor.itravel@gmail.com.vn</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <div class="footer-social-media-contain">
+                        <span class="footer-social-media">Social media</span>
+                        <div class="footer-social-media_list_icon">
+                            <img src="/imgs/icons/social_media/facebook.png" alt="icon social media">
+                            <img src="/imgs/icons/social_media/instagram.png" alt="icon social media">
+                            <img src="/imgs/icons/social_media/in.png" alt="icon social media">
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <div class="copy-right-itravel">
+            <span>
+                2022 © Itravel. All Rights Reseverd
+            </span>
+        </div>
+    </div>
 </div>

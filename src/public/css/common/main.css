@@ -50,3 +50,108 @@ body{
 .contact-intro{
     padding: 10px;
 }
+.footer-itravel{
+    margin-top: 156px;
+}
+.footer-logo{
+    width: 250px;
+    height: 52.61px;
+}
+.footer-nav-list{
+    margin: 0px;
+    padding: 0px;
+    margin-left: auto;
+    width: 70%;
+}
+.footer-infor-list{
+    padding: 0px;
+    margin: 0px auto;
+    width: 68%;
+}
+.footer-nav-list_items{
+    margin: 24px auto;
+}
+.footer-nav-list_items.active{
+    display: none;
+}
+.footer-nav-list_items:first-child{
+    margin-top: 0px;
+}
+.footer-nav-list_items:last-child{
+    margin-bottom: 0px;
+}
+.footer-nav-list_items a {
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 32px;
+    color: #002930;
+}
+.footer-nav-list_items a:hover{
+    text-decoration: none;
+}
+.footer-infor-list_items{
+    margin: 33px auto;
+}
+.footer-infor-list_items:first-child{
+    margin-top: 0px;
+}
+.footer-infor-list_items:last-child{
+    margin-bottom: 0px;
+}
+.footer-infor-list_items span{
+    display: block;
+}
+.footer-infor-list_items_title{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: #6D6D6D;
+}
+.footer-infor-list_items_text{
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 30px;
+
+    color: #2E2E2E;
+}
+.footer-social-media-contain{
+    width: 80%;
+    margin-left: auto;
+}
+.footer-social-media{
+    display: block;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+    color: #6D6D6D;
+}
+.footer-social-media_list_icon{
+    display: flex;
+    justify-content: space-between;
+}
+.footer-social-media_list_icon img{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+.copy-right-itravel{
+   border-top: 1px solid #D2D2D2;
+   padding: 25px 0px;
+   text-align: center;
+   margin-top: 115px;
+}
+.copy-right-itravel span{
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;    
+    color: #AFAFAF;
+}

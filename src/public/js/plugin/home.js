@@ -12,6 +12,11 @@ var swiper = new Swiper(".mySwiper", {
   }
 });
 var swiperBanner = new Swiper(".swiperBanner", {
+  autoplay: {
+    delay: 2000
+  },
+  speed: 600,
+  loop: true,
   pagination: {
     el: ".swiper-pagination",
     dynamicBullets: true,
@@ -81,12 +86,20 @@ window.addEventListener('scroll',(event)=>{
         }
       }
   });
-  $('.main-home-contents_items').each(function(index,element){
-    let scrolled = $(window).scrollTop() - $(this).offset().top + window.innerHeight * 0.5 - $(this).height() * 0.5;
-    let point = $(this).height()<200? -0.16: -0.3;
-    let rate = scrolled * point;
-    $('span',this).css({
-      transform: "translate3d(0," + rate + "px, 0)"
-    });
-  })  
+
+  let parallaxElement = $(".main-home"),
+    parallaxQuantity = parallaxElement.length;
+  window.requestAnimationFrame(function () {
+    for (let i = 0; i < parallaxQuantity; i++) {
+      let currentElement = parallaxElement.eq(i),
+        windowTop = $(window).scrollTop(),
+        elementTop = currentElement.offset().top,
+        elementHeight = currentElement.height(),
+        viewPortHeight = window.innerHeight * 0.5 - elementHeight * 0.5,
+        scrolled = (windowTop - elementTop + viewPortHeight)<0? 0 : (windowTop - elementTop + viewPortHeight);
+      currentElement.css({
+        transform: "translate3d(0," + scrolled * 0.7 + "px, 0)"
+      });
+    }
+  });
 })
