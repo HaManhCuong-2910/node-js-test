@@ -8,30 +8,6 @@
         </div>
     </div>
     <div class="banner-pagination swiper-pagination"></div>
-    
-    <nav class="navbar navbar-expand-lg navbar-light nav-in-hanner pt-4">
-        <div class="container-fluid">
-            <div class="px-md-5 mx-md-5 w-100 d-flex justify-content-between">
-                <a class="navbar-brand" href="/">
-                    <img class="img-fluid img-logo" src="/imgs/main_imgs/Itravel-logo-02.svg" alt="logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-        
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        {{#each cates}}
-                        <li class="nav-item mx-3 nav-item-itravel {{activeClass ../this.type}}">
-                            <a class="nav-link" href="/navigation/{{this.slug}}">{{this.NameCate}}</a>
-                        </li>
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>        
-        </div>
-    </nav>
     <h2 class="intro-title">
         Đồng hành cùng bạn trên mọi nẻo đường
     </h2>
@@ -61,11 +37,11 @@
             <div class="form-group mt-5 d-flex align-items-end">
                 <div class="mx-3">
                     <h4>Khởi hành</h4>
-                    <input type="text">
+                    <input type="date">
                 </div>
                 <div class="mx-3">
                     <h4>Quay về</h4>
-                    <input type="text">
+                    <input type="date">
                 </div>
                 <div class="mx-3">
                     <h4>Người lớn</h4>
@@ -109,17 +85,25 @@
         </div>
     </div>
 </div>
-<div class="main-home">
+<div class="main-home" id="main-home">
     <div class="main-home-contents">
-        <div style="width: 1187px;margin: auto;">
+        <div class="main-home-contents_title">
             <div class="row">
                 <div class="col-md-12 pt-md-5">
-                   <h3 class="main-home-contents_title mt-md-5">Quá trình hình thành và phát triển</h3>
+                   <h3 class="main-home-contents_title_text mt-md-5">Quá trình hình thành và phát triển</h3>
                    <h4 class="main-home-contents_text mt-md-4">
                         Thành lập vào năm 2010, Itravel ra đời với sứ mệnh trở thành một trong những công ty tư vấn và đặt vé máy bay, khách sạn
                         hàng đầu Việt Nam
                    </h4>
                 </div>
+            </div>
+            <div class="main-home-contents_list">
+                <span class="main-home-contents_items" style="--data-width: 187px;--data-height: 122px;--data-top:250px;--data-left:370px;--data-delay:0.3s;--data-img:url('/imgs/home/img-animate/main-home-1.png')"></span>
+                <span class="main-home-contents_items" style="--data-width: 255px;--data-height: 295px;--data-top:320px;--data-left:-116px;--data-delay:0.5s;--data-img:url('/imgs/home/img-animate/main-home-2.jpg')"></span>
+                <span class="main-home-contents_items" style="--data-width: 328px;--data-height: 214px;--data-top:350px;--data-right:-190px;--data-delay:0.7s;--data-img:url('/imgs/home/img-animate/main-home-3.jpg')"></span>
+                <span class="main-home-contents_items" style="--data-width: 187px;--data-height: 122px;--data-bottom:200px;;--data-delay:0.9s;--data-img:url('/imgs/home/img-animate/main-home-4.jpg')"></span>
+                <span class="main-home-contents_items" style="--data-width: 248px;--data-height: 162px;--data-bottom:0;--data-left:370px;--data-delay:1.1s;--data-img:url('/imgs/home/img-animate/main-home-5.jpg')"></span>
+                <span class="main-home-contents_items" style="--data-width: 400px;--data-height: 260px;--data-bottom:0;--data-right:60px;--data-delay:1.3s;--data-img:url('/imgs/home/img-animate/main-home-6.jpg')"></span>
             </div>
         </div>
     </div>

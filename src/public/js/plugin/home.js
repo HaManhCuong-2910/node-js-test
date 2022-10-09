@@ -60,6 +60,11 @@ let objLoad = [
     key: '#home-feedback',
     delay: 100,
     value: '.feedback_vector'
+  },
+  {
+    key: '#main-home',
+    delay: 100,
+    value: '.main-home-contents_items'
   }
 ]
 window.addEventListener('scroll',(event)=>{
