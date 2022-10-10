@@ -108,8 +108,7 @@ window.addEventListener('scroll',(event)=>{
     }
   });
 })
-
-$(function () {
+window.addEventListener('DOMContentLoaded', function(){
   let arrIntroTitle = $('#intro-title').text().trim().split(' ');
   let introChange = '';
   arrIntroTitle.map((text,index)=>{
