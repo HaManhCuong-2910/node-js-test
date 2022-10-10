@@ -137,10 +137,14 @@ body{
     display: flex;
     justify-content: space-between;
 }
-.footer-social-media_list_icon img{
+.footer-social-media_list_icon svg{
     width: 35px;
     height: 35px;
     cursor: pointer;
+}
+.footer-social-media_list_icon svg:hover path:first-child{
+    transition: .5s;
+    fill: #21BA9D;
 }
 .copy-right-itravel{
    border-top: 1px solid #D2D2D2;
