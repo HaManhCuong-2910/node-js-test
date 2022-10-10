@@ -13,9 +13,25 @@
     font-weight: 600;
     font-size: 64px;
     color: #fff;
-    display: block;
+    display: none;
     width: 700px;
     line-height: 91px;
+    overflow-wrap: break-word;
+}
+.intro-title span{
+    display: inline-block;
+    animation: moveIntroLoad ease 1s both;
+    animation-delay: calc(50ms * var(--word-index));
+}
+@keyframes moveIntroLoad{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 .btn-search-home{
     font-weight: 400;
@@ -588,6 +604,7 @@ path {
     }
 }
 .home-contact{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -599,6 +616,7 @@ path {
 }
 .home-contact_form{
     width: 608px;
+    z-index: 1;
 }
 .home-contact_form_title{
     font-weight: 500;
@@ -663,4 +681,29 @@ path {
 .imgs-partents{
     cursor: pointer;
     height: 100%;
+}
+.home-contact_vector:nth-child(2) svg{
+    width: 1000px;
+    height: 100%;
+}
+.home-contact_vector:nth-child(2){
+    top: 0;
+    left: -90px;    
+}
+.home-contact_vector:nth-child(3) svg{
+    width: 1450px;
+    height: 100%;
+}
+.home-contact_vector:nth-child(3){
+    top: 0;
+    right: 0;
+}
+.home-contact_vector svg path{
+    --ease: 1s;
+}
+.home-contact_vector{
+    position: absolute;
+    display: none;
+    height: 100%;
+    z-index: 0;
 }

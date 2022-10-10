@@ -7,7 +7,7 @@ var swiper = new Swiper(".mySwiper", {
     slideChange: function () {
       let index_currentSlide = swiper.realIndex;
       let currentSlide = swiper.slides[index_currentSlide];
-      console.log(currentSlide);
+      // console.log(currentSlide);
     }
   }
 });
@@ -15,7 +15,7 @@ var swiperBanner = new Swiper(".swiperBanner", {
   autoplay: {
     delay: 2000
   },
-  speed: 600,
+  speed: 800,
   loop: true,
   pagination: {
     el: ".swiper-pagination",
@@ -70,6 +70,11 @@ let objLoad = [
     key: '#main-home',
     delay: 100,
     value: '.main-home-contents_items'
+  },
+  {
+    key: '#home-contact',
+    delay: 100,
+    value: '.home-contact_vector'
   }
 ]
 window.addEventListener('scroll',(event)=>{
@@ -103,3 +108,13 @@ window.addEventListener('scroll',(event)=>{
     }
   });
 })
+
+$(function () {
+  let arrIntroTitle = $('#intro-title').text().trim().split(' ');
+  let introChange = '';
+  arrIntroTitle.map((text,index)=>{
+    introChange += '<span style="--word-index:' + (index+1) + ';">'+text+'</span>' + '\n'; 
+  })
+  $('#intro-title').html(introChange);
+  $('#intro-title').css('display','block');
+});
