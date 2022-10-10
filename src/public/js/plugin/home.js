@@ -108,12 +108,31 @@ window.addEventListener('scroll',(event)=>{
     }
   });
 })
-window.addEventListener('DOMContentLoaded', function(){
-  let arrIntroTitle = $('#intro-title').text().trim().split(' ');
-  let introChange = '';
-  arrIntroTitle.map((text,index)=>{
-    introChange += '<span style="--word-index:' + (index+1) + ';">'+text+'</span>' + '\n'; 
-  })
-  $('#intro-title').html(introChange);
-  $('#intro-title').css('display','block');
+
+$(function () {
+  let imgs = $('.banner_slide img'),
+    len = imgs.length,
+    counter = 0;
+
+  [].forEach.call(imgs, function (img) {
+    if (img.complete)
+      incrementCounter();
+    else
+      img.addEventListener('load', incrementCounter, false);
+  });
+
+  function incrementCounter() {
+    counter++;
+    if (counter === len) {
+      console.log('all img load');
+      let arrIntroTitle = $('#intro-title').text().trim().split(' ');
+      let introChange = '';
+      arrIntroTitle.map((text, index) => {
+        introChange += '<span style="--word-index:' + (index + 1) + ';">' + text + '</span>' + '\n';
+      })
+      $('#intro-title').html(introChange);
+      $('#intro-title').css('display', 'block');
+
+    }
+  }
 });
