@@ -57,6 +57,25 @@
     border-radius: 30px;
     overflow: hidden;
 }
+#roundDate.active{
+    display: block;
+}
+#roundDate{
+    display: none;
+    animation: showScale linear 0.4s;
+}
+@keyframes showScale {
+    0%{
+        display: block;
+        opacity: 0;
+        transform: scale(0);
+    }
+    100%{
+        display: block;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 .home-more_slide .mySwiper{
     border-radius: 26px;
     overflow: hidden;
@@ -83,7 +102,7 @@
     font-size: 22px;
     padding: 16px 0px 14px 26px;
 }
-.form-search-itravel__option span i{
+.form-search-itravel__option i{
     font-size: 1rem;
     margin-left: 12px;
 }

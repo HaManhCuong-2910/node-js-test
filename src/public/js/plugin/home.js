@@ -68,7 +68,7 @@ let objLoad = [
   },
   {
     key: '#main-home',
-    delay: 100,
+    delay: -100,
     value: '.main-home-contents_items'
   },
   {
@@ -110,29 +110,55 @@ window.addEventListener('scroll',(event)=>{
 })
 
 $(function () {
-  let imgs = $('.banner_slide img'),
-    len = imgs.length,
-    counter = 0;
+      let imgs = $('.banner_slide img'),
+        len = imgs.length,
+        counter = 0;
 
-  [].forEach.call(imgs, function (img) {
-    if (img.complete)
-      incrementCounter();
-    else
-      img.addEventListener('load', incrementCounter, false);
-  });
+      [].forEach.call(imgs, function (img) {
+        if (img.complete)
+          incrementCounter();
+        else
+          img.addEventListener('load', incrementCounter, false);
+      });
 
-  function incrementCounter() {
-    counter++;
-    if (counter === len) {
-      console.log('all img load');
-      let arrIntroTitle = $('#intro-title').text().trim().split(' ');
-      let introChange = '';
-      arrIntroTitle.map((text, index) => {
-        introChange += '<span style="--word-index:' + (index + 1) + ';">' + text + '</span>' + '\n';
+      function incrementCounter() {
+        counter++;
+        if (counter === len) {
+          let arrIntroTitle = $('#intro-title').text().trim().split(' ');
+          let introChange = '';
+          arrIntroTitle.map((text, index) => {
+            introChange += '<span style="--word-index:' + (index + 1) + ';">' + text + '</span>' + '\n';
+          })
+          $('#intro-title').html(introChange);
+          $('#intro-title').css('display', 'block');
+
+        }
+      }
+
+      // $('.itravelTogo').click(()=>{
+      //   setTimeout(()=>{
+      //     $('#listest').html(`<li>abc</li>
+      //     <li>abc</li>
+      //     <li>abc</li>
+      //     <li>abc</li>
+      //     <li>abc</li>`);
+      //   },2000)
+      //   let checktimer = setInterval(() => {
+      //     if($.trim($('#listest').html()) && $('#listest').html() != undefined){
+      //       console.log($('#listest').html());
+      //       $('.itravelTogo').val('okee');
+      //       clearInterval(checktimer);
+      //     }
+      //   }, 500);
+      // });
+      $('.dropdown-frmsearch-items').click(function(){
+        $('#navbarDropdown-frmsearch').text($(this).text());
+        if($(this).attr('data-type') == 'round-trip'){
+          $('#roundDate').css('display','block');
+        }
+        else{
+          $('#roundDate').css('display','none');
+        }
+
       })
-      $('#intro-title').html(introChange);
-      $('#intro-title').css('display', 'block');
-
-    }
-  }
 });

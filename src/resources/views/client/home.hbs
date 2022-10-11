@@ -19,25 +19,25 @@
     </h2>
     <div class="form-search-itravel">
         <div class="form-search-itravel__option">
-            <span class="nav-link text-light" id="navbarDropdown" role="button" data-toggle="dropdown"
+            <span class="nav-link text-light" id="navbarDropdown-frmsearch" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 Một chiều
-                <i class="fas fa-chevron-down"></i>
             </span>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <span class="dropdown-item">Một chiều</span>
-                <span class="dropdown-item">Khứ hồi</span>
+            <i class="fas fa-chevron-down text-light"></i>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown-frmsearch">
+                <span class="dropdown-item dropdown-frmsearch-items" data-type="one-way">Một chiều</span>
+                <span class="dropdown-item dropdown-frmsearch-items" data-type="round-trip">Khứ hồi</span>
             </div>
         </div>
         <div class="form-search-itravel__content px-5 py-4">
             <div class="form-group d-flex form-search-itravel__content_togo">
                 <div class="d-flex w-50 align-items-center mx-3">
                     <h4 style="flex: 1;" class="mb-0 mr-2">Điểm đi</h4>
-                    <input style="flex: 4;" type="text" placeholder="Gõ tên thành phố/ mã sân bay Nội địa hoặc Quốc tế">
+                    <input style="flex: 4;" class="itravelTogo" name="itravelTogo" type="text" placeholder="Gõ tên thành phố/ mã sân bay Nội địa hoặc Quốc tế">
                 </div>
                 <div class="d-flex w-50 align-items-center mx-3">
                     <h4 style="flex: 1;" class="mb-0 mr-2">Điểm đến</h4>
-                    <input style="flex: 4;" type="text" placeholder="Gõ tên thành phố/ mã sân bay Nội địa hoặc Quốc tế">
+                    <input style="flex: 4;" name="itravelToend" type="text" placeholder="Gõ tên thành phố/ mã sân bay Nội địa hoặc Quốc tế">
                 </div>
             </div>
             <div class="form-group mt-5 d-flex align-items-end">
@@ -45,7 +45,7 @@
                     <h4>Khởi hành</h4>
                     <input type="date">
                 </div>
-                <div class="mx-3">
+                <div class="mx-3" id="roundDate">
                     <h4>Quay về</h4>
                     <input type="date">
                 </div>
