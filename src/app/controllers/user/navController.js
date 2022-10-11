@@ -5,6 +5,7 @@ class navController {
 
   async index(req, res) {
     let type = req.params.type;
+    let title = 'Itravel du lịch';
     let lang = req.cookies.lang || 'vi';
     let cates = await category.aggregate(
       [
@@ -22,6 +23,7 @@ class navController {
     res.render('client/navigation', {
         type,
         cates,
+        title,
         layout: 'layoutDefaut.hbs'
     });
 

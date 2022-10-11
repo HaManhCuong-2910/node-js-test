@@ -53,17 +53,17 @@ function reset_animation(el) {
 let objLoad = [
   {
     key: '#home-more',
-    delay: 100,
+    delay: 50,
     value: '.home-more_vector'
   },
   {
     key: '#home_effect',
-    delay: 100,
+    delay: 50,
     value: ['.bonus-effect_vector','.home-bonus_effect_child']
   },
   {
     key: '#home-feedback',
-    delay: 100,
+    delay: 50,
     value: '.feedback_vector'
   },
   {
@@ -73,7 +73,7 @@ let objLoad = [
   },
   {
     key: '#home-contact',
-    delay: 100,
+    delay: 50,
     value: '.home-contact_vector'
   }
 ]

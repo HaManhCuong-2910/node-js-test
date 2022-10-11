@@ -8,6 +8,7 @@ class homeController {
   async index(req, res) {
     try {
       let lang = req.cookies.lang || 'vi';
+      let title = 'Ứng dụng du lịch và Lữ Hành';
       let cates = await category.aggregate(
         [
            { 
@@ -21,10 +22,10 @@ class homeController {
           }
         ]
       );
-
+      
       res.render('client/home', {
         cates,
-        showFooter: true,
+        title,
         layout: 'layoutDefaut.hbs'
       });
     }
