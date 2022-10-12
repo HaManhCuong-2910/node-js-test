@@ -78,35 +78,43 @@ let objLoad = [
   }
 ]
 window.addEventListener('scroll',(event)=>{
-  objLoad.forEach((elLoad)=>{
-      let offsetTop = Number($(elLoad.key).offset().top);
-      if(offsetTop - window.scrollY < window.innerHeight + elLoad.delay){
-        if(Array.isArray(elLoad.value)){
-          elLoad.value.map((val)=>{
-            $(val).css('display','block');
-          })
+    objLoad.forEach((elLoad)=>{
+        let offsetTop = Number($(elLoad.key).offset().top);
+        if(offsetTop - window.scrollY < window.innerHeight + elLoad.delay){
+          if(Array.isArray(elLoad.value)){
+            elLoad.value.map((val)=>{
+              $(val).css('display','block');
+            })
+          }
+          else{
+            $(elLoad.value).css('display','block');
+          }
         }
-        else{
-          $(elLoad.value).css('display','block');
-        }
-      }
-  });
+    });
 
-  let parallaxElement = $(".main-home"),
-    parallaxQuantity = parallaxElement.length;
-  window.requestAnimationFrame(function () {
-    for (let i = 0; i < parallaxQuantity; i++) {
-      let currentElement = parallaxElement.eq(i),
-        windowTop = $(window).scrollTop(),
-        elementTop = currentElement.offset().top,
-        elementHeight = currentElement.height(),
-        viewPortHeight = window.innerHeight * 0.5 - elementHeight * 0.5,
-        scrolled = (windowTop - elementTop + viewPortHeight)<0? 0 : (windowTop - elementTop + viewPortHeight);
-      currentElement.css({
-        transform: "translate3d(0," + scrolled * 0.7 + "px, 0)"
-      });
+    let parallaxElement = $(".main-home"),
+      parallaxQuantity = parallaxElement.length;
+    window.requestAnimationFrame(function () {
+      for (let i = 0; i < parallaxQuantity; i++) {
+        let currentElement = parallaxElement.eq(i),
+          windowTop = $(window).scrollTop(),
+          elementTop = currentElement.offset().top,
+          elementHeight = currentElement.height(),
+          viewPortHeight = window.innerHeight * 0.5 - elementHeight * 0.5,
+          scrolled = (windowTop - elementTop + viewPortHeight)<0? 0 : (windowTop - elementTop + viewPortHeight);
+        currentElement.css({
+          transform: "translate3d(0," + scrolled * 0.7 + "px, 0)"
+        });
+      }
+    });
+
+    if(window.scrollY > 500){
+      $('#nav-itravel-fix').show();
+      $('#nav-itravel-fix').addClass('active');
     }
-  });
+    else{
+      $('#nav-itravel-fix').removeClass('active');
+    }
 })
 
 $(function () {

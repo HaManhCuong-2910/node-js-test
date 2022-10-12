@@ -33,7 +33,7 @@ body{
 .nav-item-itravel:hover a{
     color: #fff !important;
 }
-.nav-item-itravel.active{
+.nav-item-itravel.special{
     background-color: #21BA9D;
     border-radius: 8px;
 }
@@ -42,6 +42,40 @@ body{
 }
 .nav-itravel{
     background-color: #002930;
+}
+#nav-itravel-fix{
+    display: none;
+    position: fixed;
+    top: -50%;
+    z-index: 10000;
+    left: 0;
+    right: 0;
+    animation: movetoTop 1s;
+    animation-fill-mode: forwards; 
+}
+#nav-itravel-fix.active{    
+    animation: movetoBot 1s;
+    animation-fill-mode: forwards;    
+}
+@keyframes movetoBot{
+    from{
+        display: none;
+        top: -50%;
+    }
+    to{
+        display: block;
+        top: 0;
+    }
+}
+@keyframes movetoTop{
+    from{
+        display: block;
+        top: 0%;
+    }
+    to{
+        display: none;
+        top: -50%;
+    }
 }
 .dropdown-item{
     cursor: pointer;

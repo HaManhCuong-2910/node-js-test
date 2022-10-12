@@ -40,52 +40,57 @@
                     <input style="flex: 4;" name="itravelToend" type="text" placeholder="Gõ tên thành phố/ mã sân bay Nội địa hoặc Quốc tế">
                 </div>
             </div>
-            <div class="form-group mt-5 d-flex align-items-end">
-                <div class="mx-3">
-                    <h4>Khởi hành</h4>
-                    <input type="date">
+            <div class="form-group mt-5 d-flex align-items-end justify-content-between">
+                <div class="d-flex align-items-end">
+                    <div class="mx-3">
+                        <h4>Khởi hành</h4>
+                        <input type="date">
+                    </div>
+                    <div class="mx-3" id="roundDate">
+                        <h4>Quay về</h4>
+                        <input type="date">
+                    </div>
+                    <div class="mx-3">
+                        <h4>Người lớn</h4>
+                        <select>
+                            <option value="1">01 người</option>
+                            <option value="2">02 người</option>
+                            <option value="3">03 người</option>
+                            <option value="4">04 người</option>
+                            <option value="5">05 người</option>
+                            <option value="6">06 người</option>
+                        </select>
+                    </div>
+                    <div class="mx-3">
+                        <h4>Trẻ em <span class="attention">(2-11 tuổi)</span></h4>
+                        <select>
+                            <option value="0">0 người</option>
+                            <option value="1">01 người</option>
+                            <option value="2">02 người</option>
+                            <option value="3">03 người</option>
+                            <option value="4">04 người</option>
+                            <option value="5">05 người</option>
+                            <option value="6">06 người</option>
+                        </select>
+                    </div>
+                    <div class="mx-3">
+                        <h4>Em bé <span class="attention">(<2 tuổi)</span>
+                        </h4>
+                        <select>
+                            <option value="0">0 người</option>
+                            <option value="1">01 người</option>
+                            <option value="2">02 người</option>
+                            <option value="3">03 người</option>
+                            <option value="4">04 người</option>
+                            <option value="5">05 người</option>
+                            <option value="6">06 người</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="mx-3" id="roundDate">
-                    <h4>Quay về</h4>
-                    <input type="date">
-                </div>
-                <div class="mx-3">
-                    <h4>Người lớn</h4>
-                    <select>
-                        <option value="1">01 người</option>
-                        <option value="2">02 người</option>
-                        <option value="3">03 người</option>
-                        <option value="4">04 người</option>
-                        <option value="5">05 người</option>
-                        <option value="6">06 người</option>
-                    </select>
-                </div>
-                <div class="mx-3">
-                    <h4>Trẻ em <span class="attention">(2-11 tuổi)</span></h4>
-                    <select>
-                        <option value="0">0 người</option>
-                        <option value="1">01 người</option>
-                        <option value="2">02 người</option>
-                        <option value="3">03 người</option>
-                        <option value="4">04 người</option>
-                        <option value="5">05 người</option>
-                        <option value="6">06 người</option>
-                    </select>
-                </div>
-                <div class="mx-3">
-                    <h4>Em bé <span class="attention">(<2 tuổi)</span></h4>
-                    <select>
-                        <option value="0">0 người</option>
-                        <option value="1">01 người</option>
-                        <option value="2">02 người</option>
-                        <option value="3">03 người</option>
-                        <option value="4">04 người</option>
-                        <option value="5">05 người</option>
-                        <option value="6">06 người</option>
-                    </select>
-                </div>
-                <div class="mx-3 text-right">
-                    <button style="background-color: #21BA9D;" class="btn btn-search-home">Tìm kiếm</button>
+                <div>
+                    <div class="mx-3 text-right">
+                        <button style="background-color: #21BA9D;" class="btn btn-search-home">Tìm kiếm</button>
+                    </div>
                 </div>
             </div>            
         </div>
@@ -190,7 +195,7 @@
                             <div class="card-img-top text-center">
                                 <img src="/imgs/news/news-1.jpg" alt="Hinh anh tin tuc">
                             </div>
-                            <div class="card-body w-75">
+                            <div class="card-body w-100">
                                 <h5 class="card-title">04/10/2022  |  16:23</h5>
                                 <a href="#" class="card-text">
                                     Bảng giá tham quan toàn quốc 2022
@@ -203,7 +208,7 @@
                             <div class="card-img-top text-center">
                                 <img src="/imgs/news/news-2.jpg" alt="Hinh anh tin tuc">
                             </div>
-                            <div class="card-body w-75">
+                            <div class="card-body w-100">
                                 <h5 class="card-title">13/07/2022  |  17:09</h5>
                                 <a href="#" class="card-text">
                                     6 bãi biển đẹp nhất Phú Quốc
@@ -216,7 +221,7 @@
                             <div class="card-img-top text-center">
                                 <img src="/imgs/news/news-3.jpg" alt="Hinh anh tin tuc">
                             </div>
-                            <div class="card-body w-75">
+                            <div class="card-body w-100">
                                 <h5 class="card-title">25/06/2022  |  13:56</h5>
                                 <a href="#" class="card-text">
                                     Trải nghiệm đẳng cấp cùng du thuyền trên biển
