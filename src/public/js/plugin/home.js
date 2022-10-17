@@ -77,6 +77,7 @@ let objLoad = [
     value: '.home-contact_vector'
   }
 ]
+var lastScrollTop = 0;
 window.addEventListener('scroll',(event)=>{
     objLoad.forEach((elLoad)=>{
         let offsetTop = Number($(elLoad.key).offset().top);
@@ -108,13 +109,13 @@ window.addEventListener('scroll',(event)=>{
       }
     });
 
-    if(window.scrollY > 500){
-      $('#nav-itravel-fix').show();
+    let st = window.pageYOffset || document.documentElement.scrollTop;
+    if (st > lastScrollTop) {
       $('#nav-itravel-fix').addClass('active');
-    }
-    else{
+    } else {
       $('#nav-itravel-fix').removeClass('active');
     }
+    lastScrollTop = st <= 0 ? 0 : st;
 })
 
 $(function () {

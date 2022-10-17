@@ -14,7 +14,7 @@
     font-size: 64px;
     color: #fff;
     display: none;
-    width: 700px;
+    width: 740px;
     line-height: 91px;
     overflow-wrap: break-word;
 }
@@ -206,7 +206,7 @@
     color: #21BA9D;
 }
 .home-more-contents{
-    padding-left: 105px;
+    width: 334px;
 }
 .home-more-contents h3{
     line-height: 41px;
@@ -326,7 +326,8 @@
     color: #004C3F;
 }
 .home-news_contain{    
-    padding: 0px 80px;
+    width: 1300px;
+    margin: auto;
 }
 .home-partners{
     margin-top: 150px;
@@ -726,7 +727,8 @@ path {
     right: 0;
 }
 .home-contact_vector svg path{
-    --ease: 1s;
+    --ease: linear;
+    --duration: 1.8s;
 }
 .home-contact_vector{
     position: absolute;

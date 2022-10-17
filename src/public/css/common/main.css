@@ -44,38 +44,17 @@ body{
     background-color: #002930;
 }
 #nav-itravel-fix{
-    display: none;
+    display: block;
     position: fixed;
-    top: -50%;
+    top: 0;
     z-index: 10000;
     left: 0;
     right: 0;
-    animation: movetoTop 1s;
-    animation-fill-mode: forwards; 
+    transition: 0.6s;
 }
 #nav-itravel-fix.active{    
-    animation: movetoBot 1s;
-    animation-fill-mode: forwards;    
-}
-@keyframes movetoBot{
-    from{
-        display: none;
-        top: -50%;
-    }
-    to{
-        display: block;
-        top: 0;
-    }
-}
-@keyframes movetoTop{
-    from{
-        display: block;
-        top: 0%;
-    }
-    to{
-        display: none;
-        top: -50%;
-    }
+    top: -50%;
+    transition: 0.6s;    
 }
 .dropdown-item{
     cursor: pointer;
