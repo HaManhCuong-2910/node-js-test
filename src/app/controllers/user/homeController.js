@@ -22,7 +22,7 @@ class homeController {
           }
         ]
       );
-      
+    
       res.render('client/home', {
         cates,
         title,

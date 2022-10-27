@@ -326,15 +326,18 @@
     color: #004C3F;
 }
 .home-news_contain{    
-    width: 1300px;
+    width: 86%;
     margin: auto;
 }
 .home-partners{
     margin-top: 150px;
 }
+.home-news_list .home-news_list__items{
+    max-width: 500px;
+}
 .home-news_list img{
     max-width: 100%;
-    width: 500px;
+    width: 100%;
     height: 380px;
     object-fit: cover;
     border-radius: 14px;
