@@ -11,7 +11,7 @@ const db = require('./model/connect');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const SocketServices = require('./services/socket.service');
 const handlebarsService = require('./services/handlebars.service');
 const Redis = require('ioredis');
@@ -93,5 +93,5 @@ server.listen(port, (err) => {
   if(err){
     console.log(err);
   }
-  console.log(`App listening at http://localhost:${port}`)
+  console.log(`App listening dbnsahjdbaj sdasdas at http://localhost:${port}`)
 })
