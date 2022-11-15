@@ -93,6 +93,8 @@ function testing(){
   return 'test function'
 }
 
+console.log("Oki khoông bro");
+console.log("Cũng oke đó");
 server.listen(port, (err) => {
   if(err){
     console.log(err);
