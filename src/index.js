@@ -89,6 +89,10 @@ io.use(wrap(sessionMiddleware));
 
 global._io.on('connection', SocketServices.connection);
 
+function testing(){
+  return 'test function'
+}
+
 server.listen(port, (err) => {
   if(err){
     console.log(err);

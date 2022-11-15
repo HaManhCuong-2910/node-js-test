@@ -60,6 +60,7 @@ class handlebarsService {
         });
 
         hbsrgs.registerHelper('ifEquals', function (arg1, arg2, options) {
+            console.log('test git');
             if (arg1 == arg2) {
                 return options.fn(this)
             } else {
