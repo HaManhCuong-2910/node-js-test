@@ -89,6 +89,8 @@ io.use(wrap(sessionMiddleware));
 
 global._io.on('connection', SocketServices.connection);
 
+console.log("Oki khoông bro");
+
 server.listen(port, (err) => {
   if(err){
     console.log(err);
